@@ -21,7 +21,7 @@ class CheckComputifyControllerTest {
     void sayHello_returnHello() throws Exception {
 
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/api/hello"))
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/admin"))
                 .andExpect(status().is(200))
                 .andExpect(content().string("Hello World! Greetings xoxo -Backend"));
 
