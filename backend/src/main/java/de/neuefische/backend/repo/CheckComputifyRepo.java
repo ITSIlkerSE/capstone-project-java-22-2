@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 
 public interface CheckComputifyRepo extends MongoRepository<CheckComputifyModel, String> {
+
 }

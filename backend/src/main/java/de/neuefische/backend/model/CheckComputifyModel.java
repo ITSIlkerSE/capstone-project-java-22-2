@@ -24,4 +24,6 @@ public class CheckComputifyModel {
 
     private String combinationCode;
 
+    private String score;
+
 }
