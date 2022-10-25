@@ -1,13 +1,12 @@
-import {ComponentProps} from "react";
+
 import {Component} from "../model/Component";
 
 type ComponentsProps = {
     component: Component;
 
-
 }
 
-export default function Components(props: ComponentsProps){
+    export default function Components(props: ComponentsProps){
 
 
 
