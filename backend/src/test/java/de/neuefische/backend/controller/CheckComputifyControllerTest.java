@@ -12,7 +12,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-class HelloWorldControllerTest {
+class CheckComputifyControllerTest {
 
     @Autowired
     MockMvc mockMvc;
@@ -21,7 +21,7 @@ class HelloWorldControllerTest {
     void sayHello_returnHello() throws Exception {
 
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/api/hello"))
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/admin"))
                 .andExpect(status().is(200))
                 .andExpect(content().string("Hello World! Greetings xoxo -Backend"));
 
