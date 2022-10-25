@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import {Component} from "../model/Component";
 import axios from "axios";
 

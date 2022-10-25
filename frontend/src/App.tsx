@@ -7,12 +7,12 @@ import AddComponentPage from "./pages/AddComponentPage";
 
 function App() {
 
-  const {addComponent, component} = useComponent();
+  const {addComponent} = useComponent();
 
   const [helloMessage, setHelloMessage] = useState("")
 
   function fetchHelloMessage(){
-    axios.get("/api/hello")
+    axios.get("/api/admin")
         .then(response => response.data)
         .then(data => setHelloMessage(data))
         .catch((error) => console.log(error))
