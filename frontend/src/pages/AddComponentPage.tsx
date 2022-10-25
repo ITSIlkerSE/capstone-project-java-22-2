@@ -1,5 +1,5 @@
 import {Component} from "../model/Component";
-import {ChangeEvent, FormEvent, useState} from "react";
+import {ChangeEvent, useState} from "react";
 
 type AddComponentPageProps = {
     component: Component;
@@ -9,7 +9,6 @@ type AddComponentPageProps = {
 
     export default function AddComponentPage(props: AddComponentPageProps) {
 
-    const [component, setComponent] = useState(props.component)
     const [name, setName] = useState("")
     const [category, setCategory] = useState("")
     const [combinationCode, setCombinationCode] = useState("")
