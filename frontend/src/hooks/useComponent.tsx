@@ -2,7 +2,7 @@ import {useState} from "react";
 import {Component} from "../model/Component";
 import axios from "axios";
 
-export default function useComponent(){
+export default function useComponent() {
 
     const [components, setComponents] = useState([]);
 
@@ -23,7 +23,6 @@ export default function useComponent(){
         axios.get(`/api/admin/${id}`)
             .then((response) => response.data)
     }
-
 
 
     return {addComponent, getAllComponents, getComponentById, components}

@@ -7,7 +7,7 @@ type AddComponentPageProps = {
 
 }
 
-    export default function AddComponentPage(props: AddComponentPageProps) {
+export default function AddComponentPage(props: AddComponentPageProps) {
 
     const [name, setName] = useState("")
     const [category, setCategory] = useState("")
@@ -27,6 +27,10 @@ type AddComponentPageProps = {
         setScore(event.target.value)
     }
     const onAddComponent = () => {
+        setName("")
+        setCategory("")
+        setScore("")
+        setCombinationCode("")
 
         let newComponent = {
             name, category, combinationCode, score
@@ -36,9 +40,9 @@ type AddComponentPageProps = {
     }
 
 
-
     return (
-        <div className={"inputButtons"}>
+
+        <form onSubmit={(event) => event.preventDefault()} className={"inputButtons"}>
             <p>Name :</p>
             <input placeholder={"type in component name"} onChange={onNameChange} value={name}/>
 
@@ -51,9 +55,9 @@ type AddComponentPageProps = {
             <p>Score :</p>
             <input placeholder={"type in score points"} onChange={onScoreChange} value={score}/>
 
-            <p> </p>
+            <p></p>
             <button onClick={() => onAddComponent()}>Add Component</button>
-        </div>
+        </form>
 
     )
 

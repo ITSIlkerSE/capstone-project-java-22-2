@@ -6,26 +6,26 @@ import AddComponentPage from "./pages/AddComponentPage";
 
 function App() {
 
-  const {addComponent} = useComponent();
+    const {addComponent, getAllComponents, getComponentById, components} = useComponent();
 
 
-  return (
-    <div className="App">
-      <h1>Check&Computify</h1>
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-        </p>
-      </header>
-      <AddComponentPage addComponent={addComponent} component={{
-        id: undefined,
-        name: '',
-        category: '',
-        combinationCode: '',
-        score: ''
-      }}/>
-    </div>
-  );
+    return (
+        <div className="App">
+            <h1>Check&Computify</h1>
+            <header className="App-header">
+                <img src={logo} className="App-logo" alt="logo"/>
+                <p>
+                </p>
+            </header>
+            <AddComponentPage addComponent={addComponent} component={{
+                id: undefined,
+                name: '',
+                category: '',
+                combinationCode: '',
+                score: ''
+            }}/>
+        </div>
+    );
 }
 
 export default App;
