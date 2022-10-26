@@ -22,10 +22,6 @@ public class CheckComputifyController {
         this.service = service;
     }
 
-    @GetMapping
-    public String sayHello() {
-        return "Hello World! Greetings xoxo -Backend";
-    }
 
     @GetMapping
     public List<CheckComputifyModel> getAllComponents() {
