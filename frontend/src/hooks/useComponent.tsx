@@ -4,16 +4,29 @@ import axios from "axios";
 
 export default function useComponent(){
 
-    const [component, setComponent] = useState([]);
+    const [components, setComponents] = useState([]);
 
 
     const addComponent = (component: Component) => {
         axios.post("/api/admin", component)
             .then((response) => response.data)
-            .then((component) => setComponent(component))
+            .then((component) => setComponents(component))
     }
 
-    return {addComponent, component}
+    const getAllComponents = () => {
+        axios.get("/api/admin")
+            .then((response) => response.data)
+            .then((components) => setComponents(components))
+    }
+
+    const getComponentById = (id: string) => {
+        axios.get(`/api/admin/${id}`)
+            .then((response) => response.data)
+    }
+
+
+
+    return {addComponent, getAllComponents, getComponentById, components}
 
 
 }
