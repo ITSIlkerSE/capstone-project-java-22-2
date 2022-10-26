@@ -16,7 +16,7 @@ export default function useComponent(){
     const getAllComponents = () => {
         axios.get("/api/admin")
             .then((response) => response.data)
-            .then((components) => setComponents(components))
+            .then((component) => setComponents(component))
     }
 
     const getComponentById = (id: string) => {
