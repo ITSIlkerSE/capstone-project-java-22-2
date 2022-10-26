@@ -1,27 +1,12 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import axios from "axios";
 import useComponent from "./hooks/useComponent";
 import AddComponentPage from "./pages/AddComponentPage";
 
 function App() {
 
   const {addComponent} = useComponent();
-
-  const [helloMessage, setHelloMessage] = useState("")
-
-  function fetchHelloMessage(){
-    axios.get("/api/admin")
-        .then(response => response.data)
-        .then(data => setHelloMessage(data))
-        .catch((error) => console.log(error))
-  }
-
-  useEffect(() => {
-    fetchHelloMessage()
-  }, [])
-
 
 
   return (
@@ -30,7 +15,6 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          <h1>{helloMessage}</h1>
         </p>
       </header>
       <AddComponentPage addComponent={addComponent} component={{
