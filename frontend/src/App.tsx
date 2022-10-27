@@ -6,7 +6,7 @@ import AddComponentPage from "./pages/AddComponentPage";
 
 function App() {
 
-    const {addComponent, getAllComponents, getComponentById, components, component} = useComponent();
+    const {addComponent, getAllComponents, getComponentById, component} = useComponent();
 
 
     return (
