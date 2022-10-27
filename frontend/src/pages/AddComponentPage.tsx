@@ -44,16 +44,16 @@ export default function AddComponentPage(props: AddComponentPageProps) {
 
         <form onSubmit={(event) => event.preventDefault()} className={"inputButtons"}>
             <p>Name :</p>
-            <input placeholder={"type in component name"} onChange={onNameChange} value={name}/>
+            <input placeholder={"component name"} onChange={onNameChange} value={name}/>
 
             <p>Category :</p>
-            <input placeholder={"type in component category"} onChange={onCategoryChange} value={category}/>
+            <input placeholder={"component category"} onChange={onCategoryChange} value={category}/>
 
             <p>CombinationCode :</p>
-            <input placeholder={"type in combinationCode"} onChange={onCombinationCodeChange} value={combinationCode}/>
+            <input placeholder={"combination code"} onChange={onCombinationCodeChange} value={combinationCode}/>
 
             <p>Score :</p>
-            <input placeholder={"type in score points"} onChange={onScoreChange} value={score}/>
+            <input placeholder={"score points"} onChange={onScoreChange} value={score}/>
 
             <p></p>
             <button onClick={() => onAddComponent()}>Add Component</button>
