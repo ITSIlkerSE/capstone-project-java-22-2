@@ -6,7 +6,6 @@ import Components from "../components/Components";
 export default function useComponent() {
 
     const [components, setComponents] = useState([]);
-    let component!: Component;
 
 
     const addComponent = (component: Component) => {
@@ -27,7 +26,7 @@ export default function useComponent() {
     }
 
 
-    return {addComponent, getAllComponents, getComponentById, components, component}
+    return {addComponent, getAllComponents, getComponentById, components}
 
 
 }

@@ -6,8 +6,7 @@ import AddComponentPage from "./pages/AddComponentPage";
 
 function App() {
 
-    const {addComponent, getAllComponents, getComponentById, components, component} = useComponent();
-
+    const {addComponent, getAllComponents, getComponentById, components} = useComponent();
 
 
     return (
@@ -18,8 +17,13 @@ function App() {
                 <p>
                 </p>
             </header>
-            <AddComponentPage addComponent={addComponent} component={component}/>
-
+            <AddComponentPage addComponent={addComponent} component={{
+                id: undefined,
+                name: '',
+                category: '',
+                combinationCode: '',
+                score: ''
+            }}/>
         </div>
     );
 }
