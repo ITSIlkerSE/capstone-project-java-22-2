@@ -1,10 +1,12 @@
 import {useState} from "react";
 import {Component} from "../model/Component";
 import axios from "axios";
+import Components from "../components/Components";
 
 export default function useComponent() {
 
     const [components, setComponents] = useState([]);
+    let component!: Component;
 
 
     const addComponent = (component: Component) => {
@@ -25,7 +27,7 @@ export default function useComponent() {
     }
 
 
-    return {addComponent, getAllComponents, getComponentById, components}
+    return {addComponent, getAllComponents, getComponentById, components, component}
 
 
 }
