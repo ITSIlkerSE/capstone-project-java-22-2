@@ -1,4 +1,3 @@
-
 import {Component} from "../model/Component";
 
 type ComponentsProps = {
@@ -6,10 +5,7 @@ type ComponentsProps = {
 
 }
 
-    export default function Components(props: ComponentsProps){
-
-
-
+export default function Components(props: ComponentsProps) {
 
 
     return (
@@ -33,7 +29,6 @@ type ComponentsProps = {
 
 
     )
-
 
 
 }
