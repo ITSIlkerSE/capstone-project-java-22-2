@@ -13,12 +13,12 @@ import java.util.Optional;
 @RequestMapping("/api/admin")
 
 
-public class CheckComputifyController {
+public class AdminController {
 
     private final CheckComputifyService service;
 
     @Autowired
-    public CheckComputifyController(CheckComputifyService service) {
+    public AdminController(CheckComputifyService service) {
         this.service = service;
     }
 
