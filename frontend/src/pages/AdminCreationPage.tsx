@@ -2,8 +2,9 @@ import {Component} from "../model/Component";
 import {ChangeEvent, useState} from "react";
 
 type AddComponentPageProps = {
-    component: Component;
+    components: Component[];
     addComponent: (component: Component) => void;
+
 
 }
 
@@ -42,13 +43,16 @@ export default function AdminCreationPage(props: AddComponentPageProps) {
 
     }
 
-    return (
+
+
+
+        return (
 
         <div className="layout">
 
             <p>Graphics card</p>
             <select>
-                <option>RTX 3090Ti</option>
+                {props.components.map((component) => <option value={component.id}>{component.name}</option>)}
             </select>
         <form onSubmit={(event) => event.preventDefault()} className={"inputButtons"}>
             <p>Name :</p>

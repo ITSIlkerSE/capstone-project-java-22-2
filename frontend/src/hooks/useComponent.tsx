@@ -3,18 +3,22 @@ import {Component} from "../model/Component";
 import axios from "axios";
 
 export default function useComponent() {
-    const [welcomeMessage, setWelcomeMessage] = useState("")
 
+    const [welcomeMessage, setWelcomeMessage] = useState("")
     const [password, setPassword] = useState("")
     const [username, setUsername] = useState("")
     const [newPassword, setNewPassword] = useState("")
     const [newUsername, setNewUsername] = useState("")
     const [me, setMe] = useState("")
 
-    const [components, setComponents] = useState([]);
     let component!: Component;
 
+    const [components, setComponents] = useState([]);
 
+    useEffect(() => {
+        getAllComponents()
+
+    }, [])
 
     function fetchWelcomeMessage() {
         axios.get("/api/welcome")
@@ -37,7 +41,8 @@ export default function useComponent() {
     function handleRegister() {
         axios.post("api/user/register", {
             username: newUsername,
-            password: newPassword })
+            password: newPassword
+        })
             .then(response => response.data)
             .then((data) => setMe(data))
             .then(() => setNewUsername(""))
@@ -53,7 +58,7 @@ export default function useComponent() {
     const addComponent = (component: Component) => {
         axios.post("/api/admin", component)
             .then((response) => response.data)
-            .then((component) => setComponents(component))
+            .then(getAllComponents)
     }
 
     const getAllComponents = () => {
@@ -68,7 +73,16 @@ export default function useComponent() {
     }
 
 
-    return {addComponent, getAllComponents, getComponentById, fetchWelcomeMessage, handleLogin, handleRegister, handleLogout, component}
+    return {
+        addComponent,
+        getAllComponents,
+        getComponentById,
+        fetchWelcomeMessage,
+        handleLogin,
+        handleRegister,
+        handleLogout,
+        components
+    }
 
 
 }
