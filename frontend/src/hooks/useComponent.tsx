@@ -3,10 +3,51 @@ import {Component} from "../model/Component";
 import axios from "axios";
 
 export default function useComponent() {
+    const [welcomeMessage, setWelcomeMessage] = useState("")
+
+    const [password, setPassword] = useState("")
+    const [username, setUsername] = useState("")
+    const [newPassword, setNewPassword] = useState("")
+    const [newUsername, setNewUsername] = useState("")
+    const [me, setMe] = useState("")
 
     const [components, setComponents] = useState([]);
     let component!: Component;
 
+
+
+    function fetchWelcomeMessage() {
+        axios.get("/api/welcome")
+            .then(response => {
+                return response.data
+            })
+            .then(data => setWelcomeMessage(data))
+
+    }
+
+    function handleLogin() {
+        axios.get("api/user/login", {auth: {username, password}})
+            .then(response => response.data)
+            .then((data) => setMe(data))
+            .then(() => setUsername(""))
+            .then(() => setPassword(""))
+            .catch(() => alert("Das Passwort war falsch!"))
+    }
+
+    function handleRegister() {
+        axios.post("api/user/register", {
+            username: newUsername,
+            password: newPassword })
+            .then(response => response.data)
+            .then((data) => setMe(data))
+            .then(() => setNewUsername(""))
+            .then(() => setNewPassword(""))
+    }
+
+    function handleLogout() {
+        axios.get("api/user/logout")
+            .then(() => setMe(""))
+    }
 
 
     const addComponent = (component: Component) => {
@@ -27,7 +68,7 @@ export default function useComponent() {
     }
 
 
-    return {addComponent, getAllComponents, getComponentById, component}
+    return {addComponent, getAllComponents, getComponentById, fetchWelcomeMessage, handleLogin, handleRegister, handleLogout, component}
 
 
 }
