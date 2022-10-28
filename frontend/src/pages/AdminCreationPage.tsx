@@ -7,7 +7,9 @@ type AddComponentPageProps = {
 
 }
 
-export default function AddComponentPage(props: AddComponentPageProps) {
+
+export default function AdminCreationPage(props: AddComponentPageProps) {
+
 
     const [name, setName] = useState("")
     const [category, setCategory] = useState("")
@@ -37,11 +39,17 @@ export default function AddComponentPage(props: AddComponentPageProps) {
         }
 
         props.addComponent(newComponent)
-    }
 
+    }
 
     return (
 
+        <div className="layout">
+
+            <p>Graphics card</p>
+            <select>
+                <option>RTX 3090Ti</option>
+            </select>
         <form onSubmit={(event) => event.preventDefault()} className={"inputButtons"}>
             <p>Name :</p>
             <input placeholder={"component name"} onChange={onNameChange} value={name}/>
@@ -58,6 +66,7 @@ export default function AddComponentPage(props: AddComponentPageProps) {
             <p></p>
             <button onClick={() => onAddComponent()}>Add Component</button>
         </form>
+        </div>
 
     )
 
