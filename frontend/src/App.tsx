@@ -5,12 +5,13 @@ import AdminCreationPage from "./pages/AdminCreationPage";
 
 function App() {
 
-    const {addComponent, getAllComponents, getComponentById, components} = useComponent();
+    const {addComponent, components} = useComponent();
 
 
     return (
         <div className="App">
-            <h1>Hey Admin! Welcome to Check&Computify</h1>
+            <h1>Hey Admin!</h1>
+            <h3> Welcome to Check&Computify </h3>
             <AdminCreationPage addComponent={addComponent} components={components}/>
         </div>
     );

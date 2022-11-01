@@ -39,4 +39,15 @@ public class AdminController {
         return service.addComponent(component);
     }
 
+    @DeleteMapping("/{id}")
+    public void deleteComponent(@PathVariable String id) {
+        service.deleteComponent(id);
+    }
+
+    @PutMapping("/{id}")
+    public ComponentsModel editComponent(@PathVariable String id, @RequestBody ComponentsModel component) {
+        return service.updateComponent(id, component);
+    }
+
+
 }
