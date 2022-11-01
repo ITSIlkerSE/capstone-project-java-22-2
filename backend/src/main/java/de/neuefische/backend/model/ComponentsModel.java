@@ -13,7 +13,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Builder
 @Document("products")
 
-public class CheckComputifyModel {
+public class ComponentsModel {
 
     @Id
     private String id;
@@ -21,6 +21,10 @@ public class CheckComputifyModel {
     private String name;
 
     private String category;
+
+    private String classification;
+
+    private String price;
 
     private String combinationCode;
 

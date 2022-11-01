@@ -1,6 +1,6 @@
 package de.neuefische.backend.service;
 
-import de.neuefische.backend.model.CheckComputifyModel;
+import de.neuefische.backend.model.ComponentsModel;
 import de.neuefische.backend.repo.CheckComputifyRepo;
 import org.junit.jupiter.api.Test;
 
@@ -23,12 +23,12 @@ class CheckComputifyServiceTest {
     void addComponent_WithPostInputField_InFrontend() {
 
         //GIVEN
-        CheckComputifyModel component = new CheckComputifyModel("1", "RTX 3080Ti", "Graphics cards", "1111-1111-1111", "955");
+        ComponentsModel component = new ComponentsModel("1", "RTX 3080Ti", "Graphics cards", "High", "1000","2222-2222-2222","879" );
 
         when(repo.save(component)).thenReturn(component);
 
         //WHEN
-        CheckComputifyModel actual = service.addComponent(component);
+        ComponentsModel actual = service.addComponent(component);
 
         //THEN
         verify(repo).save(component);
@@ -43,17 +43,17 @@ class CheckComputifyServiceTest {
 
         //GIVEN
 
-        CheckComputifyModel componentOne = new CheckComputifyModel("1", "RTX 3080Ti", "Graphics cards", "1111-1111-1111", "955");
-        CheckComputifyModel componentTwo = new CheckComputifyModel("2", "RTX 3080 OC", "Graphics cards", "1111-1111-2222", "855");
-        CheckComputifyModel componentThree = new CheckComputifyModel("3", "RTX 3080", "Graphics cards", "1111-1111-3333", "755");
+        ComponentsModel componentOne = new ComponentsModel("1", "RTX 3080Ti", "Graphics cards", "High", "1000","2222-2222-2222","879" );
+        ComponentsModel componentTwo = new ComponentsModel("2", "RTX 3070Ti", "Graphics cards", "High", "1000","2222-2222-2222","879" );
+        ComponentsModel componentThree = new ComponentsModel("3", "RTX 3060Ti", "Graphics cards", "High", "1000","2222-2222-2222","879" );
 
         when(repo.findAll()).thenReturn(List.of(componentOne, componentTwo, componentThree));
 
         //WHEN
-        List<CheckComputifyModel> actual = service.getAllComponents();
+        List<ComponentsModel> actual = service.getAllComponents();
 
         //THEN
-        List<CheckComputifyModel> expected = List.of(componentOne, componentTwo, componentThree);
+        List<ComponentsModel> expected = List.of(componentOne, componentTwo, componentThree);
         verify(repo).findAll();
         assertEquals(expected, actual);
 
@@ -64,17 +64,17 @@ class CheckComputifyServiceTest {
 
         //GIVEN
 
-        CheckComputifyModel componentOne = new CheckComputifyModel("1", "RTX 3080Ti", "Graphics cards", "1111-1111-1111", "955");
+        ComponentsModel componentOne = new ComponentsModel("1", "RTX 3080Ti", "Graphics cards", "High", "1000","2222-2222-2222","879" );
 
         when(repo.findById("1")).thenReturn(Optional.of(componentOne));
 
         //WHEN
 
-        Optional<CheckComputifyModel> actual = repo.findById("1");
+        Optional<ComponentsModel> actual = repo.findById("1");
 
         //THEN
 
-        Optional<CheckComputifyModel> expected = Optional.of(componentOne);
+        Optional<ComponentsModel> expected = Optional.of(componentOne);
         verify(repo).findById("1");
         assertEquals(expected, actual);
     }

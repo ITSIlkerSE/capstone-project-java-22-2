@@ -5,5 +5,7 @@ export type Component = {
     category: string;
     combinationCode: string;
     score: string;
+    price: string;
+    classification?: string;
 
 }
