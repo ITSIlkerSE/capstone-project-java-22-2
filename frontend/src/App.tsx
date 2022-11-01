@@ -5,7 +5,7 @@ import AdminCreationPage from "./pages/AdminCreationPage";
 
 function App() {
 
-    const {addComponent, getAllComponents, getComponentById, components} = useComponent();
+    const {addComponent, components} = useComponent();
 
 
     return (
