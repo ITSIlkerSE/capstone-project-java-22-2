@@ -10,7 +10,7 @@ function App() {
 
     return (
         <div className="App">
-            <h1>Check&Computify</h1>
+            <h1>Hey Admin! Welcome to Check&Computify</h1>
             <AdminCreationPage addComponent={addComponent} components={components}/>
         </div>
     );

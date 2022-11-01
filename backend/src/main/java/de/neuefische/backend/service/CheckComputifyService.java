@@ -1,6 +1,6 @@
 package de.neuefische.backend.service;
 
-import de.neuefische.backend.model.CheckComputifyModel;
+import de.neuefische.backend.model.ComponentsModel;
 import de.neuefische.backend.repo.CheckComputifyRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,17 +22,17 @@ public class CheckComputifyService {
         this.idService = idService;
     }
 
-    public CheckComputifyModel addComponent(CheckComputifyModel component) {
+    public ComponentsModel addComponent(ComponentsModel component) {
         component.setId(idService.generateId());
         return repo.save(component);
 
     }
 
-    public List<CheckComputifyModel> getAllComponents() {
+    public List<ComponentsModel> getAllComponents() {
         return repo.findAll();
     }
 
-    public Optional<CheckComputifyModel> getComponentById(String id) {
+    public Optional<ComponentsModel> getComponentById(String id) {
         if (!repo.existsById(id)) {
             throw new NoSuchElementException("The component you are searching for does not exists! Id : " + id);
         }
