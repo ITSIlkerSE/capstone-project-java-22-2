@@ -39,4 +39,13 @@ public class CheckComputifyService {
 
         return repo.findById(id);
     }
+
+    public void deleteComponent(String id) {
+        repo.deleteById(id);
+    }
+
+    public ComponentsModel updateComponent(String id, ComponentsModel component) {
+        repo.save(component);
+        return component;
+    }
 }

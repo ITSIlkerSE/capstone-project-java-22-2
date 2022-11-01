@@ -6,9 +6,7 @@ type AddComponentPageProps = {
     components: Component[];
     addComponent: (component: Component) => void;
 
-
 }
-
 
 export default function AdminCreationPage(props: AddComponentPageProps) {
 
