@@ -1,5 +1,5 @@
 import {Component} from "../model/Component";
-import {ChangeEvent, useState} from "react";
+import {ChangeEvent, useEffect, useState} from "react";
 import './AdminCreationPage.css';
 
 type AddComponentPageProps = {
@@ -109,6 +109,7 @@ export default function AdminCreationPage(props: AddComponentPageProps) {
         if (component.category === "Tower") {
             return component
         }
+
     })
 
 
