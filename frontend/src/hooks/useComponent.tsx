@@ -72,6 +72,16 @@ export default function useComponent() {
             .then((response) => response.data)
     }
 
+    const deleteFunction = (id: String) => {
+        axios.delete("/api/admin/" + id)
+            .then(getAllComponents)
+    }
+    const editComponent = (id: string, component: Component) => {
+        axios.put(`/api/admin/${id}`, component)
+            .then(getAllComponents)
+            .catch(error => error)
+    }
+
 
     return {
         addComponent,
@@ -81,6 +91,7 @@ export default function useComponent() {
         handleLogin,
         handleRegister,
         handleLogout,
+        deleteFunction,
         components
     }
 

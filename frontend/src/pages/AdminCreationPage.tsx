@@ -5,12 +5,13 @@ import './AdminCreationPage.css';
 type AddComponentPageProps = {
     components: Component[];
     addComponent: (component: Component) => void;
+    deleteComponent: (component: string) => void;
 
 }
 
 export default function AdminCreationPage(props: AddComponentPageProps) {
 
-
+    const [id, setId] = useState("")
     const [name, setName] = useState("")
     const [category, setCategory] = useState("")
     const [combinationCode, setCombinationCode] = useState("")
@@ -36,6 +37,7 @@ export default function AdminCreationPage(props: AddComponentPageProps) {
     const onClassificationChange = (event: ChangeEvent<HTMLInputElement>) => {
         setClassification(event.target.value)
     }
+
 
     const onAddComponent = () => {
         setName("")
@@ -115,55 +117,59 @@ export default function AdminCreationPage(props: AddComponentPageProps) {
         <div className="layout-dropdowns">
 
             <p>All components</p>
-            <select>
-                {props.components.map((component) => <option value={component.id}>{component.name}</option>)}
-            </select>
+            <form>
+                <select onChange={(event) => setId(event.target.value)}>
+                    {props.components.map((component) =>
+                        <option value={component.id}>{component.name}</option>)}
+                </select>
+                <button onClick={() => props.deleteComponent(id)}>Delete</button>
+                <button>Edit</button>
 
-            <p>Mainboards</p>
-            <select>
-                {mainboardFilter.map((component) => <option value={component.id}>{component.name}</option>)}
-            </select>
+                <p>Mainboards</p>
+                <select>
+                    {mainboardFilter.map((component) => <option value={component.id}>{component.name}</option>)}
+                </select>
 
-            <p>CPU's</p>
-            <select>
-                {cpuFilter.map((component) => <option value={component.id}>{component.name}</option>)}
-            </select>
+                <p>CPU's</p>
+                <select>
+                    {cpuFilter.map((component) => <option value={component.id}>{component.name}</option>)}
+                </select>
 
-            <p>CPU coolers</p>
-            <select>
-                {cpuCoolerFilter.map((component) => <option value={component.id}>{component.name}</option>)}
-            </select>
+                <p>CPU coolers</p>
+                <select>
+                    {cpuCoolerFilter.map((component) => <option value={component.id}>{component.name}</option>)}
+                </select>
 
-            <p>Graphics cards</p>
-            <select>
-                {graphicCardsFilter.map((component) => <option value={component.id}>{component.name}</option>)}
-            </select>
+                <p>Graphics cards</p>
+                <select>
+                    {graphicCardsFilter.map((component) => <option value={component.id}>{component.name}</option>)}
+                </select>
 
-            <p>RAM's</p>
-            <select>
-                {ramFilter.map((component) => <option value={component.id}>{component.name}</option>)}
-            </select>
+                <p>RAM's</p>
+                <select>
+                    {ramFilter.map((component) => <option value={component.id}>{component.name}</option>)}
+                </select>
 
-            <p>Hard disks</p>
-            <select>
-                {hardDiskFilter.map((component) => <option value={component.id}>{component.name}</option>)}
-            </select>
+                <p>Hard disks</p>
+                <select>
+                    {hardDiskFilter.map((component) => <option value={component.id}>{component.name}</option>)}
+                </select>
 
-            <p>Soundcards</p>
-            <select>
-                {soundcardFilter.map((component) => <option value={component.id}>{component.name}</option>)}
-            </select>
+                <p>Soundcards</p>
+                <select>
+                    {soundcardFilter.map((component) => <option value={component.id}>{component.name}</option>)}
+                </select>
 
-            <p>Power adapters</p>
-            <select>
-                {powerAdapterFilter.map((component) => <option value={component.id}>{component.name}</option>)}
-            </select>
+                <p>Power adapters</p>
+                <select>
+                    {powerAdapterFilter.map((component) => <option value={component.id}>{component.name}</option>)}
+                </select>
 
-            <p>Towers</p>
-            <select>
-                {towerFilter.map((component) => <option value={component.id}>{component.name}</option>)}
-            </select>
-
+                <p>Towers</p>
+                <select>
+                    {towerFilter.map((component) => <option value={component.id}>{component.name}</option>)}
+                </select>
+            </form>
 
             <h1>Post new component</h1>
 
