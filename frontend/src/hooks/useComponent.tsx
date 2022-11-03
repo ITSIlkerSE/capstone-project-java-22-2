@@ -4,54 +4,29 @@ import axios from "axios";
 
 export default function useComponent() {
 
-    const [welcomeMessage, setWelcomeMessage] = useState("")
-    const [password, setPassword] = useState("")
-    const [username, setUsername] = useState("")
-    const [newPassword, setNewPassword] = useState("")
-    const [newUsername, setNewUsername] = useState("")
-    const [me, setMe] = useState("")
-
-    let component!: Component;
-
+    const [component, setComponent] = useState("")
     const [components, setComponents] = useState([]);
 
     useEffect(() => {
         getAllComponents()
 
+        console.log("hookonline")
     }, [])
 
-    function fetchWelcomeMessage() {
-        axios.get("/api/welcome")
-            .then(response => {
-                return response.data
-            })
-            .then(data => setWelcomeMessage(data))
 
-    }
-
-    function handleLogin() {
+    function handleLogin(username: string, password: string) {
         axios.get("api/user/login", {auth: {username, password}})
             .then(response => response.data)
-            .then((data) => setMe(data))
-            .then(() => setUsername(""))
-            .then(() => setPassword(""))
             .catch(() => alert("Das Passwort war falsch!"))
     }
 
-    function handleRegister() {
-        axios.post("api/user/register", {
-            username: newUsername,
-            password: newPassword
-        })
+    function handleRegister(username: string, password: string) {
+        axios.post("api/user/register", {username, password})
             .then(response => response.data)
-            .then((data) => setMe(data))
-            .then(() => setNewUsername(""))
-            .then(() => setNewPassword(""))
     }
 
     function handleLogout() {
         axios.get("api/user/logout")
-            .then(() => setMe(""))
     }
 
 
@@ -82,17 +57,17 @@ export default function useComponent() {
             .catch(error => error)
     }
 
-
     return {
         addComponent,
         getAllComponents,
         getComponentById,
-        fetchWelcomeMessage,
         handleLogin,
         handleRegister,
         handleLogout,
         deleteFunction,
-        components
+        editComponent,
+        components,
+        component
     }
 
 
