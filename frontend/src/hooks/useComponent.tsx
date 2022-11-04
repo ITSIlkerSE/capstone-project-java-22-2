@@ -1,17 +1,25 @@
 import {useEffect, useState} from "react";
-import {Component} from "../model/Component";
+import {AdminComponent} from "../model/AdminComponent";
 import axios from "axios";
 
 export default function useComponent() {
 
     const [component, setComponent] = useState("")
     const [components, setComponents] = useState([]);
+    const [isAdmin, setIsAdmin] = useState(false)
 
     useEffect(() => {
         getAllComponents()
 
-        console.log("hookonline")
+
     }, [])
+
+
+    function setAdmin(){
+
+        isAdmin ? setIsAdmin(false) : setIsAdmin(true)
+
+    }
 
 
     function handleLogin(username: string, password: string) {
@@ -30,7 +38,7 @@ export default function useComponent() {
     }
 
 
-    const addComponent = (component: Component) => {
+    const addComponent = (component: AdminComponent) => {
         axios.post("/api/admin", component)
             .then((response) => response.data)
             .then(getAllComponents)
@@ -51,7 +59,7 @@ export default function useComponent() {
         axios.delete("/api/admin/" + id)
             .then(getAllComponents)
     }
-    const editComponent = (id: string, component: Component) => {
+    const editComponent = (id: string, component: AdminComponent) => {
         axios.put(`/api/admin/${id}`, component)
             .then(getAllComponents)
             .catch(error => error)
@@ -66,8 +74,10 @@ export default function useComponent() {
         handleLogout,
         deleteFunction,
         editComponent,
+        setAdmin,
         components,
-        component
+        component,
+        isAdmin
     }
 
 

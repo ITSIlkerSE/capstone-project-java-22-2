@@ -1,36 +1,60 @@
 import './App.css';
-import useComponent from "./hooks/useComponent";
+import NavBar from "./components/NavBar";
+import {HashRouter, Route, Routes} from "react-router-dom";
 import AdminCreationPage from "./pages/AdminCreationPage";
 import AdminEditComponentsPage from "./pages/AdminEditComponentsPage";
-import {HashRouter, NavLink, Route, Routes} from "react-router-dom";
-import NavBar from './components/NavBar';
 import WelcomePage from "./pages/WelcomePage";
+import Homepage from "./pages/Homepage";
+import useComponent from "./hooks/useComponent";
+import React, {Component} from "react";
+import RegisterPage from "./pages/RegisterPage";
+import {AdminComponent} from "./model/AdminComponent";
 
-function App() {
 
-    const {addComponent, components, deleteFunction, editComponent, handleRegister, handleLogin, handleLogout} = useComponent();
+export default function App() {
+    const {
+        addComponent,
+        components,
+        deleteFunction,
+        editComponent,
+        handleRegister,
+        handleLogin,
+        handleLogout,
+        setAdmin,
+        isAdmin
+    } = useComponent();
 
 
     return (
         <div className="App">
-            <h1>Check&Computify</h1>
-            <NavBar></NavBar>
-        <HashRouter>
-            <NavLink to={"api/admin/AdminCreationPage"}>AdminCreationPage</NavLink>
-            <NavLink to={"api/admin/AdminEditComponentsPage"}>EditPage</NavLink>
-            <NavLink to={"api/user/WelcomePage"}>WelcomePage</NavLink>
-            <Routes>
+            <header className="App-header">Check&Computify
 
-                <Route path={"/api/admin/AdminCreationPage"} element={<AdminCreationPage addComponent={addComponent} components={components} deleteComponent={deleteFunction}/>}/>
-                <Route path={"/api/admin/AdminEditComponentsPage"} element={<AdminEditComponentsPage editComponent={editComponent} components={components}/>}/>
-                <Route path={"/api/user/WelcomePage"} element={<WelcomePage handleRegister={handleRegister} handleLogin={handleLogin} handleLogout={handleLogout}/>}/>
+                <HashRouter>
+                    <NavBar isAdmin={isAdmin}/>
+                    <Routes>
+
+                        <Route path={"/"} element={<WelcomePage isAdmin={isAdmin} setAdmin={setAdmin}
+                                                                handleRegister={handleRegister}
+                                                                handleLogin={handleLogin}
+                                                                handleLogout={handleLogout}/>}/>
+                        <Route path={"/api/admin/AdminCreationPage"}
+                               element={<AdminCreationPage addComponent={addComponent}  components={components}
+                                                           deleteComponent={deleteFunction}/>}/>
+                        <Route path={"/api/admin/AdminEditComponentsPage"}
+                               element={<AdminEditComponentsPage editComponent={editComponent}
+                                                                 components={components}/>}/>
+                        <Route path={"/api/user/Homepage"} element={<Homepage/>}/>
+                        <Route path={"/api/user/RegisterPage"} element={<RegisterPage handleRegister={handleRegister}/>}/>
 
 
-            </Routes>
-        </HashRouter>
+
+                    </Routes>
+
+                </HashRouter>
+
+
+            </header>
 
         </div>
     );
 }
-
-export default App;

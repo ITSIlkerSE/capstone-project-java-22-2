@@ -20,7 +20,7 @@ public class ComponentsModelDTO {
 
     private String classification;
 
-    private String price;
+    private Double price;
 
 
 }
