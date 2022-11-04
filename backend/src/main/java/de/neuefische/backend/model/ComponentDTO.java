@@ -4,15 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Document("products")
 
-public class ComponentsModelDTO {
+public class ComponentDTO {
 
     private String name;
 
@@ -22,5 +20,8 @@ public class ComponentsModelDTO {
 
     private Float price;
 
+    private String combinationCode;
+
+    private String score;
 
 }

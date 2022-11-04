@@ -13,7 +13,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Builder
 @Document("products")
 
-public class ComponentsModel {
+public class Component {
 
     @Id
     private String id;
