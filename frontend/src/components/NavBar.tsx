@@ -16,13 +16,13 @@ export default function NavBar(props: NavbarProps) {
 
     return (
         <div className="navbar">
-            <NavLink to={"api/admin/AdminCreationPage"}>AdminCreationPage</NavLink>
-            <NavLink to={"api/admin/AdminEditComponentsPage"}>EditPage</NavLink>
+            <NavLink to={"admin/AdminCreationPage"}>AdminCreationPage</NavLink>
+            <NavLink to={"admin/AdminEditComponentsPage"}>EditPage</NavLink>
             {/*{props.isAdmin && <NavLink to={"api/admin/AdminCreationPage"}>AdminCreationPage</NavLink>}
             { props.isAdmin && <NavLink to={"api/admin/AdminEditComponentsPage"}>EditPage</NavLink> }*/}
             <NavLink to={"/"}>WelcomePage</NavLink>
-            <NavLink to={"/api/user/RegisterPage"}>Register</NavLink>
-            <NavLink to={"api/user/Homepage"}>Homepage</NavLink>
+            <NavLink to={"user/RegisterPage"}>Register</NavLink>
+            <NavLink to={"user/Homepage"}>Homepage</NavLink>
 
         </div>
 

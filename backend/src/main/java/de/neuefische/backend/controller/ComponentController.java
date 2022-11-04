@@ -10,15 +10,15 @@ import java.util.Optional;
 
 
 @RestController
-@RequestMapping("/api/admin")
+@RequestMapping("/api/component")
 
 
-public class AdminController {
+public class ComponentController {
 
     private final CheckComputifyService service;
 
     @Autowired
-    public AdminController(CheckComputifyService service) {
+    public ComponentController(CheckComputifyService service) {
         this.service = service;
     }
 

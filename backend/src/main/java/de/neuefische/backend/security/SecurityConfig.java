@@ -3,6 +3,7 @@ package de.neuefische.backend.security;
 import de.neuefische.backend.service.AppUserDetailService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -28,7 +29,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests()
                 .antMatchers("/api/user/**").permitAll()
-                .antMatchers("/api/admin/**").hasAuthority("ADMIN")
+                .antMatchers(HttpMethod.POST,"/api/component/**").hasAuthority("ADMIN")
+                .antMatchers(HttpMethod.PUT,"/api/component/**").hasAuthority("ADMIN")
+                .antMatchers(HttpMethod.DELETE,"/api/component/**").hasAuthority("ADMIN")
+                .antMatchers(HttpMethod.GET,"/api/component/**").permitAll()
                 .and().httpBasic()
                 .and().httpBasic().and().csrf().disable();
     }
