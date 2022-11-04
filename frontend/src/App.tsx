@@ -6,9 +6,8 @@ import AdminEditComponentsPage from "./pages/AdminEditComponentsPage";
 import WelcomePage from "./pages/WelcomePage";
 import Homepage from "./pages/Homepage";
 import useComponent from "./hooks/useComponent";
-import React, {Component} from "react";
+import React from "react";
 import RegisterPage from "./pages/RegisterPage";
-import {AdminComponent} from "./model/AdminComponent";
 
 
 export default function App() {

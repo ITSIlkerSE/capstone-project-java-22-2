@@ -24,7 +24,7 @@ public class ComponentsModel {
 
     private String classification;
 
-    private String price;
+    private Float price;
 
     private String combinationCode;
 
