@@ -23,7 +23,7 @@ class CheckComputifyServiceTest {
     void addComponent_WithPostInputField_InFrontend() {
 
         //GIVEN
-        ComponentsModel component = new ComponentsModel("1", "RTX 3080Ti", "Graphics cards", "High", "1000","2222-2222-2222","879" );
+        ComponentsModel component = new ComponentsModel("1", "RTX 3080Ti", "Graphics cards", "High", 1000.00f,"2222-2222-2222","879" );
 
         when(repo.save(component)).thenReturn(component);
 
@@ -43,9 +43,9 @@ class CheckComputifyServiceTest {
 
         //GIVEN
 
-        ComponentsModel componentOne = new ComponentsModel("1", "RTX 3080Ti", "Graphics cards", "High", "1000","2222-2222-2222","879" );
-        ComponentsModel componentTwo = new ComponentsModel("2", "RTX 3070Ti", "Graphics cards", "High", "1000","2222-2222-2222","879" );
-        ComponentsModel componentThree = new ComponentsModel("3", "RTX 3060Ti", "Graphics cards", "High", "1000","2222-2222-2222","879" );
+        ComponentsModel componentOne = new ComponentsModel("1", "RTX 3080Ti", "Graphics cards", "High", 1000.00f,"2222-2222-2222","879" );
+        ComponentsModel componentTwo = new ComponentsModel("2", "RTX 3070Ti", "Graphics cards", "High", 1000.00f,"2222-2222-2222","879" );
+        ComponentsModel componentThree = new ComponentsModel("3", "RTX 3060Ti", "Graphics cards", "High", 1000.00f,"2222-2222-2222","879" );
 
         when(repo.findAll()).thenReturn(List.of(componentOne, componentTwo, componentThree));
 
@@ -64,7 +64,7 @@ class CheckComputifyServiceTest {
 
         //GIVEN
 
-        ComponentsModel componentOne = new ComponentsModel("1", "RTX 3080Ti", "Graphics cards", "High", "1000","2222-2222-2222","879" );
+        ComponentsModel componentOne = new ComponentsModel("1", "RTX 3080Ti", "Graphics cards", "High", 1000.00f,"2222-2222-2222","879" );
 
         when(repo.findById("1")).thenReturn(Optional.of(componentOne));
 
