@@ -1,15 +1,17 @@
-import {Component} from "../model/Component";
-import {ChangeEvent, useEffect, useState} from "react";
+import {AdminComponent} from "../model/AdminComponent";
+import React, {ChangeEvent, useEffect, useState} from "react";
 import './AdminCreationPage.css';
+import Product from "../components/Product";
 
 type AddComponentPageProps = {
-    components: Component[];
-    addComponent: (component: Component) => void;
+    components: AdminComponent[];
+    addComponent: (component: AdminComponent) => void;
     deleteComponent: (component: string) => void;
 
 }
 
 export default function AdminCreationPage(props: AddComponentPageProps) {
+
 
     const [id, setId] = useState("")
     const [name, setName] = useState("")
@@ -18,6 +20,7 @@ export default function AdminCreationPage(props: AddComponentPageProps) {
     const [score, setScore] = useState("")
     const [price, setPrice] = useState("")
     const [classification, setClassification] = useState("")
+    const [products, setProduct] = useState(props.components)
 
     const onNameChange = (event: ChangeEvent<HTMLInputElement>) => {
         setName(event.target.value)
@@ -37,6 +40,17 @@ export default function AdminCreationPage(props: AddComponentPageProps) {
     const onClassificationChange = (event: ChangeEvent<HTMLInputElement>) => {
         setClassification(event.target.value)
     }
+
+    React.useEffect(()=>{
+
+        async function getProducts(){
+
+       setProduct(props.components)
+
+        }
+        getProducts()
+
+    },[])
 
 
     const onAddComponent = () => {
@@ -113,47 +127,58 @@ export default function AdminCreationPage(props: AddComponentPageProps) {
     })
 
 
+
     return (
 
         <div className="layout-dropdowns">
 
             <p>All components</p>
             <form>
-                <select onChange={(event) => setId(event.target.value)}>
+                <select onChange={
+
+
+                    (event) => {
+                    setId(event.target.value);
+                }
+
+                }>
                     {props.components.map((component) =>
-                        <option value={component.id}>{component.name}</option>)}
+                        <option key={component.id} value={component.id}>{component.name}</option>)}
+
                 </select>
+
+
                 <button onClick={() => props.deleteComponent(id)}>Delete</button>
-                <button>Edit</button>
+                <button>Details</button>
 
                 <p>Mainboards</p>
                 <select>
-                    {mainboardFilter.map((component) => <option value={component.id}>{component.name}</option>)}
+                    {mainboardFilter.map((component) => <option key={component.id} value={component.id}>{component.name}</option>)}
                 </select>
 
                 <p>CPU's</p>
                 <select>
-                    {cpuFilter.map((component) => <option value={component.id}>{component.name}</option>)}
+                    {cpuFilter.map((component) => <option key={component.id} value={component.id}>{component.name}</option>)}
                 </select>
 
                 <p>CPU coolers</p>
                 <select>
-                    {cpuCoolerFilter.map((component) => <option value={component.id}>{component.name}</option>)}
+                    {cpuCoolerFilter.map((component) => <option key={component.id} value={component.id}>{component.name}</option>)}
                 </select>
 
                 <p>Graphics cards</p>
                 <select>
-                    {graphicCardsFilter.map((component) => <option value={component.id}>{component.name}</option>)}
+                    {graphicCardsFilter.map((component) => <option key={component.id} value={component.id}>{component.name}</option>)}
                 </select>
 
                 <p>RAM's</p>
                 <select>
-                    {ramFilter.map((component) => <option value={component.id}>{component.name}</option>)}
+                    {ramFilter.map((component) => <option key={component.id} value={component.id}>{component.name}</option>)}
                 </select>
 
                 <p>Hard disks</p>
                 <select>
-                    {hardDiskFilter.map((component) => <option value={component.id}>{component.name}</option>)}
+                    {hardDiskFilter.map((component) => <option key={component.id} value={component.id}>{component.name}</option>)}
                 </select>
 
                 <p>Soundcards</p>
@@ -163,14 +188,15 @@ export default function AdminCreationPage(props: AddComponentPageProps) {
 
                 <p>Power adapters</p>
                 <select>
-                    {powerAdapterFilter.map((component) => <option value={component.id}>{component.name}</option>)}
+                    {powerAdapterFilter.map((component) => <option key={component.id} value={component.id}>{component.name}</option>)}
                 </select>
 
                 <p>Towers</p>
                 <select>
-                    {towerFilter.map((component) => <option value={component.id}>{component.name}</option>)}
+                    {towerFilter.map((component) => <option key={component.id} value={component.id}>{component.name}</option>)}
                 </select>
             </form>
+
 
             <h1>Post new component</h1>
 
@@ -193,9 +219,9 @@ export default function AdminCreationPage(props: AddComponentPageProps) {
                 <p>Score :</p>
                 <input placeholder={"type in..."} onChange={onScoreChange} value={score}/>
 
-
-                <p></p>
                 <button onClick={() => onAddComponent()}>Add Component</button>
+
+
             </form>
         </div>
 
@@ -203,3 +229,4 @@ export default function AdminCreationPage(props: AddComponentPageProps) {
 
 
 }
+

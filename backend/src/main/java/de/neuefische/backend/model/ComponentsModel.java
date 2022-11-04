@@ -31,6 +31,3 @@ public class ComponentsModel {
     private String score;
 
 }
-
-//1. 500 - 700
-//2. 300 - 500

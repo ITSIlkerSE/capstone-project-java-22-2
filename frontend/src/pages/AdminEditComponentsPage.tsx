@@ -1,9 +1,11 @@
 import React, {FormEvent, useState} from 'react';
-import {Component} from "../model/Component";
+import {AdminComponent} from "../model/AdminComponent";
+import {log} from "util";
+import Product from "../components/Product";
 
 type AdminEditComponentsPageProps = {
-    editComponent: (id: string, component: Component) => void;
-    components: Component[];
+    editComponent: (id: string, component: AdminComponent) => void;
+    components: AdminComponent[];
 }
 
 export default function AdminEditComponentsPage(props: AdminEditComponentsPageProps) {
@@ -26,7 +28,7 @@ export default function AdminEditComponentsPage(props: AdminEditComponentsPagePr
         setPrice("")
         setClassification("")
 
-        const updateComponent: Component = {
+        const updateComponent: AdminComponent = {
             id,
             name,
             category,
@@ -36,28 +38,49 @@ export default function AdminEditComponentsPage(props: AdminEditComponentsPagePr
             classification
         }
 
+
         setComponent(component);
 
         props.editComponent(id, updateComponent);
-        console.log("updated", updateComponent);
+
+
     }
+    const selectProduct = props.components.filter((component) => id === component.id);
+    const displaySelectProduct = selectProduct.map((product) => <Product key={product.id} name={product.name} category={product.category}
+                                                                         price={product.price}
+                                                                         combinationCode={product.combinationCode}
+                                                                         score={product.score}
+                                                                         classification={product.classification}/>)
+
 
     return (
         <div>
-            <form onSubmit={(event) => event.preventDefault()}>
-                <select onChange={(event) => setId(event.target.value)}>
-                    {props.components.map((component) =>
-                        <option value={component.id}>{component.name}</option>)}
+            <form>
+
+                <select onChange={(event) => {
+                    setId(event.target.value)
+                }}>
+                    {props.components.map((component) => <option key={component.id} value={component.id}>{component.name}</option>)}
                 </select>
 
-                <input onChange={(event) => setName(event.target.value)}/>
-                <input onChange={(event) => setCategory(event.target.value)}/>
-                <input onChange={(event) => setCombinationCode(event.target.value)}/>
-                <input onChange={(event) => setScore(event.target.value)}/>
-                <input onChange={(event) => setPrice(event.target.value)}/>
-                <input onChange={(event) => setClassification(event.target.value)}/>
-                <button onClick={() => onUpdateComponent()}>Edit</button>
+                <input value={name} placeholder="Name" onChange={(event) => setName(event.target.value)}/>
+                <input value={category} placeholder="Category" onChange={(event) => setCategory(event.target.value)}/>
+                <input value={combinationCode} placeholder="Combination code" onChange={(event) => setCombinationCode(event.target.value)}/>
+                <input  value={score}placeholder="Score" onChange={(event) => setScore(event.target.value)}/>
+                <input  value={price}placeholder="Price" onChange={(event) => setPrice(event.target.value)}/>
+                <input value={classification} placeholder="Classification" onChange={(event) => setClassification(event.target.value)}/>
+                <button onClick={() => {onUpdateComponent()
+
+                }}>Edit</button>
             </form>
+
+            <div>
+
+                {displaySelectProduct}
+
+
+            </div>
+
         </div>
     )
 }
