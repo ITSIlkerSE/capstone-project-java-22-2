@@ -1,7 +1,6 @@
 import {AdminComponent} from "../model/AdminComponent";
-import React, {ChangeEvent, useEffect, useState} from "react";
+import React, {ChangeEvent, useState} from "react";
 import './AdminCreationPage.css';
-import Product from "../components/Product";
 
 type AddComponentPageProps = {
     components: AdminComponent[];
@@ -20,7 +19,6 @@ export default function AdminCreationPage(props: AddComponentPageProps) {
     const [score, setScore] = useState("")
     const [price, setPrice] = useState("")
     const [classification, setClassification] = useState("")
-    const [products, setProduct] = useState(props.components)
 
     const onNameChange = (event: ChangeEvent<HTMLInputElement>) => {
         setName(event.target.value)
@@ -41,18 +39,6 @@ export default function AdminCreationPage(props: AddComponentPageProps) {
         setClassification(event.target.value)
     }
 
-    React.useEffect(()=>{
-
-        async function getProducts(){
-
-       setProduct(props.components)
-
-        }
-        getProducts()
-
-    },[])
-
-
     const onAddComponent = () => {
         setName("")
         setCategory("")
@@ -69,63 +55,23 @@ export default function AdminCreationPage(props: AddComponentPageProps) {
 
     }
 
-    const mainboardFilter = props.components.filter((component) => {
-        if (component.category === "Mainboard") {
-            return component
-        }
-    })
+    const mainboardFilter = props.components.filter((component) => (component.category === "Mainboard"))
 
-    const cpuFilter = props.components.filter((component) => {
-        if (component.category === "CPU") {
-            return component
-        }
-    })
+    const cpuFilter = props.components.filter((component) => (component.category === "CPU"))
 
-    const cpuCoolerFilter = props.components.filter((component) => {
-        if (component.category === "CPU cooler") {
-            return component
-        }
-    })
+    const cpuCoolerFilter = props.components.filter((component) => (component.category === "CPU cooler"))
 
-    const graphicCardsFilter = props.components.filter((component) => {
-        if (component.category === "Graphics card") {
-            return component
-        }
-    })
+    const graphicCardsFilter = props.components.filter((component) => (component.category === "Graphics card"))
 
+    const ramFilter = props.components.filter((component) => (component.category === "RAM"))
 
-    const ramFilter = props.components.filter((component) => {
-        if (component.category === "RAM") {
-            return component
-        }
-    })
+    const hardDiskFilter = props.components.filter((component) => (component.category === "Hard disk"))
 
-    const hardDiskFilter = props.components.filter((component) => {
-        if (component.category === "Hard disk") {
-            return component
-        }
-    })
+    const soundcardFilter = props.components.filter((component) => (component.category === "Sound card"))
 
+    const powerAdapterFilter = props.components.filter((component) => (component.category === "Power adapter"))
 
-    const soundcardFilter = props.components.filter((component) => {
-        if (component.category === "Sound card") {
-            return component
-        }
-    })
-
-    const powerAdapterFilter = props.components.filter((component) => {
-        if (component.category === "Power adapter") {
-            return component
-        }
-    })
-
-    const towerFilter = props.components.filter((component) => {
-        if (component.category === "Tower") {
-            return component
-        }
-
-    })
-
+    const towerFilter = props.components.filter((component) => (component.category === "Tower"))
 
 
     return (
@@ -138,8 +84,8 @@ export default function AdminCreationPage(props: AddComponentPageProps) {
 
 
                     (event) => {
-                    setId(event.target.value);
-                }
+                        setId(event.target.value);
+                    }
 
                 }>
                     {props.components.map((component) =>
@@ -153,47 +99,55 @@ export default function AdminCreationPage(props: AddComponentPageProps) {
 
                 <p>Mainboards</p>
                 <select>
-                    {mainboardFilter.map((component) => <option key={component.id} value={component.id}>{component.name}</option>)}
+                    {mainboardFilter.map((component) => <option key={component.id}
+                                                                value={component.id}>{component.name}</option>)}
                 </select>
 
                 <p>CPU's</p>
                 <select>
-                    {cpuFilter.map((component) => <option key={component.id} value={component.id}>{component.name}</option>)}
+                    {cpuFilter.map((component) => <option key={component.id}
+                                                          value={component.id}>{component.name}</option>)}
                 </select>
 
                 <p>CPU coolers</p>
                 <select>
-                    {cpuCoolerFilter.map((component) => <option key={component.id} value={component.id}>{component.name}</option>)}
+                    {cpuCoolerFilter.map((component) => <option key={component.id}
+                                                                value={component.id}>{component.name}</option>)}
                 </select>
 
                 <p>Graphics cards</p>
                 <select>
-                    {graphicCardsFilter.map((component) => <option key={component.id} value={component.id}>{component.name}</option>)}
+                    {graphicCardsFilter.map((component) => <option key={component.id}
+                                                                   value={component.id}>{component.name}</option>)}
                 </select>
 
                 <p>RAM's</p>
                 <select>
-                    {ramFilter.map((component) => <option key={component.id} value={component.id}>{component.name}</option>)}
+                    {ramFilter.map((component) => <option key={component.id}
+                                                          value={component.id}>{component.name}</option>)}
                 </select>
 
                 <p>Hard disks</p>
                 <select>
-                    {hardDiskFilter.map((component) => <option key={component.id} value={component.id}>{component.name}</option>)}
+                    {hardDiskFilter.map((component) => <option key={component.id}
+                                                               value={component.id}>{component.name}</option>)}
                 </select>
 
                 <p>Soundcards</p>
                 <select>
-                    {soundcardFilter.map((component) => <option value={component.id}>{component.name}</option>)}
+                    {soundcardFilter.map((component) => <option key={component.id} value={component.id}>{component.name}</option>)}
                 </select>
 
                 <p>Power adapters</p>
                 <select>
-                    {powerAdapterFilter.map((component) => <option key={component.id} value={component.id}>{component.name}</option>)}
+                    {powerAdapterFilter.map((component) => <option key={component.id}
+                                                                   value={component.id}>{component.name}</option>)}
                 </select>
 
                 <p>Towers</p>
                 <select>
-                    {towerFilter.map((component) => <option key={component.id} value={component.id}>{component.name}</option>)}
+                    {towerFilter.map((component) => <option key={component.id}
+                                                            value={component.id}>{component.name}</option>)}
                 </select>
             </form>
 

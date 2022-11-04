@@ -39,28 +39,28 @@ export default function useComponent() {
 
 
     const addComponent = (component: AdminComponent) => {
-        axios.post("/api/admin", component)
+        axios.post("/api/component", component)
             .then((response) => response.data)
             .then(getAllComponents)
     }
 
     const getAllComponents = () => {
-        axios.get("/api/admin")
+        axios.get("/api/component")
             .then((response) => response.data)
             .then((component) => setComponents(component))
     }
 
     const getComponentById = (id: string) => {
-        axios.get(`/api/admin/${id}`)
+        axios.get(`/api/component/${id}`)
             .then((response) => response.data)
     }
 
     const deleteFunction = (id: String) => {
-        axios.delete("/api/admin/" + id)
+        axios.delete("/api/component/" + id)
             .then(getAllComponents)
     }
     const editComponent = (id: string, component: AdminComponent) => {
-        axios.put(`/api/admin/${id}`, component)
+        axios.put(`/api/component/${id}`, component)
             .then(getAllComponents)
             .catch(error => error)
     }

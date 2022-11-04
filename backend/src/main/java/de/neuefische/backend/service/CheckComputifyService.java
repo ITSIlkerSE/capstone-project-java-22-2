@@ -1,6 +1,7 @@
 package de.neuefische.backend.service;
 
-import de.neuefische.backend.model.ComponentsModel;
+import de.neuefische.backend.model.Component;
+import de.neuefische.backend.model.ComponentDTO;
 import de.neuefische.backend.repo.CheckComputifyRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,23 +17,37 @@ public class CheckComputifyService {
     private final CheckComputifyRepo repo;
     private final IdService idService;
 
+
     @Autowired
     public CheckComputifyService(CheckComputifyRepo repo, IdService idService) {
         this.repo = repo;
         this.idService = idService;
     }
 
-    public ComponentsModel addComponent(ComponentsModel component) {
-        component.setId(idService.generateId());
+    public Component addComponent(ComponentDTO componentDTO) {
+        Component component = mapComponent(componentDTO, idService.generateId());
         return repo.save(component);
 
     }
 
-    public List<ComponentsModel> getAllComponents() {
+
+    private Component mapComponent(ComponentDTO componentDTO, String id) {
+        Component component = new Component();
+        component.setId(id);
+        component.setName(componentDTO.getName());
+        component.setCategory(componentDTO.getCategory());
+        component.setCombinationCode(componentDTO.getCombinationCode());
+        component.setScore(componentDTO.getScore());
+        component.setPrice(componentDTO.getPrice());
+        component.setClassification(componentDTO.getClassification());
+        return component;
+    }
+
+    public List<Component> getAllComponents() {
         return repo.findAll();
     }
 
-    public Optional<ComponentsModel> getComponentById(String id) {
+    public Optional<Component> getComponentById(String id) {
         if (!repo.existsById(id)) {
             throw new NoSuchElementException("The component you are searching for does not exists! Id : " + id);
         }
@@ -44,8 +59,8 @@ public class CheckComputifyService {
         repo.deleteById(id);
     }
 
-    public ComponentsModel updateComponent(String id, ComponentsModel component) {
-        repo.save(component);
-        return component;
+    public Component updateComponent(String id,ComponentDTO componentDTO) {
+        Component component = mapComponent(componentDTO, id);
+        return repo.save(component);
     }
 }

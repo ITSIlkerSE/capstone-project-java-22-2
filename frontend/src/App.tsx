@@ -6,9 +6,8 @@ import AdminEditComponentsPage from "./pages/AdminEditComponentsPage";
 import WelcomePage from "./pages/WelcomePage";
 import Homepage from "./pages/Homepage";
 import useComponent from "./hooks/useComponent";
-import React, {Component} from "react";
+import React from "react";
 import RegisterPage from "./pages/RegisterPage";
-import {AdminComponent} from "./model/AdminComponent";
 
 
 export default function App() {
@@ -37,14 +36,14 @@ export default function App() {
                                                                 handleRegister={handleRegister}
                                                                 handleLogin={handleLogin}
                                                                 handleLogout={handleLogout}/>}/>
-                        <Route path={"/api/admin/AdminCreationPage"}
+                        <Route path={"/admin/AdminCreationPage"}
                                element={<AdminCreationPage addComponent={addComponent}  components={components}
                                                            deleteComponent={deleteFunction}/>}/>
-                        <Route path={"/api/admin/AdminEditComponentsPage"}
+                        <Route path={"/admin/AdminEditComponentsPage"}
                                element={<AdminEditComponentsPage editComponent={editComponent}
                                                                  components={components}/>}/>
-                        <Route path={"/api/user/Homepage"} element={<Homepage/>}/>
-                        <Route path={"/api/user/RegisterPage"} element={<RegisterPage handleRegister={handleRegister}/>}/>
+                        <Route path={"/user/Homepage"} element={<Homepage/>}/>
+                        <Route path={"/user/RegisterPage"} element={<RegisterPage handleRegister={handleRegister}/>}/>
 
 
 

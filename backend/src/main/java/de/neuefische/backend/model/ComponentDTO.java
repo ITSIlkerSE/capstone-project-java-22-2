@@ -4,19 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Document("products")
 
-public class ComponentsModel {
-
-    @Id
-    private String id;
+public class ComponentDTO {
 
     private String name;
 
@@ -24,7 +18,7 @@ public class ComponentsModel {
 
     private String classification;
 
-    private String price;
+    private Float price;
 
     private String combinationCode;
 

@@ -1,6 +1,5 @@
-import React, {FormEvent, useState} from 'react';
+import React, {useState} from 'react';
 import {AdminComponent} from "../model/AdminComponent";
-import {log} from "util";
 import Product from "../components/Product";
 
 type AdminEditComponentsPageProps = {

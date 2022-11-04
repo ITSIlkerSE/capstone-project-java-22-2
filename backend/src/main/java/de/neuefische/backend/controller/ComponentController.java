@@ -1,6 +1,7 @@
 package de.neuefische.backend.controller;
 
-import de.neuefische.backend.model.ComponentsModel;
+import de.neuefische.backend.model.Component;
+import de.neuefische.backend.model.ComponentDTO;
 import de.neuefische.backend.service.CheckComputifyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -10,32 +11,32 @@ import java.util.Optional;
 
 
 @RestController
-@RequestMapping("/api/admin")
+@RequestMapping("/api/component")
 
 
-public class AdminController {
+public class ComponentController {
 
     private final CheckComputifyService service;
 
     @Autowired
-    public AdminController(CheckComputifyService service) {
+    public ComponentController(CheckComputifyService service) {
         this.service = service;
     }
 
 
     @GetMapping
-    public List<ComponentsModel> getAllComponents() {
+    public List<Component> getAllComponents() {
         return service.getAllComponents();
     }
 
     @GetMapping("/{id}")
-    public Optional<ComponentsModel> getComponentById(@PathVariable String id) {
+    public Optional<Component> getComponentById(@PathVariable String id) {
         return service.getComponentById(id);
     }
 
 
     @PostMapping
-    public ComponentsModel addComponent(@RequestBody ComponentsModel component) {
+    public Component addComponent(@RequestBody ComponentDTO component) {
         return service.addComponent(component);
     }
 
@@ -45,8 +46,8 @@ public class AdminController {
     }
 
     @PutMapping("/{id}")
-    public ComponentsModel editComponent(@PathVariable String id, @RequestBody ComponentsModel component) {
-        return service.updateComponent(id, component);
+    public Component editComponent(@PathVariable String id, @RequestBody ComponentDTO componentDTO) {
+        return service.updateComponent(id, componentDTO);
     }
 
 
