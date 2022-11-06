@@ -1,8 +1,10 @@
 export default function Homepage(){
     return(
-        <div>
-            <h1>Directed here after login</h1>
-            <button>Press me for nothing</button>
+        <div className="content">
+            <h3>Homepage</h3>
+            <button>Pc check</button>
+            <button>generate pc</button>
+            <button>check-in computify</button>
         </div>
 
     )

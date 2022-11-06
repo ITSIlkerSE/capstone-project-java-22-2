@@ -53,7 +53,8 @@ export default function AdminEditComponentsPage(props: AdminEditComponentsPagePr
 
 
     return (
-        <div>
+        <div className="content">
+            <h2>Edit</h2>
             <form>
 
                 <select onChange={(event) => {
@@ -65,8 +66,8 @@ export default function AdminEditComponentsPage(props: AdminEditComponentsPagePr
                 <input value={name} placeholder="Name" onChange={(event) => setName(event.target.value)}/>
                 <input value={category} placeholder="Category" onChange={(event) => setCategory(event.target.value)}/>
                 <input value={combinationCode} placeholder="Combination code" onChange={(event) => setCombinationCode(event.target.value)}/>
-                <input  value={score}placeholder="Score" onChange={(event) => setScore(event.target.value)}/>
-                <input  value={price}placeholder="Price" onChange={(event) => setPrice(event.target.value)}/>
+                <input  value={score} placeholder="Score" onChange={(event) => setScore(event.target.value)}/>
+                <input  value={price} placeholder="Price" onChange={(event) => setPrice(event.target.value)}/>
                 <input value={classification} placeholder="Classification" onChange={(event) => setClassification(event.target.value)}/>
                 <button onClick={() => {onUpdateComponent()
 

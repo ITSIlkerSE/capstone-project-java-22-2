@@ -1,13 +1,217 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap');
+
+
+:root{
+    --color-primary-blue: #004481;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'Inter', sans-serif;
 }
+
+
+h2{
+    margin-bottom: 2em;
+    text-align: center;
+}
+p{
+    margin: 1em 0;
+}
+
+main{
+    padding: 10em 2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    width: 100%;
+    align-items: center;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    gap: .5em;
+    justify-content: center;
+    align-items: center;
+    margin: 5em 0;
+}
+input {
+    padding: .5em;
+    width: 100%;
+
+
+}
+
+button{
+    border-width: 0;
+    border-radius: 6px;
+    text-transform: uppercase;
+    background-color: var(--color-primary-blue);
+    color: white;
+    padding: 1em 4em;
+    box-shadow: 0px 2px 5px 0px rgb(0 0 0 / 50%);
+    letter-spacing: 1.25px;
+    max-width: 200px;
+}
+
+
+
+
+
+.menu-bars{
+    position: relative;
+    right: 5rem;
+    z-index: 10;
+    cursor: pointer;
+}
+
+
+.menu-bar1,
+.menu-bar2,
+.menu-bar3{
+    width: 35px;
+    height: 5px;
+    background-color: white;
+    margin: 6px 0;
+    transition: 0.4s;
+    border-radius: 5px;
+}
+
+
+.change-menu-bar1 {
+    transform: rotate(-45deg) translate(-8px, 8px);
+    -webkit-transform:rotate(-45deg) translate(-8px, 8px);
+    border-radius: 5px;
+}
+
+.change-menu-bar2 {
+    opacity: 0 ;
+    border-radius: 5px;
+}
+
+.change-menu-bar3 {
+    transform: rotate(45deg) translate(-8px, -8px);
+    -webkit-transform:rotate(45deg) translate(-8px, -8px);
+    border-radius: 5px;
+}
+
+
+
+.navbar{
+    width: 100vw;
+    position: fixed;
+    display: flex;
+    padding: 2em;
+    justify-content: space-between;
+    background-color: var(--color-primary-blue);
+    z-index: 5;
+}
+
+.dropdown{
+    position: relative;
+}
+
+.animateIn{
+    animation: slide-in 0.2s linear 0.2s both;
+}
+.animateOut{
+    animation: slide-out 0.2s linear 0.2s both;
+
+}
+
+
+@keyframes slide-out {
+    from
+    {
+        transform: translateX(0%);
+    }
+    to
+    {
+        transform: translateX(-100%);
+    }
+
+}
+
+@keyframes slide-in {
+    from
+    {
+        transform: translateX(-100%);
+    }
+    to
+    {
+        transform: translateX(0%);
+    }
+
+}
+
+.dropdown__links{
+    width: 100%;
+    background-color: var(--color-primary-blue);
+    padding: 2em;
+    position: absolute;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5em;
+    height: 100vh;
+    z-index: -1;
+
+
+}
+.navbar h3{
+    color: white;
+}
+
+
+.dropdown__links a{
+    text-decoration: none;
+    text-transform: uppercase;
+    color: aliceblue;
+}
+
+.dropdown__links a:hover{
+  color: aqua;
+}
+
+
+
+
+
+
+
+
+
+button:active{
+    transform: scale(95%);
+}
+
+
+
+.admin__row{
+    display: flex;
+    gap: 1em;
+    justify-content: space-between;
+    align-items: center;
+}
+.admin__row select{
+ height: fit-content;
+    flex: 1;
+}
+.admin__row p{
+    flex: 1;
+}
+
+

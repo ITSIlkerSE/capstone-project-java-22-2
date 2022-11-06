@@ -21,14 +21,15 @@ export default function WelcomePage(props: WelcomePageProps) {
     const [me, setMe] = useState("")
 
     return (
-        <div className="App">
-            <header className="login-form">
+        <div className="content">
+            <h2>Welcome</h2>
+
 
                 {!me ?
                     <form>
                         <h3>Login</h3>
-                        <input value={username} onChange={event => setUsername(event.target.value)}/>
-                        <input type="password" value={password} onChange={event => setPassword(event.target.value)}/>
+                        <input placeholder={"username"} value={username} onChange={event => setUsername(event.target.value)}/>
+                        <input placeholder={"password"} type="password" value={password} onChange={event => setPassword(event.target.value)}/>
                         <button onClick={() => {
                             props.handleLogin(username, password);
                             props.setAdmin();
@@ -54,8 +55,9 @@ export default function WelcomePage(props: WelcomePageProps) {
                     </>
                 }
 
+            <h3>Noch nicht registriert?</h3>
+            <button>Register</button>
 
-            </header>
         </div>
 
     )
