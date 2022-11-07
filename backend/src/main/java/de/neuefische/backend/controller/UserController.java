@@ -1,5 +1,6 @@
 package de.neuefische.backend.controller;
 
+import de.neuefische.backend.model.AppUser;
 import de.neuefische.backend.model.CreateUserDTO;
 import de.neuefische.backend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +38,7 @@ public class UserController {
     }
 
     @PostMapping("register")
-    public String register(@RequestBody CreateUserDTO createUserDTO) {
+    public AppUser register(@RequestBody CreateUserDTO createUserDTO) throws Exception {
 
         return userService.register(createUserDTO);
     }

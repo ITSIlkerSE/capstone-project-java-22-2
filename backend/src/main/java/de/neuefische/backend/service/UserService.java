@@ -26,19 +26,12 @@ public class UserService {
     }
 
 
-    public String register(CreateUserDTO createUserDto) {
+    public AppUser register(CreateUserDTO createUserDto) throws CloneNotSupportedException {
 
         boolean userExistsAlready = userRepo.existsById(createUserDto.getUsername());
         if(userExistsAlready){
-            try {
-                throw new Exception ("User with your chosen username exists already!");
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
+                throw new CloneNotSupportedException ("User with your chosen username exists already!");
         }
-
-
-
         String hashPassword = passwordEncoder.encode(createUserDto.getPassword());
 
         AppUser appUser = new AppUser();
@@ -47,7 +40,7 @@ public class UserService {
         appUser.setEmailAddress(createUserDto.getEmailAddress());
         appUser.setRoles(List.of("USER"));
 
-        return userRepo.save(appUser).getUsername();
+        return userRepo.save(appUser);
     }
 
 
