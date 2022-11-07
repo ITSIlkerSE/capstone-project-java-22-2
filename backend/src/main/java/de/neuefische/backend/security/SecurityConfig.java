@@ -29,10 +29,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests()
                 .antMatchers("/api/user/**").permitAll()
-                .antMatchers(HttpMethod.POST,"/api/component/**").hasAuthority("ADMIN")
-                .antMatchers(HttpMethod.PUT,"/api/component/**").hasAuthority("ADMIN")
-                .antMatchers(HttpMethod.DELETE,"/api/component/**").hasAuthority("ADMIN")
-                .antMatchers(HttpMethod.GET,"/api/component/**").permitAll()
+                .antMatchers(HttpMethod.POST, "/api/component/**").hasAuthority("ADMIN")
+                .antMatchers(HttpMethod.PUT, "/api/component/**").hasAuthority("ADMIN")
+                .antMatchers(HttpMethod.DELETE, "/api/component/**").hasAuthority("ADMIN")
+                .antMatchers(HttpMethod.GET, "/api/component/**").permitAll()
                 .and().httpBasic()
                 .and().httpBasic().and().csrf().disable();
     }
