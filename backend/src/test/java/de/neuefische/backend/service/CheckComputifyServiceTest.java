@@ -24,8 +24,8 @@ class CheckComputifyServiceTest {
     void addComponent_WithPostInputField_InFrontend() {
 
         //GIVEN
-        Component component = new Component("1", "RTX 3080Ti", "Graphics cards", "High", 1000.00f,"2222-2222-2222","879" );
-        ComponentDTO componentDTO = new ComponentDTO("RTX 3080Ti", "Graphics cards", "High", 1000.00f,"2222-2222-2222","879" );
+        Component component = new Component("1", "RTX 3080Ti", "Graphics cards", "High", 1000.00f, "2222-2222-2222", "879");
+        ComponentDTO componentDTO = new ComponentDTO("RTX 3080Ti", "Graphics cards", "High", 1000.00f, "2222-2222-2222", "879");
 
         when(idService.generateId()).thenReturn("1");
         when(repo.save(any())).thenReturn(component);
@@ -46,9 +46,9 @@ class CheckComputifyServiceTest {
 
         //GIVEN
 
-        Component componentOne = new Component("1", "RTX 3080Ti", "Graphics cards", "High", 1000.00f,"2222-2222-2222","879" );
-        Component componentTwo = new Component("2", "RTX 3070Ti", "Graphics cards", "High", 1000.00f,"2222-2222-2222","879" );
-        Component componentThree = new Component("3", "RTX 3060Ti", "Graphics cards", "High", 1000.00f,"2222-2222-2222","879" );
+        Component componentOne = new Component("1", "RTX 3080Ti", "Graphics cards", "High", 1000.00f, "2222-2222-2222", "879");
+        Component componentTwo = new Component("2", "RTX 3070Ti", "Graphics cards", "High", 1000.00f, "2222-2222-2222", "879");
+        Component componentThree = new Component("3", "RTX 3060Ti", "Graphics cards", "High", 1000.00f, "2222-2222-2222", "879");
 
         when(repo.findAll()).thenReturn(List.of(componentOne, componentTwo, componentThree));
 
@@ -67,7 +67,7 @@ class CheckComputifyServiceTest {
 
         //GIVEN
 
-        Component componentOne = new Component("1", "RTX 3080Ti", "Graphics cards", "High", 1000.00f,"2222-2222-2222","879" );
+        Component componentOne = new Component("1", "RTX 3080Ti", "Graphics cards", "High", 1000.00f, "2222-2222-2222", "879");
 
         when(repo.findById("1")).thenReturn(Optional.of(componentOne));
 
@@ -81,4 +81,41 @@ class CheckComputifyServiceTest {
         verify(repo).findById("1");
         assertEquals(expected, actual);
     }
+
+
+    @Test
+    void deleteComponent() {
+
+        Component componentOne = new Component("1", "RTX 3080Ti", "Graphics cards", "High", 1000.00f, "2222-2222-2222", "879");
+
+        //GIVEN
+        when(repo.findById("1")).thenReturn(Optional.of(componentOne));
+
+        //WHEN
+        service.deleteComponent("1");
+
+        //THEN
+        verify(repo).deleteById("1");
+
+    }
+
+
+    @Test
+    void updateComponent_whenComponentAttributes_are_changed() {
+
+        //GIVEN
+        Component component1 = new Component("1", "RTX 3080Ti", "Graphics cards", "High", 1000.00f, "2222-2222-2222", "879");
+        ComponentDTO componentOne = new ComponentDTO("RTX 3080Ti", "Graphics cards", "High", 1000.00f, "2222-2222-2222", "879");
+
+        //WHEN
+        when(service.updateComponent("1", componentOne)).thenReturn(component1);
+        when(repo.existsById("1")).thenReturn(true);
+        Component actual = service.updateComponent("1", componentOne);
+        //THEN
+
+        assertEquals(component1, actual);
+
+
+    }
+
 }
