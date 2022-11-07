@@ -54,7 +54,7 @@ export default function AdminEditComponentsPage(props: AdminEditComponentsPagePr
 
     return (
         <div className="content">
-            <h2>Edit</h2>
+            <h2>Edit Page</h2>
             <form>
 
                 <select onChange={(event) => {
@@ -74,12 +74,12 @@ export default function AdminEditComponentsPage(props: AdminEditComponentsPagePr
                 }}>Edit</button>
             </form>
 
-            <div>
+
 
                 {displaySelectProduct}
 
 
-            </div>
+
 
         </div>
     )

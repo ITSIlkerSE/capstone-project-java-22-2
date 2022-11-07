@@ -19,14 +19,34 @@ export default function Product(props:ProductProps){
 
     return(
 
-        <div>
+        <div  className="edit__card">
+            <h3>{props.name}</h3>
+            <div className="edit__card__row">
+                <p>Category: </p>
+                <p>{props.category}</p>
+            </div>
+            <div className="edit__card__row">
+                <p>C-Code: </p>
+                <p>{props.combinationCode}</p>
+            </div>
+            <div className="edit__card__row">
+                <p>Score: </p>
+                <p>{props.score}</p>
+            </div>
+            <div className="edit__card__row">
+                <p>Price: </p>
+                <p>{props.price}</p>
+            </div>
+            <div className="edit__card__row">
+                <p>Classification: </p>
+                <p>{props.classification}</p>
+            </div>
 
-           <h3>{props.name}</h3>
-            <p>{props.category}</p>
-            <p>{props.combinationCode}</p>
-            <p>{props.score}</p>
-            <p>{props.price}</p>
-            <p>{props.classification}</p>
+
+
+
+
+
 
 
         </div>

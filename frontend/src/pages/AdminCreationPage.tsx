@@ -79,82 +79,137 @@ export default function AdminCreationPage(props: AddComponentPageProps) {
         <div className="content">
             <h2>Admin</h2>
 
-            <p>All components</p>
-            <form>
 
-                <select onChange={
+            <form className="admin-form">
 
 
-                    (event) => {
-                        setId(event.target.value);
-                    }
+                <div className="admin__row">
+                    <p>Components list</p>
 
-                }>
-                    {props.components.map((component) =>
-                        <option key={component.id} value={component.id}>{component.name}</option>)}
+                    <select onChange={
 
-                </select>
+
+                        (event) => {
+                            setId(event.target.value);
+                        }
+
+                    }>
+                        {props.components.map((component) =>
+                            <option key={component.id} value={component.id}>{component.name}</option>)}
+
+                    </select>
+
+
+                </div>
+
+
 
 
                 <button onClick={() => props.deleteComponent(id)}>Delete</button>
                 <button>look-up</button>
 
-<div className={"admin__row"}>
-    <p>Mainboards</p>
-    <select>
-        {mainboardFilter.map((component) => <option key={component.id}
-                                                    value={component.id}>{component.name}</option>)}
-    </select>
+                <div className={"admin__row"}>
+                    <p>Mainboards</p>
+                    <select>
+                        {mainboardFilter.map((component) => <option key={component.id}
+                                                                    value={component.id}>{component.name}</option>)}
+                    </select>
 
-</div>
+                </div>
+
+                <div className={"admin__row"}>
+
+                    <p>CPU's</p>
+                    <select>
+                        {cpuFilter.map((component) => <option key={component.id}
+                                                              value={component.id}>{component.name}</option>)}
+                    </select>
 
 
-                <p>CPU's</p>
-                <select>
-                    {cpuFilter.map((component) => <option key={component.id}
-                                                          value={component.id}>{component.name}</option>)}
-                </select>
+                </div>
 
-                <p>CPU coolers</p>
-                <select>
-                    {cpuCoolerFilter.map((component) => <option key={component.id}
+                <div className={"admin__row"}>
+
+                    <p>CPU coolers</p>
+                    <select>
+                        {cpuCoolerFilter.map((component) => <option key={component.id}
+                                                                    value={component.id}>{component.name}</option>)}
+                    </select>
+
+
+                </div>
+
+
+                <div className={"admin__row"}>
+
+                    <p>Graphics cards</p>
+                    <select>
+                        {graphicCardsFilter.map((component) => <option key={component.id}
+                                                                       value={component.id}>{component.name}</option>)}
+                    </select>
+
+
+                </div>
+
+
+                <div className={"admin__row"}>
+
+                    <p>RAM's</p>
+                    <select>
+                        {ramFilter.map((component) => <option key={component.id}
+                                                              value={component.id}>{component.name}</option>)}
+                    </select>
+
+
+                </div>
+
+
+                <div className="admin__row">
+
+
+                    <p>Hard disks</p>
+                    <select>
+                        {hardDiskFilter.map((component) => <option key={component.id}
+                                                                   value={component.id}>{component.name}</option>)}
+                    </select>
+
+                </div>
+
+
+                <div className="admin__row">
+
+
+                    <p>Soundcards</p>
+                    <select>
+                        {soundcardFilter.map((component) => <option key={component.id}
+                                                                    value={component.id}>{component.name}</option>)}
+                    </select>
+                </div>
+
+                <div className="admin__row">
+
+                    <p>Power adapters</p>
+                    <select>
+                        {powerAdapterFilter.map((component) => <option key={component.id}
+                                                                       value={component.id}>{component.name}</option>)}
+                    </select>
+
+
+                </div>
+
+
+                <div className="admin__row">
+
+                    <p>Towers</p>
+                    <select>
+                        {towerFilter.map((component) => <option key={component.id}
                                                                 value={component.id}>{component.name}</option>)}
-                </select>
+                    </select>
 
-                <p>Graphics cards</p>
-                <select>
-                    {graphicCardsFilter.map((component) => <option key={component.id}
-                                                                   value={component.id}>{component.name}</option>)}
-                </select>
 
-                <p>RAM's</p>
-                <select>
-                    {ramFilter.map((component) => <option key={component.id}
-                                                          value={component.id}>{component.name}</option>)}
-                </select>
+                </div>
 
-                <p>Hard disks</p>
-                <select>
-                    {hardDiskFilter.map((component) => <option key={component.id}
-                                                               value={component.id}>{component.name}</option>)}
-                </select>
 
-                <p>Soundcards</p>
-                <select>
-                    {soundcardFilter.map((component) => <option key={component.id} value={component.id}>{component.name}</option>)}
-                </select>
-
-                <p>Power adapters</p>
-                <select>
-                    {powerAdapterFilter.map((component) => <option key={component.id}
-                                                                   value={component.id}>{component.name}</option>)}
-                </select>
-
-                <p>Towers</p>
-                <select>
-                    {towerFilter.map((component) => <option key={component.id}
-                                                            value={component.id}>{component.name}</option>)}
-                </select>
             </form>
 
 

@@ -20,7 +20,9 @@ export default function App() {
         handleLogin,
         handleLogout,
         setAdmin,
-        isAdmin
+        isAdmin,
+        isLoggedIn,
+        setIsLoggedIn
     } = useComponent();
 
 
@@ -29,7 +31,7 @@ export default function App() {
 
 
                 <HashRouter>
-                    <NavBar isAdmin={isAdmin}/>
+                    <NavBar isAdmin={isAdmin} isLoggedIn={isLoggedIn} />
                     <main>
                     <Routes>
 

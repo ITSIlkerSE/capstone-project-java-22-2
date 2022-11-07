@@ -37,11 +37,14 @@ public class UserService {
             }
         }
 
+
+
         String hashPassword = passwordEncoder.encode(createUserDto.getPassword());
 
         AppUser appUser = new AppUser();
         appUser.setUsername(createUserDto.getUsername());
         appUser.setPasswordHash(hashPassword);
+        appUser.setEmailAddress(createUserDto.getEmailAddress());
         appUser.setRoles(List.of("USER"));
 
         return userRepo.save(appUser).getUsername();
