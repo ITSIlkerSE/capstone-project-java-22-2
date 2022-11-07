@@ -20,5 +20,7 @@ public class AppUser {
 
     private String passwordHash;
 
+    private String emailAddress;
+
     private List<String> roles;
 }

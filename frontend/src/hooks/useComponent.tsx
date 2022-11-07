@@ -7,6 +7,7 @@ export default function useComponent() {
     const [component, setComponent] = useState("")
     const [components, setComponents] = useState([]);
     const [isAdmin, setIsAdmin] = useState(false)
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     useEffect(() => {
         getAllComponents()
@@ -18,6 +19,7 @@ export default function useComponent() {
     function setAdmin(){
 
         isAdmin ? setIsAdmin(false) : setIsAdmin(true)
+        isLoggedIn ? setIsLoggedIn(false) : setIsLoggedIn(true)
 
     }
 
@@ -28,8 +30,8 @@ export default function useComponent() {
             .catch(() => alert("Das Passwort war falsch!"))
     }
 
-    function handleRegister(username: string, password: string) {
-        axios.post("api/user/register", {username, password})
+    function handleRegister(username: string, password: string, emailAddress: string) {
+        axios.post("api/user/register", {username, password, emailAddress})
             .then(response => response.data)
     }
 
@@ -77,7 +79,9 @@ export default function useComponent() {
         setAdmin,
         components,
         component,
-        isAdmin
+        isAdmin,
+        setIsLoggedIn,
+        isLoggedIn
     }
 
 
