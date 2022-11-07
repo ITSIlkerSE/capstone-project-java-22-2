@@ -14,14 +14,14 @@ export default function RegisterPage(props: RegisterPageProps){
     const [newUsername, setNewUsername] = useState("")
 
     return(
-        <div>
+        <div className="content">
             <form>
 
             <h3>Register Account</h3>
-            <input value={newUsername} onChange={event => setNewUsername(event.target.value)}/>
-            <input type="password" value={newPassword}
+            <input placeholder="username" value={newUsername} onChange={event => setNewUsername(event.target.value)}/>
+            <input placeholder="password" type="password" value={newPassword}
                    onChange={event => setNewPassword(event.target.value)}/>
-            <input type="password" value={confirmPassword}
+            <input placeholder={"confirm password"} type="password" value={confirmPassword}
                    onChange={event => setConfirmPassword(event.target.value)}/>
 
                 <button onClick={() => {
@@ -36,8 +36,7 @@ export default function RegisterPage(props: RegisterPageProps){
 
 
             </form>
-            <h1>Directed here on RegisterClick</h1>
-            <button>Press me for nothing</button>
+
         </div>
 
     )

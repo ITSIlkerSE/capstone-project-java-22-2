@@ -25,11 +25,12 @@ export default function App() {
 
 
     return (
-        <div className="App">
-            <header className="App-header">Check&Computify
+        <div className="container">
+
 
                 <HashRouter>
                     <NavBar isAdmin={isAdmin}/>
+                    <main>
                     <Routes>
 
                         <Route path={"/"} element={<WelcomePage isAdmin={isAdmin} setAdmin={setAdmin}
@@ -49,10 +50,11 @@ export default function App() {
 
                     </Routes>
 
+                    </main>
+
                 </HashRouter>
 
 
-            </header>
 
         </div>
     );

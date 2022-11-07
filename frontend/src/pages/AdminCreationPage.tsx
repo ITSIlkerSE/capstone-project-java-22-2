@@ -76,10 +76,12 @@ export default function AdminCreationPage(props: AddComponentPageProps) {
 
     return (
 
-        <div className="layout-dropdowns">
+        <div className="content">
+            <h2>Admin</h2>
 
             <p>All components</p>
             <form>
+
                 <select onChange={
 
 
@@ -95,13 +97,17 @@ export default function AdminCreationPage(props: AddComponentPageProps) {
 
 
                 <button onClick={() => props.deleteComponent(id)}>Delete</button>
-                <button>Details</button>
+                <button>look-up</button>
 
-                <p>Mainboards</p>
-                <select>
-                    {mainboardFilter.map((component) => <option key={component.id}
-                                                                value={component.id}>{component.name}</option>)}
-                </select>
+<div className={"admin__row"}>
+    <p>Mainboards</p>
+    <select>
+        {mainboardFilter.map((component) => <option key={component.id}
+                                                    value={component.id}>{component.name}</option>)}
+    </select>
+
+</div>
+
 
                 <p>CPU's</p>
                 <select>
@@ -152,7 +158,7 @@ export default function AdminCreationPage(props: AddComponentPageProps) {
             </form>
 
 
-            <h1>Post new component</h1>
+            <h2>Post new component</h2>
 
             <form onSubmit={(event) => event.preventDefault()} className={"inputButtons"}>
                 <p>Name :</p>
