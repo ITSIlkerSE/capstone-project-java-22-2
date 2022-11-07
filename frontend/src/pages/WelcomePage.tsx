@@ -37,11 +37,7 @@ export default function WelcomePage(props: WelcomePageProps) {
 
                     <NavLink to={"user/Homepage"}> <button onClick={() => {
                         props.handleLogin(username, password);
-                        props.setAdmin();
-
-
-                    }
-                    }>Login
+                        props.setAdmin();}}>Login
 
 
 

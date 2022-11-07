@@ -21,9 +21,8 @@ export default function NavBar(props: NavbarProps) {
 
 
     }
+
     let myBool = props.isAdmin && props.isLoggedIn
-
-
 
 
     return (
@@ -38,15 +37,16 @@ export default function NavBar(props: NavbarProps) {
             </div>
 
             <ul className={isDropdown ? "dropdown__links animateIn" : "dropdown__links animateOut"}>
+                <NavLink onClick={toggleNav} to={"/"}>WelcomePage</NavLink>
+                <NavLink onClick={toggleNav} to={"user/RegisterPage"}>Register</NavLink>
+                <NavLink onClick={toggleNav} to={"user/Homepage"}>Homepage</NavLink>
                 {/*                <NavLink onClick={toggleNav} to={"admin/AdminCreationPage"}>AdminCreationPage</NavLink>
                 <NavLink onClick={toggleNav} to={"admin/AdminEditComponentsPage"}>EditPage</NavLink>*/}
                 {myBool && (
                     <NavLink onClick={toggleNav} to={"admin/AdminCreationPage"}>AdminCreationPage</NavLink>)}
                 {myBool &&
                     <NavLink onClick={toggleNav} to={"admin/AdminEditComponentsPage"}>EditPage</NavLink>}
-                <NavLink onClick={toggleNav} to={"/"}>WelcomePage</NavLink>
-                <NavLink onClick={toggleNav} to={"user/RegisterPage"}>Register</NavLink>
-                <NavLink onClick={toggleNav} to={"user/Homepage"}>Homepage</NavLink>
+
             </ul>
         </div>
 

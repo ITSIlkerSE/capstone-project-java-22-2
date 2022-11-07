@@ -1,4 +1,5 @@
 import {useState} from "react";
+import {NavLink} from "react-router-dom";
 
 type RegisterPageProps = {
 
@@ -35,7 +36,7 @@ export default function RegisterPage(props: RegisterPageProps) {
                 <input placeholder={"Email address"} type="email" value={newEmailAddress}
                        onChange={event => setNewEmailAddress(event.target.value)}/>
 
-                <button onClick={() => {
+                <NavLink to={"/"}>  <button onClick={() => {
 
                     if (newPassword === confirmPassword) {
                         props.handleRegister(newUsername, newPassword, newEmailAddress);
@@ -44,8 +45,9 @@ export default function RegisterPage(props: RegisterPageProps) {
                         alert("password does not match");
                     onRegisterNewUser();
 
+
                 }}> Sign Up!
-                </button>
+                </button></NavLink>
 
 
             </form>
