@@ -29,8 +29,8 @@ public class UserService {
     public AppUser register(CreateUserDTO createUserDto) throws CloneNotSupportedException {
 
         boolean userExistsAlready = userRepo.existsById(createUserDto.getUsername());
-        if(userExistsAlready){
-                throw new CloneNotSupportedException ("User with your chosen username exists already!");
+        if (userExistsAlready) {
+            throw new CloneNotSupportedException("User with your chosen username exists already!");
         }
         String hashPassword = passwordEncoder.encode(createUserDto.getPassword());
 

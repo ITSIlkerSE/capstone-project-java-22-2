@@ -59,7 +59,7 @@ public class CheckComputifyService {
         repo.deleteById(id);
     }
 
-    public Component updateComponent(String id,ComponentDTO componentDTO) {
+    public Component updateComponent(String id, ComponentDTO componentDTO) {
         Component component = mapComponent(componentDTO, id);
         return repo.save(component);
     }
