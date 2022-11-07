@@ -38,7 +38,7 @@ public class UserController {
     }
 
     @PostMapping("register")
-    public AppUser register(@RequestBody CreateUserDTO createUserDTO) throws Exception {
+    public AppUser register(@RequestBody CreateUserDTO createUserDTO) throws CloneNotSupportedException {
 
         return userService.register(createUserDTO);
     }
