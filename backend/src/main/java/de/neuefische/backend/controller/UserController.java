@@ -1,6 +1,7 @@
 package de.neuefische.backend.controller;
 
 import de.neuefische.backend.model.AppUser;
+import de.neuefische.backend.model.AppUserDTO;
 import de.neuefische.backend.model.CreateUserDTO;
 import de.neuefische.backend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,13 +24,12 @@ public class UserController {
 
 
     @GetMapping("login")
-    public String login(){
+    public AppUserDTO login(){
 
-        return SecurityContextHolder
+        return userService.getUserByUsername(SecurityContextHolder
                 .getContext()
                 .getAuthentication()
-                .getName();
-
+                .getName());
     }
 
     @GetMapping("logout")
@@ -42,6 +42,5 @@ public class UserController {
 
         return userService.register(createUserDTO);
     }
-
 
 }

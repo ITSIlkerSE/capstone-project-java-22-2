@@ -13,16 +13,17 @@ import RegisterPage from "./pages/RegisterPage";
 export default function App() {
     const {
         addComponent,
-        components,
+        handleLogin,
+        handleRegister,
+        handleLogout,
         deleteFunction,
         editComponent,
-        handleRegister,
-        handleLogin,
-        handleLogout,
         setAdmin,
+        components,
         isAdmin,
         isLoggedIn,
-        setIsLoggedIn
+        me,
+        role
     } = useComponent();
 
 
@@ -30,17 +31,17 @@ export default function App() {
         <div className="container">
 
 
-                <HashRouter>
-                    <NavBar isAdmin={isAdmin} isLoggedIn={isLoggedIn} />
-                    <main>
+            <HashRouter>
+                <NavBar isAdmin={isAdmin} isLoggedIn={isLoggedIn} role={role}/>
+                <main>
                     <Routes>
 
                         <Route path={"/"} element={<WelcomePage isAdmin={isAdmin} setAdmin={setAdmin}
                                                                 handleRegister={handleRegister}
                                                                 handleLogin={handleLogin}
-                                                                handleLogout={handleLogout}/>}/>
+                                                                handleLogout={handleLogout} me={me} role={role}/>}/>
                         <Route path={"/admin/AdminCreationPage"}
-                               element={<AdminCreationPage addComponent={addComponent}  components={components}
+                               element={<AdminCreationPage addComponent={addComponent} components={components}
                                                            deleteComponent={deleteFunction}/>}/>
                         <Route path={"/admin/AdminEditComponentsPage"}
                                element={<AdminEditComponentsPage editComponent={editComponent}
@@ -49,13 +50,11 @@ export default function App() {
                         <Route path={"/user/RegisterPage"} element={<RegisterPage handleRegister={handleRegister}/>}/>
 
 
-
                     </Routes>
 
-                    </main>
+                </main>
 
-                </HashRouter>
-
+            </HashRouter>
 
 
         </div>

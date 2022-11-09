@@ -7,8 +7,8 @@ export type AdminComponent = {
     score: string;
     price: string;
     classification?: string;
-    isAdmin?: boolean
-    isLoggedIn?: boolean
+    isAdmin?: boolean;
+    isLoggedIn?: boolean;
 
 
 }

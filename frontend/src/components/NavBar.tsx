@@ -1,13 +1,14 @@
 import {NavLink} from "react-router-dom";
-import {AdminComponent} from "../model/AdminComponent";
 import React from "react";
 import './NavBar.css';
 
 type NavbarProps = {
 
     isAdmin: boolean;
-    isLoggedIn: boolean
+    isLoggedIn: boolean;
+    role: string;
 
+    //TODO mit me ersetzen
 
 }
 
@@ -24,6 +25,13 @@ export default function NavBar(props: NavbarProps) {
 
     let myBool = props.isAdmin && props.isLoggedIn
 
+    // {props.role === "ADMIN" &&
+
+
+    //:
+
+
+    //xxxx
 
     return (
         <div className="navbar">

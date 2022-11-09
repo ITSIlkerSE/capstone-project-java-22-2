@@ -46,14 +46,15 @@ export default function AdminCreationPage(props: AddComponentPageProps) {
         setCombinationCode("")
         setPrice("")
         setClassification("")
-
-        let newComponent = {
-            name, category, combinationCode, score, price, classification
+        if (!isNaN(Number(price)) && !isNaN(Number(score))) {
+            console.log(Number(price))
+            console.log(Number(score))
+            let newComponent = {
+                name, category, combinationCode, score, price, classification
+            }
+            props.addComponent(newComponent)}
+         else {alert("You must type in digits!")}
         }
-
-        props.addComponent(newComponent)
-
-    }
 
     const mainboardFilter = props.components.filter((component) => (component.category === "Mainboard"))
 
