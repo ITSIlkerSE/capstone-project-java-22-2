@@ -46,5 +46,4 @@ public class ComponentController {
     public Component editComponent(@PathVariable String id, @RequestBody ComponentDTO componentDTO) {
         return service.updateComponent(id, componentDTO);
     }
-
 }

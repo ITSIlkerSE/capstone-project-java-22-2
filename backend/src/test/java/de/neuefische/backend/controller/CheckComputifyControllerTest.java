@@ -14,14 +14,11 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.web.servlet.function.RequestPredicates.accept;
 
 
 @SpringBootTest
@@ -40,13 +37,9 @@ class CheckComputifyControllerTest {
     private IdService idService;
 
 
-
-
-
     @Test
     @WithMockUser(username = "ADMIN", password = "ADMIN", authorities = "ADMIN")
     void addComponent() throws Exception {
-
 
 
         //GIVEN
@@ -65,7 +58,7 @@ class CheckComputifyControllerTest {
                 }
                 """;
 
-        String expectedJSON =  """
+        String expectedJSON = """
                 {
                         "id" : "1",
                         "name": "ASUS RTX 4090",
@@ -88,11 +81,48 @@ class CheckComputifyControllerTest {
 
     @Test
     @WithMockUser(username = "ADMIN", password = "ADMIN", authorities = "ADMIN")
-    void updateComponent() throws IllegalArgumentException {
+    void updateComponent() throws Exception {
 
 
+        when(idService.generateId()).thenReturn("1");
 
+        repo.save(new Component("1", "RTX 3080Ti", "Graphics cards", "High", 1000.00f, "2222-2222-2222", "879"));
+
+
+        String requestBody = """
+                {                        
+                        "name": "ASUS RTX 4090",
+                        "category": "Graphics card",
+                        "classification" : "High-End",
+                        "price": 2300,
+                        "combinationCode": "xxx-xxx-xxx",
+                        "score": "1000"
+                }
+                """;
+
+        String expectedJSON = """
+                {
+                        "id" : "1",
+                        "name": "ASUS RTX 4090",
+                        "category": "Graphics card",
+                        "classification" : "High-End",
+                        "price": 2300,
+                        "combinationCode": "xxx-xxx-xxx",
+                        "score": "1000"
+                }
+                """;
+
+
+        mockMvc.perform(MockMvcRequestBuilders
+                        .put("/api/component/{id}", "1")
+                        .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+                        .content(requestBody)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(content().json(expectedJSON))
+                .andExpect(status().isOk());
     }
+
 
     @Test
     @WithMockUser(username = "ADMIN", password = "ADMIN", authorities = "ADMIN")
@@ -115,7 +145,6 @@ class CheckComputifyControllerTest {
         //GIVEN
         repo.save(new Component("1", "RTX 3080Ti", "Graphics cards", "High", 1000.00f, "2222-2222-2222", "879"));
         repo.save(new Component("2", "RTX 3080", "Graphics cards", "High", 1000.00f, "2222-2222-2222", "879"));
-
 
 
         //WHEN & THEN
@@ -157,9 +186,9 @@ class CheckComputifyControllerTest {
         repo.save(new Component("1", "RTX 3080Ti", "Graphics cards", "High", 1000.00f, "2222-2222-2222", "879"));
 
         mockMvc.perform(MockMvcRequestBuilders
-                .delete("/api/component/{id}", "1")
-                .contentType(MediaType.APPLICATION_JSON)
-                .accept(MediaType.APPLICATION_JSON))
+                        .delete("/api/component/{id}", "1")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
     }
 

@@ -27,4 +27,16 @@ public class UserControllerTest {
 
     }
 
+    @Test
+    void Should_Test_HandleLogin_By_Login() {
+
+    }
+
+    @Test
+    void logout() {
+    }
+
+    @Test
+    void register() {
+    }
 }
