@@ -8,7 +8,6 @@ type NavbarProps = {
     isLoggedIn: boolean;
     role: string;
 
-    //TODO mit me ersetzen
 
 }
 
