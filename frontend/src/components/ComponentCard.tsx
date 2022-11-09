@@ -11,7 +11,7 @@ type ProductProps = {
 }
 
 
-export default function Product(props:ProductProps){
+export default function ComponentCard(props:ProductProps){
 
 
 

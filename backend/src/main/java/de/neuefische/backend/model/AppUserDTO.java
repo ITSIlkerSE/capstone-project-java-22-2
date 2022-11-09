@@ -10,7 +10,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class AppUserDTO{
+public class AppUserDTO {
 
     private String username;
 
