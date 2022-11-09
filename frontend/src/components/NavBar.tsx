@@ -25,14 +25,6 @@ export default function NavBar(props: NavbarProps) {
 
     let myBool = props.isAdmin && props.isLoggedIn
 
-    // {props.role === "ADMIN" &&
-
-
-    //:
-
-
-    //xxxx
-
     return (
         <div className="navbar">
             <h3>Check & Computify</h3>
