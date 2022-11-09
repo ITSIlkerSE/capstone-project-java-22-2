@@ -13,12 +13,15 @@ import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.web.servlet.function.RequestPredicates.accept;
 
 
 @SpringBootTest
@@ -49,6 +52,8 @@ class CheckComputifyControllerTest {
         //GIVEN
         when(idService.generateId()).thenReturn("1");
 
+        //WHEN + THEN
+
         String requestBody = """
                 {                        
                         "name": "ASUS RTX 4090",
@@ -72,7 +77,7 @@ class CheckComputifyControllerTest {
                 }
                 """;
 
-        //WHEN+THEN
+
         mockMvc.perform(
                         post("/api/component")
                                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
@@ -89,6 +94,21 @@ class CheckComputifyControllerTest {
 
     }
 
+    @Test
+    @WithMockUser(username = "ADMIN", password = "ADMIN", authorities = "ADMIN")
+    void getComponentById() throws Exception {
+
+        when(idService.generateId()).thenReturn("1");
+
+        repo.save(new Component("1", "RTX 3080Ti", "Graphics cards", "High", 1000.00f, "2222-2222-2222", "879"));
+
+        mockMvc.perform(MockMvcRequestBuilders
+                        .get("/api/component/{id}", "1")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
+    }
+
 
     @Test
     void getAllComponents() throws Exception {
@@ -98,7 +118,7 @@ class CheckComputifyControllerTest {
 
 
 
-        //WHEN &THEN
+        //WHEN & THEN
         String expectedJSON = """
                 [
                     {
@@ -121,10 +141,27 @@ class CheckComputifyControllerTest {
                     }
                 ]
                 """;
-        //WHEN+THEN
+
         mockMvc.perform(get("/api/component"))
                 .andExpect(status().isOk())
                 .andExpect(content().json(expectedJSON));
 
     }
+
+    @Test
+    @WithMockUser(username = "ADMIN", password = "ADMIN", authorities = "ADMIN")
+    void deleteComponent() throws Exception {
+
+        when(idService.generateId()).thenReturn("1");
+
+        repo.save(new Component("1", "RTX 3080Ti", "Graphics cards", "High", 1000.00f, "2222-2222-2222", "879"));
+
+        mockMvc.perform(MockMvcRequestBuilders
+                .delete("/api/component/{id}", "1")
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
+    }
+
+
 }
