@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import './WelcomePage.css';
-import {NavLink, Route} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 
 type WelcomePageProps = {
 

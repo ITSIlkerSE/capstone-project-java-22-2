@@ -48,8 +48,6 @@ export default function NavBar(props: NavbarProps) {
                 <NavLink onClick={toggleNav} to={"/"}>WelcomePage</NavLink>
                 <NavLink onClick={toggleNav} to={"user/RegisterPage"}>Register</NavLink>
                 <NavLink onClick={toggleNav} to={"user/Homepage"}>Homepage</NavLink>
-                {/*                <NavLink onClick={toggleNav} to={"admin/AdminCreationPage"}>AdminCreationPage</NavLink>
-                <NavLink onClick={toggleNav} to={"admin/AdminEditComponentsPage"}>EditPage</NavLink>*/}
                 {myBool && (
                     <NavLink onClick={toggleNav} to={"admin/AdminCreationPage"}>AdminCreationPage</NavLink>)}
                 {myBool &&
