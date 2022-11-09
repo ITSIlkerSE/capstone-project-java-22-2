@@ -46,10 +46,8 @@ public class CheckComputifyService {
     }
 
     public Component getComponentById(String id) {
-        Component component = mapComponent(new ComponentDTO(), idService.generateId());
-        repo.findById(id).orElseThrow(() -> new NoSuchElementException("No item found!"));
 
-        return component;
+        return repo.findById(id).orElseThrow(() -> new NoSuchElementException ("No component with given id found" + id));
     }
 
     public void deleteComponent(String id) {
