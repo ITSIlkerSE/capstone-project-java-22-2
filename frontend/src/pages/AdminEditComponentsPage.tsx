@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {AdminComponent} from "../model/AdminComponent";
-import Product from "../components/Product";
+import ComponentCard from "../components/ComponentCard";
 
 type AdminEditComponentsPageProps = {
     editComponent: (id: string, component: AdminComponent) => void;
@@ -45,11 +45,11 @@ export default function AdminEditComponentsPage(props: AdminEditComponentsPagePr
 
     }
     const selectProduct = props.components.filter((component) => id === component.id);
-    const displaySelectProduct = selectProduct.map((product) => <Product key={product.id} name={product.name} category={product.category}
-                                                                         price={product.price}
-                                                                         combinationCode={product.combinationCode}
-                                                                         score={product.score}
-                                                                         classification={product.classification}/>)
+    const displaySelectProduct = selectProduct.map((product) => <ComponentCard key={product.id} name={product.name} category={product.category}
+                                                                               price={product.price}
+                                                                               combinationCode={product.combinationCode}
+                                                                               score={product.score}
+                                                                               classification={product.classification}/>)
 
 
     return (

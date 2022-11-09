@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import './WelcomePage.css';
-import {NavLink, Route} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 
 type WelcomePageProps = {
 
@@ -9,6 +9,8 @@ type WelcomePageProps = {
     handleLogout: () => void;
     isAdmin: boolean;
     setAdmin: () => void;
+    me: string;
+    role: string;
 
 
 }
@@ -19,15 +21,12 @@ export default function WelcomePage(props: WelcomePageProps) {
     const [password, setPassword] = useState("")
     const [username, setUsername] = useState("")
 
-    const [me, setMe] = useState("")
-
-
     return (
         <div className="content">
             <h2>Welcome</h2>
 
 
-            {!me ?
+            {!props.me ?
                 <form>
                     <h3>Login</h3>
                     <input placeholder={"username"} value={username}
@@ -44,6 +43,9 @@ export default function WelcomePage(props: WelcomePageProps) {
                     </button></NavLink>
 
 
+                </form>
+                : <>
+                    <p>Angemeldet als: {props.role}</p>
                     <button onClick={() => {
 
 
@@ -53,10 +55,6 @@ export default function WelcomePage(props: WelcomePageProps) {
                     }
                     }>Logout
                     </button>
-                </form>
-                : <>
-                    <p>Angemeldet als: {me}</p>
-
 
                 </>
             }
@@ -67,10 +65,3 @@ export default function WelcomePage(props: WelcomePageProps) {
 
     )
 }
-
-/*
-const navigateToLogin = () => {
-        return <Route path={"/"}/>
-    }
-
- */

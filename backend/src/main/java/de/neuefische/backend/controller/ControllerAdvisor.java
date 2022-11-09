@@ -11,7 +11,7 @@ import java.util.NoSuchElementException;
 public class ControllerAdvisor {
 
     @ExceptionHandler(NoSuchElementException.class)
-    protected ResponseEntity<Object> handleConflict(NoSuchElementException ex){
+    protected ResponseEntity<Object> handleConflict(NoSuchElementException ex) {
 
         return ResponseEntity
                 .status(HttpStatus.NOT_FOUND)
@@ -19,7 +19,7 @@ public class ControllerAdvisor {
     }
 
     @ExceptionHandler(IllegalArgumentException.class)
-    protected ResponseEntity<Object> handleConflict(IllegalArgumentException ex){
+    protected ResponseEntity<Object> handleConflict(IllegalArgumentException ex) {
 
         return ResponseEntity
                 .status(HttpStatus.BAD_REQUEST)
@@ -27,7 +27,7 @@ public class ControllerAdvisor {
     }
 
     @ExceptionHandler(Exception.class)
-    protected ResponseEntity<Object> handleConflict(Exception ex){
+    protected ResponseEntity<Object> handleConflict(Exception ex) {
 
         return ResponseEntity
                 .status(HttpStatus.INTERNAL_SERVER_ERROR)

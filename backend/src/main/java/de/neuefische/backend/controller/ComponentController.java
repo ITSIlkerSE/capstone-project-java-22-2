@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 
 @RestController
@@ -23,17 +22,15 @@ public class ComponentController {
         this.service = service;
     }
 
-
     @GetMapping
     public List<Component> getAllComponents() {
         return service.getAllComponents();
     }
 
     @GetMapping("/{id}")
-    public Optional<Component> getComponentById(@PathVariable String id) {
+    public Component getComponentById(@PathVariable String id) {
         return service.getComponentById(id);
     }
-
 
     @PostMapping
     public Component addComponent(@RequestBody ComponentDTO component) {
@@ -49,6 +46,4 @@ public class ComponentController {
     public Component editComponent(@PathVariable String id, @RequestBody ComponentDTO componentDTO) {
         return service.updateComponent(id, componentDTO);
     }
-
-
 }

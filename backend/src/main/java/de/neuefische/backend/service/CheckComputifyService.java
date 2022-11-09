@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.Optional;
 
 @Service
 
@@ -27,7 +26,6 @@ public class CheckComputifyService {
     public Component addComponent(ComponentDTO componentDTO) {
         Component component = mapComponent(componentDTO, idService.generateId());
         return repo.save(component);
-
     }
 
 
@@ -47,12 +45,9 @@ public class CheckComputifyService {
         return repo.findAll();
     }
 
-    public Optional<Component> getComponentById(String id) {
-        if (!repo.existsById(id)) {
-            throw new NoSuchElementException("The component you are searching for does not exists! Id : " + id);
-        }
+    public Component getComponentById(String id) {
 
-        return repo.findById(id);
+        return repo.findById(id).orElseThrow(() -> new NoSuchElementException ("No component with given id found" + id));
     }
 
     public void deleteComponent(String id) {

@@ -1,12 +1,12 @@
 import {NavLink} from "react-router-dom";
-import {AdminComponent} from "../model/AdminComponent";
 import React from "react";
 import './NavBar.css';
 
 type NavbarProps = {
 
     isAdmin: boolean;
-    isLoggedIn: boolean
+    isLoggedIn: boolean;
+    role: string;
 
 
 }
@@ -24,7 +24,6 @@ export default function NavBar(props: NavbarProps) {
 
     let myBool = props.isAdmin && props.isLoggedIn
 
-
     return (
         <div className="navbar">
             <h3>Check & Computify</h3>
@@ -40,8 +39,6 @@ export default function NavBar(props: NavbarProps) {
                 <NavLink onClick={toggleNav} to={"/"}>WelcomePage</NavLink>
                 <NavLink onClick={toggleNav} to={"user/RegisterPage"}>Register</NavLink>
                 <NavLink onClick={toggleNav} to={"user/Homepage"}>Homepage</NavLink>
-                {/*                <NavLink onClick={toggleNav} to={"admin/AdminCreationPage"}>AdminCreationPage</NavLink>
-                <NavLink onClick={toggleNav} to={"admin/AdminEditComponentsPage"}>EditPage</NavLink>*/}
                 {myBool && (
                     <NavLink onClick={toggleNav} to={"admin/AdminCreationPage"}>AdminCreationPage</NavLink>)}
                 {myBool &&

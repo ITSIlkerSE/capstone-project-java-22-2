@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
 import {AdminComponent} from "../model/AdminComponent";
 import axios from "axios";
+import {LoginReturn} from "../model/LoginReturn";
 
 export default function useComponent() {
 
@@ -8,25 +9,27 @@ export default function useComponent() {
     const [components, setComponents] = useState([]);
     const [isAdmin, setIsAdmin] = useState(false)
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [me, setMe] = useState("")
+    const [role, setRole] = useState("")
 
     useEffect(() => {
         getAllComponents()
-
-
     }, [])
 
-
-    function setAdmin(){
+    function setAdmin() {
 
         isAdmin ? setIsAdmin(false) : setIsAdmin(true)
         isLoggedIn ? setIsLoggedIn(false) : setIsLoggedIn(true)
 
     }
 
-
     function handleLogin(username: string, password: string) {
         axios.get("api/user/login", {auth: {username, password}})
             .then(response => response.data)
+            .then((data: LoginReturn) => {
+                setMe(data.username);
+                setRole(data.roles[0])
+            })
             .catch(() => alert("Das Passwort war falsch!"))
     }
 
@@ -37,8 +40,8 @@ export default function useComponent() {
 
     function handleLogout() {
         axios.get("api/user/logout")
+            .then(() => setMe(""))
     }
-
 
     const addComponent = (component: AdminComponent) => {
         axios.post("/api/component", component)
@@ -57,10 +60,11 @@ export default function useComponent() {
             .then((response) => response.data)
     }
 
-    const deleteFunction = (id: String) => {
+    const deleteFunction = (id: string) => {
         axios.delete("/api/component/" + id)
             .then(getAllComponents)
     }
+
     const editComponent = (id: string, component: AdminComponent) => {
         axios.put(`/api/component/${id}`, component)
             .then(getAllComponents)
@@ -68,6 +72,7 @@ export default function useComponent() {
     }
 
     return {
+
         addComponent,
         getAllComponents,
         getComponentById,
@@ -81,9 +86,13 @@ export default function useComponent() {
         component,
         isAdmin,
         setIsLoggedIn,
-        isLoggedIn
-    }
+        isLoggedIn,
+        setComponent,
+        setMe,
+        me,
+        role
 
+    }
 
 }
 
