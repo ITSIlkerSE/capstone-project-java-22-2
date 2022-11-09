@@ -1,8 +1,6 @@
 package de.neuefische.backend.controller;
 
-import de.neuefische.backend.model.AppUser;
 import de.neuefische.backend.model.Component;
-import de.neuefische.backend.repo.AppUserRepository;
 import de.neuefische.backend.repo.CheckComputifyRepo;
 import de.neuefische.backend.service.IdService;
 import org.junit.jupiter.api.Test;
@@ -15,12 +13,8 @@ import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
-
-import java.util.Collections;
 
 import static org.mockito.Mockito.when;
-import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -38,9 +32,6 @@ class CheckComputifyControllerTest {
 
     @Autowired
     private CheckComputifyRepo repo;
-
-    @Autowired
-    private AppUserRepository userRepo;
 
     @MockBean
     private IdService idService;
@@ -92,7 +83,7 @@ class CheckComputifyControllerTest {
 
     @Test
     @WithMockUser(username = "ADMIN", password = "ADMIN", authorities = "ADMIN")
-    void updateComponent() throws Exception {
+    void updateComponent() throws IllegalArgumentException {
 
 
 
