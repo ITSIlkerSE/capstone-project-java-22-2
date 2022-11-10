@@ -1,14 +1,12 @@
 import React, {useState} from "react";
 import './WelcomePage.css';
-import {NavLink} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
 
 type WelcomePageProps = {
 
     handleRegister: (username: string, password: string, emailAddress: string) => void;
     handleLogin: (username: string, password: string) => void;
     handleLogout: () => void;
-    isAdmin: boolean;
-    setAdmin: () => void;
     me: string;
     role: string;
 
@@ -20,8 +18,14 @@ export default function WelcomePage(props: WelcomePageProps) {
 
     const [password, setPassword] = useState("")
     const [username, setUsername] = useState("")
+    const navigate = useNavigate()
+    const refreshPage = () => {
+        window.location.reload();
+    }
 
     return (
+
+
         <div className="content">
             <h2>Welcome</h2>
 
@@ -34,23 +38,29 @@ export default function WelcomePage(props: WelcomePageProps) {
                     <input placeholder={"password"} type="password" value={password}
                            onChange={event => setPassword(event.target.value)}/>
 
-                    <NavLink to={"user/Homepage"}> <button onClick={() => {
+                    <button onClick={() => {
+
+                        if (props.role === "ADMIN") {
+                            navigate("/admin/AdminCreationPage")
+                        } else {
+                            navigate("/user/Homepage")
+                        }
+
                         props.handleLogin(username, password);
-                        props.setAdmin();}}>Login
+                        console.log(props.role + "djsakldjasplö")
+
+                    }}>Login
 
 
-
-                    </button></NavLink>
+                    </button>
 
 
                 </form>
                 : <>
-                    <p>Angemeldet als: {props.role}</p>
+                    <p>Angemeldet als: {props.me} {props.role}</p>
                     <button onClick={() => {
-
-
+                        refreshPage()
                         props.handleLogout();
-                        props.setAdmin();
 
                     }
                     }>Logout
@@ -60,6 +70,7 @@ export default function WelcomePage(props: WelcomePageProps) {
             }
 
             <NavLink to={"user/RegisterPage"}>Create account</NavLink>
+
 
         </div>
 

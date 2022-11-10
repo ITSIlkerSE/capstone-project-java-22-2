@@ -4,11 +4,7 @@ import './NavBar.css';
 
 type NavbarProps = {
 
-    isAdmin: boolean;
-    isLoggedIn: boolean;
     role: string;
-
-
 }
 
 
@@ -18,11 +14,7 @@ export default function NavBar(props: NavbarProps) {
 
     function toggleNav() {
         isDropdown ? setIsDropdown(false) : setIsDropdown(true);
-
-
     }
-
-    let myBool = props.isAdmin && props.isLoggedIn
 
     return (
         <div className="navbar">
@@ -39,9 +31,9 @@ export default function NavBar(props: NavbarProps) {
                 <NavLink onClick={toggleNav} to={"/"}>WelcomePage</NavLink>
                 <NavLink onClick={toggleNav} to={"user/RegisterPage"}>Register</NavLink>
                 <NavLink onClick={toggleNav} to={"user/Homepage"}>Homepage</NavLink>
-                {myBool && (
+                {props.role === "ADMIN" && (
                     <NavLink onClick={toggleNav} to={"admin/AdminCreationPage"}>AdminCreationPage</NavLink>)}
-                {myBool &&
+                {props.role === "ADMIN" &&
                     <NavLink onClick={toggleNav} to={"admin/AdminEditComponentsPage"}>EditPage</NavLink>}
 
             </ul>

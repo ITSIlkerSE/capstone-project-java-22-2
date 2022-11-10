@@ -47,8 +47,6 @@ export default function AdminCreationPage(props: AddComponentPageProps) {
         setPrice("")
         setClassification("")
         if (!isNaN(Number(price)) && !isNaN(Number(score))) {
-            console.log(Number(price))
-            console.log(Number(score))
             let newComponent = {
                 name, category, combinationCode, score, price, classification
             }

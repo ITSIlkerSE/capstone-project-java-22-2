@@ -18,10 +18,7 @@ export default function App() {
         handleLogout,
         deleteFunction,
         editComponent,
-        setAdmin,
         components,
-        isAdmin,
-        isLoggedIn,
         me,
         role
     } = useComponent();
@@ -32,11 +29,11 @@ export default function App() {
 
 
             <HashRouter>
-                <NavBar isAdmin={isAdmin} isLoggedIn={isLoggedIn} role={role}/>
+                <NavBar role={role}/>
                 <main>
                     <Routes>
 
-                        <Route path={"/"} element={<WelcomePage isAdmin={isAdmin} setAdmin={setAdmin}
+                        <Route path={"/"} element={<WelcomePage
                                                                 handleRegister={handleRegister}
                                                                 handleLogin={handleLogin}
                                                                 handleLogout={handleLogout} me={me} role={role}/>}/>

@@ -7,21 +7,12 @@ export default function useComponent() {
 
     const [component, setComponent] = useState("")
     const [components, setComponents] = useState([]);
-    const [isAdmin, setIsAdmin] = useState(false)
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [me, setMe] = useState("")
     const [role, setRole] = useState("")
 
     useEffect(() => {
         getAllComponents()
     }, [])
-
-    function setAdmin() {
-
-        isAdmin ? setIsAdmin(false) : setIsAdmin(true)
-        isLoggedIn ? setIsLoggedIn(false) : setIsLoggedIn(true)
-
-    }
 
     function handleLogin(username: string, password: string) {
         axios.get("api/user/login", {auth: {username, password}})
@@ -81,17 +72,12 @@ export default function useComponent() {
         handleLogout,
         deleteFunction,
         editComponent,
-        setAdmin,
         components,
         component,
-        isAdmin,
-        setIsLoggedIn,
-        isLoggedIn,
         setComponent,
         setMe,
         me,
         role
-
     }
 
 }
