@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import './WelcomePage.css';
 import {NavLink, useNavigate} from "react-router-dom";
 
@@ -40,14 +40,16 @@ export default function WelcomePage(props: WelcomePageProps) {
 
                     <button onClick={() => {
 
+                      props.handleLogin(username, password)
+
                         if (props.role === "ADMIN") {
                             navigate("/admin/AdminCreationPage")
                         } else {
                             navigate("/user/Homepage")
                         }
 
-                        props.handleLogin(username, password);
-                        console.log(props.role + "djsakldjasplö")
+
+                        console.log("your role is " + props.role)
 
                     }}>Login
 
@@ -59,6 +61,7 @@ export default function WelcomePage(props: WelcomePageProps) {
                 : <>
                     <p>Angemeldet als: {props.me} {props.role}</p>
                     <button onClick={() => {
+                        console.log("after login" + props.role)
                         refreshPage()
                         props.handleLogout();
 

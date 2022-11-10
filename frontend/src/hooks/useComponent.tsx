@@ -14,8 +14,8 @@ export default function useComponent() {
         getAllComponents()
     }, [])
 
-    function handleLogin(username: string, password: string) {
-        axios.get("api/user/login", {auth: {username, password}})
+    async function handleLogin(username: string, password: string) {
+      await axios.get("api/user/login", {auth: {username, password}})
             .then(response => response.data)
             .then((data: LoginReturn) => {
                 setMe(data.username);
