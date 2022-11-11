@@ -1,6 +1,5 @@
 package de.neuefische.backend.security.controller;
 
-import de.neuefische.backend.security.model.AppUser;
 import de.neuefische.backend.security.model.AppUserDTO;
 import de.neuefische.backend.security.model.CreateUserDTO;
 import de.neuefische.backend.security.service.UserService;
