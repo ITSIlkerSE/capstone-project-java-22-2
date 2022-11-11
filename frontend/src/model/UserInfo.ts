@@ -1,4 +1,4 @@
-export type LoginReturn = {
+export type UserInfo = {
 
     username: string;
     roles: string[];

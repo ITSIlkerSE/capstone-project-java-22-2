@@ -1,20 +1,36 @@
-import {NavLink} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
 import React from "react";
 import './NavBar.css';
+import useLogin from "../hooks/useLogin";
+import {UserInfo} from "../model/UserInfo";
 
-type NavbarProps = {
-
-    role: string;
+type NavBarProps = {
+    me: UserInfo | undefined;
 }
 
-
-export default function NavBar(props: NavbarProps) {
+export default function NavBar(props: NavBarProps) {
 
     const [isDropdown, setIsDropdown] = React.useState(false)
+    const {handleLogout} = useLogin();
 
     function toggleNav() {
         isDropdown ? setIsDropdown(false) : setIsDropdown(true);
     }
+
+    const nav = useNavigate()
+
+    const refreshPage = () => {
+        window.location.reload();
+    }
+
+    function isAdmin() {
+        if (props.me && props.me.roles.find(role => role === "ADMIN")) {
+            return true
+        } else {
+            return false
+        }
+    }
+
 
     return (
         <div className="navbar">
@@ -28,13 +44,32 @@ export default function NavBar(props: NavbarProps) {
             </div>
 
             <ul className={isDropdown ? "dropdown__links animateIn" : "dropdown__links animateOut"}>
-                <NavLink onClick={toggleNav} to={"/"}>WelcomePage</NavLink>
-                <NavLink onClick={toggleNav} to={"user/RegisterPage"}>Register</NavLink>
-                <NavLink onClick={toggleNav} to={"user/Homepage"}>Homepage</NavLink>
-                {props.role === "ADMIN" && (
-                    <NavLink onClick={toggleNav} to={"admin/AdminCreationPage"}>AdminCreationPage</NavLink>)}
-                {props.role === "ADMIN" &&
+
+
+                {isAdmin() &&
+                    <NavLink onClick={toggleNav} to={"admin/AdminCreationPage"}>AdminCreationPage</NavLink>}
+                {isAdmin() &&
                     <NavLink onClick={toggleNav} to={"admin/AdminEditComponentsPage"}>EditPage</NavLink>}
+
+                {props.me &&
+                    <>
+                        <NavLink onClick={toggleNav} to={"user/Homepage"}>Homepage</NavLink>
+                        <NavLink onClick={toggleNav} to={"user/CheckPcPage"}>Check PC</NavLink>
+                        <NavLink onClick={toggleNav} to={"user/GeneratePcPage"}>Generate PC</NavLink>
+                        <NavLink onClick={toggleNav} to={"user/ComputifyPcPage"}>Computify PC</NavLink>
+
+                        <p>Angemeldet als: {props.me?.username}</p>
+
+                        <button onClick={() => {
+                            nav("/")
+                            handleLogout()
+                            refreshPage();
+
+
+                        }}>Logout
+                        </button>
+                    </>
+                }
 
             </ul>
         </div>

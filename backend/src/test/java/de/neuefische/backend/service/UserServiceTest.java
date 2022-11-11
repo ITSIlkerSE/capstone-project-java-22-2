@@ -1,10 +1,10 @@
 package de.neuefische.backend.service;
 
-import de.neuefische.backend.model.AppUser;
-import de.neuefische.backend.model.CreateUserDTO;
-import de.neuefische.backend.repo.AppUserRepository;
+import de.neuefische.backend.security.model.AppUser;
+import de.neuefische.backend.security.model.CreateUserDTO;
+import de.neuefische.backend.security.repo.AppUserRepository;
+import de.neuefische.backend.security.service.UserService;
 import org.junit.jupiter.api.Test;
-import org.junit.platform.commons.function.Try;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 

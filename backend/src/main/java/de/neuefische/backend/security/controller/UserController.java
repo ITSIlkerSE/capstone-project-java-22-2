@@ -1,9 +1,9 @@
-package de.neuefische.backend.controller;
+package de.neuefische.backend.security.controller;
 
-import de.neuefische.backend.model.AppUser;
-import de.neuefische.backend.model.AppUserDTO;
-import de.neuefische.backend.model.CreateUserDTO;
-import de.neuefische.backend.service.UserService;
+import de.neuefische.backend.security.model.AppUser;
+import de.neuefische.backend.security.model.AppUserDTO;
+import de.neuefische.backend.security.model.CreateUserDTO;
+import de.neuefische.backend.security.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
@@ -38,7 +38,7 @@ public class UserController {
     }
 
     @PostMapping("register")
-    public AppUser register(@RequestBody CreateUserDTO createUserDTO) throws CloneNotSupportedException {
+    public String register(@RequestBody CreateUserDTO createUserDTO) throws CloneNotSupportedException {
 
         return userService.register(createUserDTO);
     }

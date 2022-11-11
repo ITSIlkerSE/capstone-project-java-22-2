@@ -1,4 +1,4 @@
-package de.neuefische.backend.model;
+package de.neuefische.backend.security.model;
 
 
 import lombok.AllArgsConstructor;
@@ -8,9 +8,6 @@ import lombok.NoArgsConstructor;
 
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
 
 public class CreateUserDTO {
 

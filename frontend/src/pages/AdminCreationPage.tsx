@@ -50,9 +50,11 @@ export default function AdminCreationPage(props: AddComponentPageProps) {
             let newComponent = {
                 name, category, combinationCode, score, price, classification
             }
-            props.addComponent(newComponent)}
-         else {alert("You must type in digits!")}
+            props.addComponent(newComponent)
+        } else {
+            alert("You must type in digits!")
         }
+    }
 
     const mainboardFilter = props.components.filter((component) => (component.category === "Mainboard"))
 
@@ -71,6 +73,10 @@ export default function AdminCreationPage(props: AddComponentPageProps) {
     const powerAdapterFilter = props.components.filter((component) => (component.category === "Power adapter"))
 
     const towerFilter = props.components.filter((component) => (component.category === "Tower"))
+
+    /*
+    users = users.filter(obj => obj.name == filter.name && obj.address == filter.address comb)
+     */
 
 
     return (
@@ -100,8 +106,6 @@ export default function AdminCreationPage(props: AddComponentPageProps) {
 
 
                 </div>
-
-
 
 
                 <button onClick={() => props.deleteComponent(id)}>Delete</button>
