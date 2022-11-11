@@ -1,6 +1,6 @@
 package de.neuefische.backend.security;
 
-import de.neuefische.backend.service.AppUserDetailService;
+import de.neuefische.backend.security.service.AppUserDetailService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;

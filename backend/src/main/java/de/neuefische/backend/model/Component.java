@@ -26,7 +26,7 @@ public class Component {
 
     private Float price;
 
-    private String combinationCode;
+    private String combinationCode;  // xxx, xxy, xyx, yxx
 
     private String score;
 

@@ -1,47 +1,16 @@
 import {useEffect, useState} from "react";
 import {AdminComponent} from "../model/AdminComponent";
 import axios from "axios";
-import {LoginReturn} from "../model/LoginReturn";
 
 export default function useComponent() {
 
     const [component, setComponent] = useState("")
     const [components, setComponents] = useState([]);
-    const [isAdmin, setIsAdmin] = useState(false)
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [me, setMe] = useState("")
-    const [role, setRole] = useState("")
 
     useEffect(() => {
         getAllComponents()
     }, [])
 
-    function setAdmin() {
-
-        isAdmin ? setIsAdmin(false) : setIsAdmin(true)
-        isLoggedIn ? setIsLoggedIn(false) : setIsLoggedIn(true)
-
-    }
-
-    function handleLogin(username: string, password: string) {
-        axios.get("api/user/login", {auth: {username, password}})
-            .then(response => response.data)
-            .then((data: LoginReturn) => {
-                setMe(data.username);
-                setRole(data.roles[0])
-            })
-            .catch(() => alert("Das Passwort war falsch!"))
-    }
-
-    function handleRegister(username: string, password: string, emailAddress: string) {
-        axios.post("api/user/register", {username, password, emailAddress})
-            .then(response => response.data)
-    }
-
-    function handleLogout() {
-        axios.get("api/user/logout")
-            .then(() => setMe(""))
-    }
 
     const addComponent = (component: AdminComponent) => {
         axios.post("/api/component", component)
@@ -76,22 +45,11 @@ export default function useComponent() {
         addComponent,
         getAllComponents,
         getComponentById,
-        handleLogin,
-        handleRegister,
-        handleLogout,
         deleteFunction,
         editComponent,
-        setAdmin,
         components,
         component,
-        isAdmin,
-        setIsLoggedIn,
-        isLoggedIn,
-        setComponent,
-        setMe,
-        me,
-        role
-
+        setComponent
     }
 
 }

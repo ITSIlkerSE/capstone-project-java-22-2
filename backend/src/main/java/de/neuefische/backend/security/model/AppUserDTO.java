@@ -1,21 +1,21 @@
-package de.neuefische.backend.model;
-
+package de.neuefische.backend.security.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
 
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 
-public class CreateUserDTO {
+public class AppUserDTO {
 
     private String username;
-    private String password;
-    private String emailAddress;
+
+    private List<String> roles;
 
 }

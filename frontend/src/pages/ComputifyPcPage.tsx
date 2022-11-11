@@ -1,7 +1,6 @@
 import React from "react";
 
-
-export default function Homepage() {
+export default function ComputifyPcPage() {
 
 
 
@@ -9,9 +8,7 @@ export default function Homepage() {
     return(
 
         <div className="content">
-            <h3>Homepage</h3>
-            <button>Pc check</button>
-            <button>generate pc</button>
+            <h3>ComputifyPcPage</h3>
             <button>check-in computify</button>
         </div>
 

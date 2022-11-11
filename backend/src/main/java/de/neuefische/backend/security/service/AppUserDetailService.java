@@ -1,7 +1,7 @@
-package de.neuefische.backend.service;
+package de.neuefische.backend.security.service;
 
-import de.neuefische.backend.model.AppUser;
-import de.neuefische.backend.repo.AppUserRepository;
+import de.neuefische.backend.security.model.AppUser;
+import de.neuefische.backend.security.repo.AppUserRepository;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
