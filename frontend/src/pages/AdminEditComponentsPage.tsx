@@ -38,8 +38,6 @@ export default function AdminEditComponentsPage(props: AdminEditComponentsPagePr
         }
 
 
-        setComponent(component);
-
         props.editComponent(id, updateComponent);
 
 
