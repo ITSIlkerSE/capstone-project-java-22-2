@@ -11,6 +11,7 @@ export default function CheckPcPage(props: CheckPcPageProps) {
 
     const [selectedComponent, setSelectedComponent] = useState("")
 
+
     console.log("select", selectedComponent)
     return (
 
