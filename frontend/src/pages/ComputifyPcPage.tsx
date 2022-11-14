@@ -303,7 +303,7 @@ export default function GeneratePcPage(props: GeneratePcPageProps) {
                     setSelectedComponents(initalComponents);
 
 
-                }}>zurück
+                }}>Back
                 </button>
             </>
 
