@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import {AdminComponent} from "../model/AdminComponent";
 import ResultCalc from "../components/ResultCalc";
 

@@ -34,11 +34,11 @@ export default function CheckPcPage(props: CheckPcPageProps) {
 
             </select>
 
-            <a href={`https://google.com/search?q=${selectedComponent}`} target={"_blank"}>
+            <a href={`https://google.com/search?q=${selectedComponent}`} target={"_blank"} rel="noreferrer">
                 <button>Search on google</button>
             </a>
             <a href={`https://www.idealo.de/preisvergleich/MainSearchProductCategory.html?q=${selectedComponent}`}
-               target={"_blank"}>
+               target={"_blank"} rel="noreferrer">
                 <button>Search on idealo</button>
             </a>
             <button>Pc check</button>
