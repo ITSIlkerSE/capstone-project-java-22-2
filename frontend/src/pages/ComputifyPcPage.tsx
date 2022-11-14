@@ -55,8 +55,6 @@ export default function GeneratePcPage(props: GeneratePcPageProps) {
 
     const towerFilter = props.components.filter((component) => (component.category === "Tower"))
 
-    console.log(counter)
-
     function handleSocketValue(event: any) {
 
         setSelectedComponents((prevState) => {
@@ -286,14 +284,9 @@ export default function GeneratePcPage(props: GeneratePcPageProps) {
                 </button>
             </>
 
-
             }
 
 
         </div>
-
-
     )
-
-
 }
