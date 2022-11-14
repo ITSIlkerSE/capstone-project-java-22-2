@@ -1,17 +1,12 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import {AdminComponent} from "../model/AdminComponent";
 import ResultCalc from "../components/ResultCalc";
 
 type GeneratePcPageProps = {
-
     components: AdminComponent[];
-
 }
 
 export default function GeneratePcPage(props: GeneratePcPageProps) {
-
-
-    const [counter, setCounter] = useState(0);
 
     const initalComponents =
 
@@ -25,7 +20,6 @@ export default function GeneratePcPage(props: GeneratePcPageProps) {
             ram: "",
             sound: "",
             hd: ""
-
         }
 
 
@@ -36,9 +30,11 @@ export default function GeneratePcPage(props: GeneratePcPageProps) {
     const [combCode, setCombCode] = useState("");
     const [classificationValue, setClassificationValue] = useState("");
     const [isShowResult, setIsShowResult] = useState(false);
+    const [counter, setCounter] = useState(0);
 
 
     const filterOnCode = allComponents.filter((SynCpuMb) => SynCpuMb.combinationCode.includes(combCode))
+
     const filterOnClassifcation = allComponents.filter((SynGraPa) => SynGraPa.classification.includes(classificationValue))
 
     const mainboardFilter = allComponents.filter((component) => (component.category === "Mainboard"))
@@ -59,19 +55,14 @@ export default function GeneratePcPage(props: GeneratePcPageProps) {
 
     const towerFilter = props.components.filter((component) => (component.category === "Tower"))
 
-    console.log(counter)
-
     function handleSocketValue(event: any) {
 
         setSelectedComponents((prevState) => {
             return {
                 ...prevState,
                 [event.target.name]: myComponent
-
-
             }
         })
-
 
         let myComponent = allComponents.find((component) => component.id === event.target.value);
 
@@ -83,18 +74,14 @@ export default function GeneratePcPage(props: GeneratePcPageProps) {
 
     function handlePowerAdapterValue(event: any) {
 
-
         let myComponent = allComponents.find((component) => component.id === event.target.value);
 
         setSelectedComponents((prevState) => {
             return {
                 ...prevState,
                 [event.target.name]: myComponent
-
-
             }
         })
-
 
         if (myComponent) {
             let classificationValue = myComponent.classification;
@@ -110,13 +97,9 @@ export default function GeneratePcPage(props: GeneratePcPageProps) {
             return {
                 ...prevState,
                 [event.target.name]: myComponent
-
-
             }
         })
-
     }
-
 
     return (
 
@@ -149,7 +132,7 @@ export default function GeneratePcPage(props: GeneratePcPageProps) {
 
                             <p>CPU's</p>
                             <select name="cpu" onChange={handleChange}>
-                                <option defaultValue=""  disabled selected>Select your option</option>
+                                <option defaultValue="" disabled selected>Select your option</option>
                                 {cpuFilter.map((component) => <option key={component.id}
                                                                       value={component.id}>{component.name}</option>)}
                             </select>
@@ -164,7 +147,7 @@ export default function GeneratePcPage(props: GeneratePcPageProps) {
 
                             <p>CPU coolers</p>
                             <select name="cooler" onChange={handleChange}>
-                                <option defaultValue=""  disabled selected>Select your option</option>
+                                <option defaultValue="" disabled selected>Select your option</option>
                                 {cpuCoolerFilter.map((component) => <option key={component.id}
                                                                             value={component.id}>{component.name}</option>)}
                             </select>
@@ -179,7 +162,7 @@ export default function GeneratePcPage(props: GeneratePcPageProps) {
 
                             <p>Graphics cards</p>
                             <select name="graphic" onChange={handlePowerAdapterValue}>
-                                <option defaultValue=""  disabled selected>Select your option</option>
+                                <option defaultValue="" disabled selected>Select your option</option>
                                 {graphicCardsFilter.map((component) => <option key={component.id}
                                                                                value={component.id}>{component.name}</option>)}
                             </select>
@@ -195,12 +178,11 @@ export default function GeneratePcPage(props: GeneratePcPageProps) {
 
                             <p>RAM's</p>
                             <select name="ram" onChange={handleChange}>
-                                <option defaultValue=""  disabled selected>Select your option</option>
+                                <option defaultValue="" disabled selected>Select your option</option>
                                 {ramFilter.map((component) => <option key={component.id}
                                                                       value={component.id}>{component.name}</option>)}
                             </select>
                             <button disabled={selectedComponents.ram === ""} onClick={() => setCounter(5)}>Add</button>
-
                         </div>
 
                     }
@@ -208,10 +190,9 @@ export default function GeneratePcPage(props: GeneratePcPageProps) {
                     {counter >= 5 &&
                         <div className="admin__row">
 
-
                             <p>Hard disks</p>
                             <select name="hd" onChange={handleChange}>
-                                <option defaultValue=""  disabled selected>Select your option</option>
+                                <option defaultValue="" disabled selected>Select your option</option>
                                 {hardDiskFilter.map((component) => <option key={component.id}
                                                                            value={component.id}>{component.name}</option>)}
                             </select>
@@ -224,7 +205,7 @@ export default function GeneratePcPage(props: GeneratePcPageProps) {
                         <div className="admin__row">
                             <p>Soundcards</p>
                             <select name="sound" onChange={handleChange}>
-                                <option defaultValue=""  disabled selected>Select your option</option>
+                                <option defaultValue="" disabled selected>Select your option</option>
                                 {soundcardFilter.map((component) => <option key={component.id}
                                                                             value={component.id}>{component.name}</option>)}
                             </select>
@@ -238,7 +219,7 @@ export default function GeneratePcPage(props: GeneratePcPageProps) {
 
                             <p>Power adapters</p>
                             <select name="power" onChange={handleChange}>
-                                <option defaultValue=""  disabled selected>Select your option</option>
+                                <option defaultValue="" disabled selected>Select your option</option>
                                 {powerAdapterFilter.map((component) => <option key={component.id}
                                                                                value={component.id}>{component.name}</option>)}
                             </select>
@@ -253,7 +234,7 @@ export default function GeneratePcPage(props: GeneratePcPageProps) {
 
                             <p>Towers</p>
                             <select name="tower" onChange={handleChange}>
-                                <option defaultValue=""  disabled selected>Select your option</option>
+                                <option defaultValue="" disabled selected>Select your option</option>
                                 {towerFilter.map((component) => <option key={component.id}
                                                                         value={component.id}>{component.name}</option>)}
                             </select>
@@ -272,11 +253,8 @@ export default function GeneratePcPage(props: GeneratePcPageProps) {
                             let myResult: any = []
                             myResult = Object.values(selectedComponents);
 
-
                             setResult(myResult);
-
                             setIsShowResult(true);
-
 
                         }}>Computify
                         </button>
@@ -302,19 +280,13 @@ export default function GeneratePcPage(props: GeneratePcPageProps) {
                     setCounter(0);
                     setSelectedComponents(initalComponents);
 
-
                 }}>Back
                 </button>
             </>
-
 
             }
 
 
         </div>
-
-
     )
-
-
 }

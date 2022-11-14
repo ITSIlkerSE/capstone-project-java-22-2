@@ -1,10 +1,7 @@
 type myResultProps = {
 
     result: any
-
-
 }
-
 
 function ResultCalc(props: myResultProps) {
 
