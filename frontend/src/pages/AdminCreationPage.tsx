@@ -75,7 +75,7 @@ export default function AdminCreationPage(props: AddComponentPageProps) {
     const towerFilter = props.components.filter((component) => (component.category === "Tower"))
 
     /*
-    users = users.filter(obj => obj.name == filter.name && obj.address == filter.address comb)
+    C = users.filter(obj => obj.name == filter.name && obj.address == filter.address comb)
      */
 
 

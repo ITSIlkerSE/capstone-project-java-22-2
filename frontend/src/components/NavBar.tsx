@@ -57,7 +57,7 @@ export default function NavBar(props: NavBarProps) {
                         <NavLink onClick={toggleNav} to={"user/CheckPcPage"}>Check PC</NavLink>
                         <NavLink onClick={toggleNav} to={"user/ComputifyPcPage"}>Computify PC</NavLink>
 
-                        <p>Angemeldet als: {props.me?.username}</p>
+                        <p style={{color: "white"}}>Angemeldet als: {props.me?.username}</p>
 
                         <button onClick={() => {
                             nav("/")
