@@ -11,8 +11,8 @@ export default function Homepage() {
 
         <div className="content">
             <h3>Homepage</h3>
-            <NavLink to={"/user/ComputifyPcPage"}><button>check-in computify</button></NavLink>
-            <NavLink to={"/user/CheckPcPage"}><button>Pc check</button></NavLink>
+            <NavLink to={"/user/ComputifyPcPage"}><button>Computify</button></NavLink>
+            <NavLink to={"/user/CheckPcPage"}><button>Check Components</button></NavLink>
         </div>
 
 

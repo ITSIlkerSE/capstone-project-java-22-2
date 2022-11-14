@@ -128,7 +128,7 @@ export default function GeneratePcPage(props: GeneratePcPageProps) {
                     <div className={"admin__row"}>
                         <p>Choose your mainboard :</p>
                         <select name="mainboard" onChange={handleSocketValue}>
-                            <option value="" disabled selected>Select your option</option>
+                            <option defaultValue="" disabled selected>Select your option</option>
                             {mainboardFilter.map((component) =>
 
                                 <option key={component.id}
@@ -149,7 +149,7 @@ export default function GeneratePcPage(props: GeneratePcPageProps) {
 
                             <p>CPU's</p>
                             <select name="cpu" onChange={handleChange}>
-                                <option value="" disabled selected>Select your option</option>
+                                <option defaultValue=""  disabled selected>Select your option</option>
                                 {cpuFilter.map((component) => <option key={component.id}
                                                                       value={component.id}>{component.name}</option>)}
                             </select>
@@ -164,7 +164,7 @@ export default function GeneratePcPage(props: GeneratePcPageProps) {
 
                             <p>CPU coolers</p>
                             <select name="cooler" onChange={handleChange}>
-                                <option value="" disabled selected>Select your option</option>
+                                <option defaultValue=""  disabled selected>Select your option</option>
                                 {cpuCoolerFilter.map((component) => <option key={component.id}
                                                                             value={component.id}>{component.name}</option>)}
                             </select>
@@ -179,7 +179,7 @@ export default function GeneratePcPage(props: GeneratePcPageProps) {
 
                             <p>Graphics cards</p>
                             <select name="graphic" onChange={handlePowerAdapterValue}>
-                                <option value="" disabled selected>Select your option</option>
+                                <option defaultValue=""  disabled selected>Select your option</option>
                                 {graphicCardsFilter.map((component) => <option key={component.id}
                                                                                value={component.id}>{component.name}</option>)}
                             </select>
@@ -195,7 +195,7 @@ export default function GeneratePcPage(props: GeneratePcPageProps) {
 
                             <p>RAM's</p>
                             <select name="ram" onChange={handleChange}>
-                                <option value="" disabled selected>Select your option</option>
+                                <option defaultValue=""  disabled selected>Select your option</option>
                                 {ramFilter.map((component) => <option key={component.id}
                                                                       value={component.id}>{component.name}</option>)}
                             </select>
@@ -211,7 +211,7 @@ export default function GeneratePcPage(props: GeneratePcPageProps) {
 
                             <p>Hard disks</p>
                             <select name="hd" onChange={handleChange}>
-                                <option value="" disabled selected>Select your option</option>
+                                <option defaultValue=""  disabled selected>Select your option</option>
                                 {hardDiskFilter.map((component) => <option key={component.id}
                                                                            value={component.id}>{component.name}</option>)}
                             </select>
@@ -224,7 +224,7 @@ export default function GeneratePcPage(props: GeneratePcPageProps) {
                         <div className="admin__row">
                             <p>Soundcards</p>
                             <select name="sound" onChange={handleChange}>
-                                <option value="" disabled selected>Select your option</option>
+                                <option defaultValue=""  disabled selected>Select your option</option>
                                 {soundcardFilter.map((component) => <option key={component.id}
                                                                             value={component.id}>{component.name}</option>)}
                             </select>
@@ -238,7 +238,7 @@ export default function GeneratePcPage(props: GeneratePcPageProps) {
 
                             <p>Power adapters</p>
                             <select name="power" onChange={handleChange}>
-                                <option value="" disabled selected>Select your option</option>
+                                <option defaultValue=""  disabled selected>Select your option</option>
                                 {powerAdapterFilter.map((component) => <option key={component.id}
                                                                                value={component.id}>{component.name}</option>)}
                             </select>
@@ -253,7 +253,7 @@ export default function GeneratePcPage(props: GeneratePcPageProps) {
 
                             <p>Towers</p>
                             <select name="tower" onChange={handleChange}>
-                                <option value="" disabled selected>Select your option</option>
+                                <option defaultValue=""  disabled selected>Select your option</option>
                                 {towerFilter.map((component) => <option key={component.id}
                                                                         value={component.id}>{component.name}</option>)}
                             </select>
