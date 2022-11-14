@@ -200,6 +200,11 @@ button:active{
     transform: scale(95%);
 }
 
+button:disabled{
+    transform: scale(100%);
+    background-color: grey;
+}
+
 
 
 .admin__row{
@@ -208,6 +213,7 @@ button:active{
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    flex-direction: column;
 }
 .admin__row select{
  height: fit-content;

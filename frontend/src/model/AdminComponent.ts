@@ -6,7 +6,7 @@ export type AdminComponent = {
     combinationCode: string;
     score: string;
     price: string;
-    classification?: string;
+    classification: string;
     isAdmin?: boolean;
     isLoggedIn?: boolean;
 

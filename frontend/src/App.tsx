@@ -10,7 +10,6 @@ import RegisterPage from "./pages/RegisterPage";
 import useLogin from "./hooks/useLogin";
 import Homepage from "./pages/Homepage";
 import CheckPcPage from "./pages/CheckPcPage";
-import GeneratePcPage from "./pages/GeneratePcPage";
 import ComputifyPcPage from "./pages/ComputifyPcPage";
 
 
@@ -39,29 +38,28 @@ export default function App() {
 
                         {isAdmin() &&
                             <>
-                                <Route path={"/admin/AdminCreationPage"}
+                                <Route path={"admin/AdminCreationPage"}
                                        element={<AdminCreationPage addComponent={addComponent} components={components}
                                                                    deleteComponent={deleteFunction}/>}/>
-                                <Route path={"/admin/AdminEditComponentsPage"}
+                                <Route path={"admin/AdminEditComponentsPage"}
                                        element={<AdminEditComponentsPage editComponent={editComponent}
                                                                          components={components}/>}/>
                             </>
-                        }
-                        {!me ?
+                        } 
+
                             <>
                             <Route path={"/"} element={<LoginPage handleLogin={handleLogin}/>}/>
-                            <Route path={"/user/RegisterPage"}
+                            <Route path={"user/RegisterPage"}
                                    element={<RegisterPage handleRegister={handleRegister}/>}/>
                             </>
-                            :
+
                             <>
-                            <Route path={"/user/Homepage"} element={<Homepage></Homepage>}></Route>
-                            <Route path={"/user/CheckPcPage"} element={<CheckPcPage></CheckPcPage>}></Route>
-                            <Route path={"/user/GeneratePcPage"} element={<GeneratePcPage components={components}></GeneratePcPage>}></Route>
-                            <Route path={"/user/ComputifyPcPage"} element={<ComputifyPcPage></ComputifyPcPage>}></Route>
+                            <Route path={"user/Homepage"} element={<Homepage></Homepage>}></Route>
+                            <Route path={"user/CheckPcPage"} element={<CheckPcPage components={components}></CheckPcPage>}></Route>
+                            <Route path={"user/ComputifyPcPage/*"} element={<ComputifyPcPage components={components}></ComputifyPcPage>}></Route>
 
                             </>
-                        }
+
                     </Routes>
                 </main>
             </HashRouter>

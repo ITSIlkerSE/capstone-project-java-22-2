@@ -1,4 +1,5 @@
 import React from "react";
+import {NavLink} from "react-router-dom";
 
 
 export default function Homepage() {
@@ -10,9 +11,8 @@ export default function Homepage() {
 
         <div className="content">
             <h3>Homepage</h3>
-            <button>Pc check</button>
-            <button>generate pc</button>
-            <button>check-in computify</button>
+            <NavLink to={"/user/ComputifyPcPage"}><button>Computify</button></NavLink>
+            <NavLink to={"/user/CheckPcPage"}><button>Check Components</button></NavLink>
         </div>
 
 
