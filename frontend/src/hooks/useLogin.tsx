@@ -19,7 +19,7 @@ export default function useLogin () {
         handleMe()
         getAllComponents()
 
-    }, [])
+    }, [getAllComponents, location.pathname])
 
     function handleMe(){
         axios.get("api/user/me")
