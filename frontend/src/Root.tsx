@@ -1,6 +1,6 @@
 import './App.css';
 import NavBar from "./components/NavBar";
-import {HashRouter, Route, Routes} from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 import AdminCreationPage from "./pages/AdminCreationPage";
 import AdminEditComponentsPage from "./pages/AdminEditComponentsPage";
 import LoginPage from "./pages/LoginPage";
