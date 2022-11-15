@@ -15,7 +15,6 @@ export default function useLogin () {
 
         if (location.pathname !== "/")
         handleMe()
-
     }, [])
 
     function handleMe(){
