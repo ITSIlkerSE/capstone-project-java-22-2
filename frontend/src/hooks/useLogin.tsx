@@ -9,6 +9,7 @@ export default function useLogin () {
     const [me, setMe] = useState <UserInfo | undefined> ()
 
     const location = useLocation()
+    const [logout, setLogout] = useState("")
 
 
     useEffect(() => {
