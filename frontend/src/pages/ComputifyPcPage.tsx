@@ -53,7 +53,7 @@ export default function GeneratePcPage(props: GeneratePcPageProps) {
 
     const powerAdapterFilter = filterOnClassifcation.filter((component) => (component.category === "Power adapter"))
 
-    const towerFilter = props.components.filter((component) => (component.category === "Tower"))
+    const towerFilter = filterOnClassifcation.filter((component) => (component.category === "Tower"))
 
     function handleSocketValue(event: any) {
 

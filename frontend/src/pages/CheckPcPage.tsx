@@ -27,6 +27,7 @@ export default function CheckPcPage(props: CheckPcPageProps) {
 
                     }
                 }}>
+                <option defaultValue="" disabled selected>Select your option</option>
                 {props.components.map((component) =>
                     <option key={component.id} value={component.id}>{component.name}</option>)}
 
@@ -39,7 +40,7 @@ export default function CheckPcPage(props: CheckPcPageProps) {
                target={"_blank"} rel="noreferrer">
                 <button>Search on idealo</button>
             </a>
-            <button>Pc check</button>
+
         </div>
 
 

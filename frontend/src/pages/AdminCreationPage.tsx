@@ -74,11 +74,6 @@ export default function AdminCreationPage(props: AddComponentPageProps) {
 
     const towerFilter = props.components.filter((component) => (component.category === "Tower"))
 
-    /*
-    C = users.filter(obj => obj.name == filter.name && obj.address == filter.address comb)
-     */
-
-
     return (
 
         <div className="content">
@@ -109,7 +104,6 @@ export default function AdminCreationPage(props: AddComponentPageProps) {
 
 
                 <button onClick={() => props.deleteComponent(id)}>Delete</button>
-                <button>look-up</button>
 
                 <div className={"admin__row"}>
                     <p>Mainboards</p>
