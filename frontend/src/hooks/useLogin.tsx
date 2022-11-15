@@ -2,7 +2,6 @@ import {useEffect, useState} from "react";
 import {UserInfo} from "../model/UserInfo";
 import axios from "axios";
 import {useLocation} from "react-router-dom";
-import useComponent from "./useComponent";
 
 export default function useLogin () {
 
@@ -10,7 +9,6 @@ export default function useLogin () {
     const [me, setMe] = useState <UserInfo | undefined> ()
 
     const location = useLocation()
-    const {getAllComponents} = useComponent()
 
 
     useEffect(() => {
@@ -18,7 +16,7 @@ export default function useLogin () {
         if (location.pathname !== "/")
         handleMe()
 
-    }, [getAllComponents, location.pathname])
+    }, [])
 
     function handleMe(){
         axios.get("api/user/me")
