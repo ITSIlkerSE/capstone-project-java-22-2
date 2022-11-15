@@ -15,7 +15,7 @@ export default function App() {
 
             <HashRouter>
 
-                <Root></Root>
+                <Root/>
 
             </HashRouter>
 
