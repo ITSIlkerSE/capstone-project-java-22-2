@@ -20,6 +20,13 @@ public class UserController {
 
     private UserService userService;
 
+    @GetMapping("me")
+    public AppUserDTO me(){
+        return userService.getUserByUsername(SecurityContextHolder
+                .getContext()
+                .getAuthentication()
+                .getName());
+    }
 
 
     @GetMapping("login")
