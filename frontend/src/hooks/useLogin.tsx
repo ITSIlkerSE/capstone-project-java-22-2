@@ -17,7 +17,7 @@ export default function useLogin () {
 
         if (location.pathname !== "/")
         handleMe()
-        console.log(getAllComponents())
+        getAllComponents()
 
     }, [])
 
