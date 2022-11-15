@@ -14,7 +14,7 @@ export default function useLogin () {
 
         if (location.pathname !== "/")
         handleMe()
-    }, [])
+    },)
 
     function handleMe(){
         axios.get("api/user/me")
