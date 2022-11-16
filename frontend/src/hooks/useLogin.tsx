@@ -10,13 +10,11 @@ export default function useLogin () {
 
     const location = useLocation()
 
-
     useEffect(() => {
 
         if (location.pathname !== "/")
         handleMe()
-
-    }, [])
+    },[])
 
     function handleMe(){
         axios.get("api/user/me")
