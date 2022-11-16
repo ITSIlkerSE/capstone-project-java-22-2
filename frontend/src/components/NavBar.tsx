@@ -19,10 +19,6 @@ export default function NavBar(props: NavBarProps) {
 
     const nav = useNavigate()
 
-    const refreshPage = () => {
-        window.location.reload();
-    }
-
     function isAdmin() {
         if (props.me && props.me.roles.find(role => role === "ADMIN")) {
             return true

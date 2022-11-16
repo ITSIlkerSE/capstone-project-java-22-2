@@ -9,8 +9,7 @@ export default function useLogin() {
     const [me, setMe] = useState<UserInfo | undefined>()
 
     const location = useLocation()
-    
-    // @ts-ignore
+
     useEffect(() => {
 
         if (location.pathname !== "/")

@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import './LoginPage.css';
-import {NavLink, useNavigate} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 
 type LoginPageProps = {
 
