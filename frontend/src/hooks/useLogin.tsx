@@ -3,28 +3,28 @@ import {UserInfo} from "../model/UserInfo";
 import axios from "axios";
 import {useLocation} from "react-router-dom";
 
-export default function useLogin () {
+export default function useLogin() {
 
 
-    const [me, setMe] = useState <UserInfo | undefined> ()
+    const [me, setMe] = useState<UserInfo | undefined>()
 
     const location = useLocation()
 
     useEffect(() => {
 
         if (location.pathname !== "/")
-        handleMe()
+            handleMe()
+        
+    }, [location.pathname])
 
-    },[]) //NOSONAR
-
-    function handleMe(){
+    function handleMe() {
         axios.get("api/user/me")
             .then(response => response.data)
             .then((data) => setMe(data))
     }
 
     function handleLogin(username: string, password: string) {
-        axios.get("api/user/login", {auth: {username, password}})
+       return axios.get("api/user/login", {auth: {username, password}})
             .then(response => response.data)
             .then((data) => setMe(data))
             .catch(() => alert("Das Passwort war falsch!"))
@@ -38,6 +38,7 @@ export default function useLogin () {
     function handleLogout() {
         axios.get("api/user/logout")
             .then(() => setMe(undefined))
+            .finally(() => window.location.reload())
     }
 
     return {handleLogin, handleRegister, handleLogout, me}

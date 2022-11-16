@@ -46,21 +46,22 @@ export default function Root() {
                         </>
                     }
 
-                    <>
-                        <Route path={"/"} element={<LoginPage handleLogin={handleLogin}/>}/>
-                        <Route path={"user/RegisterPage"}
-                               element={<RegisterPage handleRegister={handleRegister}/>}/>
-                    </>
+                    {!me ?
+                        <>
+                            <Route path={"/"} element={<LoginPage handleLogin={handleLogin}/>}/>
+                            <Route path={"user/RegisterPage"}
+                                   element={<RegisterPage handleRegister={handleRegister}/>}/>
+                        </>
+                        :
+                        <>
+                            <Route path={"/"} element={<Homepage></Homepage>}></Route>
+                            <Route path={"user/CheckPcPage"}
+                                   element={<CheckPcPage components={components}></CheckPcPage>}></Route>
+                            <Route path={"user/ComputifyPcPage/*"}
+                                   element={<ComputifyPcPage components={components}></ComputifyPcPage>}></Route>
 
-                    <>
-                        <Route path={"user/Homepage"} element={<Homepage></Homepage>}></Route>
-                        <Route path={"user/CheckPcPage"}
-                               element={<CheckPcPage components={components}></CheckPcPage>}></Route>
-                        <Route path={"user/ComputifyPcPage/*"}
-                               element={<ComputifyPcPage components={components}></ComputifyPcPage>}></Route>
-
-                    </>
-
+                        </>
+                    }
                 </Routes>
             </main>
         </>
