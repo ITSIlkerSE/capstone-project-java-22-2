@@ -14,7 +14,8 @@ export default function useLogin () {
 
         if (location.pathname !== "/")
         handleMe()
-    },[])
+
+    },[]) //NOSONAR
 
     function handleMe(){
         axios.get("api/user/me")
