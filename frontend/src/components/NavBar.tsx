@@ -53,7 +53,7 @@ export default function NavBar(props: NavBarProps) {
 
                 {props.me &&
                     <>
-                        <NavLink onClick={toggleNav} to={"user/Homepage"}>Homepage</NavLink>
+                        <NavLink onClick={toggleNav} to={"/"}>Homepage</NavLink>
                         <NavLink onClick={toggleNav} to={"user/CheckPcPage"}>Check PC</NavLink>
                         <NavLink onClick={toggleNav} to={"user/ComputifyPcPage"}>Computify PC</NavLink>
 
@@ -62,8 +62,6 @@ export default function NavBar(props: NavBarProps) {
                         <button onClick={() => {
                             nav("/")
                             handleLogout()
-                            refreshPage();
-
 
                         }}>Logout
                         </button>

@@ -14,7 +14,6 @@ export default function LoginPage(props: LoginPageProps) {
 
     const [password, setPassword] = useState("")
     const [username, setUsername] = useState("")
-    const nav = useNavigate()
 
     return (
 
@@ -33,7 +32,6 @@ export default function LoginPage(props: LoginPageProps) {
 
                         props.handleLogin(username, password)
 
-                        nav("user/Homepage")
                     }}>Login
 
                     </button>
