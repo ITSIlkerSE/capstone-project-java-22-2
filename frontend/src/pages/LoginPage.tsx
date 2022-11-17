@@ -38,7 +38,7 @@ export default function LoginPage(props: LoginPageProps) {
                 </form>
 
 
-            <NavLink to={"user/RegisterPage"}>Create account</NavLink>
+            <NavLink to={"/user/RegisterPage"}>Create account</NavLink>
 
 
         </div>
