@@ -1,4 +1,4 @@
-import {NavLink, useNavigate} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import React from "react";
 import './NavBar.css';
 import useLogin from "../hooks/useLogin";
@@ -16,8 +16,6 @@ export default function NavBar(props: NavBarProps) {
     function toggleNav() {
         isDropdown ? setIsDropdown(false) : setIsDropdown(true);
     }
-
-    const nav = useNavigate()
 
     function isAdmin() {
         if (props.me && props.me.roles.find(role => role === "ADMIN")) {
