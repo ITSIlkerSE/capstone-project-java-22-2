@@ -43,5 +43,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         authorize.userDetailsService(appUserDetailService);
     }
 
-
 }
