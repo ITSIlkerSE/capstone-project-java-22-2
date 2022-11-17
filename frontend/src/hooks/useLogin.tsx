@@ -51,7 +51,7 @@ export default function useLogin() {
     function handleLogout() {
         axios.get("api/user/logout")
             .then(() => setMe(undefined))
-            .then(() => nav("/login"))
+            .then(() => window.location.reload())
     }
 
     return {handleLogin, handleRegister, handleLogout, me}
