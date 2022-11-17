@@ -41,7 +41,7 @@ export default function GeneratePcPage(props: GeneratePcPageProps) {
 
     const cpuFilter = filterOnCode.filter((component) => (component.category === "CPU"))
 
-    const cpuCoolerFilter = props.components.filter((component) => (component.category === "CPU cooler"))
+    const cpuCoolerFilter = filterOnClassifcation.filter((component) => (component.category === "CPU cooler"))
 
     const graphicCardsFilter = allComponents.filter((component) => (component.category === "Graphics card"))
 
