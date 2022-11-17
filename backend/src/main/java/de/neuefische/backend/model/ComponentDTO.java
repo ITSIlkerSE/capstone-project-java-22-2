@@ -22,6 +22,6 @@ public class ComponentDTO {
 
     private String combinationCode;
 
-    private String score;
+    private Float score;
 
 }

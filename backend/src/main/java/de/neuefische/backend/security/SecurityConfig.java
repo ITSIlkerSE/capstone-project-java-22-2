@@ -30,7 +30,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeHttpRequests()
                 .antMatchers("/").permitAll()
                 .antMatchers("/api/user/register").permitAll()
-                .antMatchers("/api/user/**").authenticated()
                 .antMatchers(HttpMethod.POST, "/api/component/**").hasAuthority("ADMIN")
                 .antMatchers(HttpMethod.PUT, "/api/component/**").hasAuthority("ADMIN")
                 .antMatchers(HttpMethod.DELETE, "/api/component/**").hasAuthority("ADMIN")
@@ -43,6 +42,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(AuthenticationManagerBuilder authorize) throws Exception {
         authorize.userDetailsService(appUserDetailService);
     }
-
 
 }
