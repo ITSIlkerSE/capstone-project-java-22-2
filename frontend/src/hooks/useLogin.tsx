@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import {useCallback, useEffect, useState} from "react";
 import {UserInfo} from "../model/UserInfo";
 import axios from "axios";
 import {useLocation, useNavigate} from "react-router-dom";
@@ -7,32 +7,36 @@ export default function useLogin() {
 
 
     const [me, setMe] = useState<UserInfo | undefined>()
+    const nav = useNavigate()
+
+    const handleMe = useCallback(() => {
+        if (!me) {
+            axios.get("api/user/me")
+                .then(response => response.data)
+                .then((data) => setMe(data))
+                .catch(() => {
+                    if (!me) {
+                        nav("/login")
+                    }
+                })
+        }
+
+    }, [me, nav])
 
     const location = useLocation()
-    const nav = useNavigate()
+
 
     useEffect(() => {
 
         if (location.pathname !== "/login" && location.pathname !== "/user/RegisterPage")
             handleMe()
-        
-    }, [location.pathname])
 
-    function handleMe() {
-        axios.get("api/user/me")
+    }, [handleMe, location.pathname])
+
+
+    function handleLogin(username: string, password: string) {
+        axios.get("api/user/login", {auth: {username, password}})
             .then(response => response.data)
-            .then((data) => setMe(data))
-            .catch(()=> {
-                if(!me){
-                    nav("/login")
-                }
-            })
-
-    }
-
-     function handleLogin(username: string, password: string) {
-       axios.get("api/user/login", {auth: {username, password}})
-            .then(response =>response.data)
             .then((data) => setMe(data))
             .then(() => nav("/"))
             .catch(() => alert("Das Passwort war falsch!"))
@@ -47,7 +51,7 @@ export default function useLogin() {
     function handleLogout() {
         axios.get("api/user/logout")
             .then(() => setMe(undefined))
-            .finally(() => window.location.reload())
+            .then(() => nav("/login"))
     }
 
     return {handleLogin, handleRegister, handleLogout, me}
