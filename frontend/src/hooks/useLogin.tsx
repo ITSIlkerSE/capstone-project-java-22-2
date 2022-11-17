@@ -12,7 +12,7 @@ export default function useLogin() {
 
     useEffect(() => {
 
-        if (location.pathname !== "/")
+        if (location.pathname !== "/" && location.pathname !== "/user/RegisterPage")
             handleMe()
         
     }, [location.pathname])
