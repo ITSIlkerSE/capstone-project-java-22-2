@@ -15,13 +15,12 @@ export default function NavBar(props: NavBarProps) {
     const [animate, setAnimate] = useState("dropdown__links");
 
 
-
     function toggleNav() {
         isDropdown ? setIsDropdown(false) : setIsDropdown(true);
 
-        if(isDropdown){
+        if (isDropdown) {
             setAnimate("dropdown__links animateOut")
-        }else{
+        } else {
             setAnimate("dropdown__links animateIn")
         }
 
@@ -40,16 +39,15 @@ export default function NavBar(props: NavBarProps) {
         <div className="navbar">
             <h3>Check & Computify</h3>
 
-                <div className="menu-bars" onClick={toggleNav}>
-                    <div className={!isDropdown ? "menu-bar1" : "menu-bar1 change-menu-bar1"}></div>
-                    <div className={!isDropdown ? "menu-bar2" : "menu-bar2 change-menu-bar2"}></div>
-                    <div className={!isDropdown ? "menu-bar3" : "menu-bar3 change-menu-bar3"}></div>
+            <div className="menu-bars" onClick={toggleNav}>
+                <div className={!isDropdown ? "menu-bar1" : "menu-bar1 change-menu-bar1"}></div>
+                <div className={!isDropdown ? "menu-bar2" : "menu-bar2 change-menu-bar2"}></div>
+                <div className={!isDropdown ? "menu-bar3" : "menu-bar3 change-menu-bar3"}></div>
 
-                </div>
+            </div>
 
 
-
-            <ul className= {animate}>
+            <ul className={animate}>
 
 
                 {isAdmin() &&
@@ -69,7 +67,6 @@ export default function NavBar(props: NavBarProps) {
 
                         <button onClick={() => {
                             handleLogout()
-
 
 
                         }}>Logout
