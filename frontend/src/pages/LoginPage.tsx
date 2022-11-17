@@ -35,7 +35,6 @@ export default function LoginPage(props: LoginPageProps) {
                     }}>Login
 
                     </button>
-
                 </form>
 
 
