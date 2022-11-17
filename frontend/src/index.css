@@ -3,7 +3,8 @@
 
 
 :root{
-    --color-primary-blue: #004481;
+    --color-primary-blue: #3700B3;
+    --color-secondary-blue: #5a00de;
 }
 
 *{
@@ -15,6 +16,7 @@
 
 h2{
     text-align: center;
+    margin-bottom: 1em;
 }
 p{
     margin: 1em 0;
@@ -25,7 +27,7 @@ a{
 }
 
 main{
-    padding: 8em 2em;
+    padding: 8em 1em;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -167,9 +169,10 @@ button{
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    gap: 5em;
+    gap: 2.5em;
     height: 100vh;
     z-index: -1;
+    transform: translateX(-100%);
 
 
 }
@@ -235,14 +238,17 @@ button:disabled{
 
 .edit__card{
 
-    background-color: whitesmoke;
+    background-color: var(--color-secondary-blue);
+    color: white;
     border-radius: 10px;
     box-shadow: 0px 2px 5px 0px rgb(0 0 0 / 50%);
     padding: 1em;
-    width: 100%;
+    width: auto;
     display: flex;
     flex-direction: column;
     text-align: center;
+    margin-bottom: 1em;
+
 }
 .edit__card h3{
     text-align: center;
@@ -260,4 +266,27 @@ button:disabled{
     flex: 1;
 }
 
+.result{
+    display: flex;
+    gap: .5em;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    line-height: 1.5em;
 
+}
+
+
+.pop-in{
+    animation:  pop-in 0.3s ease 0.2s both;
+}
+
+
+
+@keyframes pop-in {
+
+0% { transform: scale(0)}
+    100%{transform: scale(1)}
+
+
+}

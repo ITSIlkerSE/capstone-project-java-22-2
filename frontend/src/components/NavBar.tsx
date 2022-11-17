@@ -1,5 +1,5 @@
 import {NavLink} from "react-router-dom";
-import React from "react";
+import React, {useState} from "react";
 import './NavBar.css';
 import useLogin from "../hooks/useLogin";
 import {UserInfo} from "../model/UserInfo";
@@ -10,11 +10,20 @@ type NavBarProps = {
 
 export default function NavBar(props: NavBarProps) {
 
-    const [isDropdown, setIsDropdown] = React.useState(false)
+    const [isDropdown, setIsDropdown] = useState(false)
     const {handleLogout} = useLogin();
+    const [animate, setAnimate] = useState("dropdown__links");
+
 
     function toggleNav() {
         isDropdown ? setIsDropdown(false) : setIsDropdown(true);
+
+        if (isDropdown) {
+            setAnimate("dropdown__links animateOut")
+        } else {
+            setAnimate("dropdown__links animateIn")
+        }
+
     }
 
     function isAdmin() {
@@ -37,7 +46,8 @@ export default function NavBar(props: NavBarProps) {
 
             </div>
 
-            <ul className={isDropdown ? "dropdown__links animateIn" : "dropdown__links animateOut"}>
+
+            <ul className={animate}>
 
 
                 {isAdmin() &&
@@ -48,6 +58,8 @@ export default function NavBar(props: NavBarProps) {
                 {props.me &&
                     <>
                         <NavLink onClick={toggleNav} to={"/"}>Homepage</NavLink>
+                        <NavLink onClick={toggleNav} to={"/"}>Placeholder</NavLink>
+                        <NavLink onClick={toggleNav} to={"/"}>Placeholder</NavLink>
                         <NavLink onClick={toggleNav} to={"user/CheckPcPage"}>Check PC</NavLink>
                         <NavLink onClick={toggleNav} to={"user/ComputifyPcPage"}>Computify PC</NavLink>
 
@@ -55,7 +67,6 @@ export default function NavBar(props: NavBarProps) {
 
                         <button onClick={() => {
                             handleLogout()
-
 
 
                         }}>Logout

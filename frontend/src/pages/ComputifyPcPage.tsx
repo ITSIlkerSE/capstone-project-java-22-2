@@ -247,13 +247,15 @@ export default function GeneratePcPage(props: GeneratePcPageProps) {
 
                     {counter === 9 &&
 
-                        <button onClick={() => {
+                        <button  onClick={() => {
 
                             let myResult: any = []
                             myResult = Object.values(selectedComponents);
 
                             setResult(myResult);
                             setIsShowResult(true);
+                            document.documentElement.scrollTop = 0;
+                            document.body.scrollTop = 0;
 
                         }}>Computify
                         </button>
