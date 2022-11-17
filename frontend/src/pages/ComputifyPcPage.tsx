@@ -35,7 +35,7 @@ export default function GeneratePcPage(props: GeneratePcPageProps) {
 
     const filterOnCode = allComponents.filter((SynCpuMb) => SynCpuMb.combinationCode.includes(combCode))
 
-    const filterOnClassifcation = allComponents.filter((SynGraPa) => SynGraPa.classification.includes(classificationValue))
+    const filterOnClassifcation = allComponents.filter((SynComp) => SynComp.classification.includes(classificationValue))
 
     const mainboardFilter = allComponents.filter((component) => (component.category === "Mainboard"))
 
@@ -47,7 +47,7 @@ export default function GeneratePcPage(props: GeneratePcPageProps) {
 
     const ramFilter = filterOnCode.filter((component) => (component.category === "RAM"))
 
-    const hardDiskFilter = props.components.filter((component) => (component.category === "Hard disk"))
+    const hardDiskFilter = filterOnClassifcation.filter((component) => (component.category === "Hard disk"))
 
     const soundcardFilter = props.components.filter((component) => (component.category === "Sound card"))
 
