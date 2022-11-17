@@ -43,7 +43,7 @@ public class UserControllerTest {
 
         when(idService.generateId()).thenReturn("1");
 
-        repo.save(new Component("1", "RTX 3080Ti", "Graphics cards", "High", 1000.00f, "2222-2222-2222", "879"));
+        repo.save(new Component("1", "RTX 3080Ti", "Graphics cards", "High", 1000.00f, "2222-2222-2222", 879));
 
         mockMvc.perform(MockMvcRequestBuilders.post("/api/component/{id}", "1"))
                 .andExpect(status().isUnauthorized());
