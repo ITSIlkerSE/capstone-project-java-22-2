@@ -57,19 +57,18 @@ export default function GeneratePcPage(props: GeneratePcPageProps) {
 
     function handleSocketValue(event: any) {
 
-        setSelectedComponents((prevState) => {
-            return {
-                ...prevState,
-                [event.target.name]: myComponent
-            }
-        })
-
         let myComponent = allComponents.find((component) => component.id === event.target.value);
 
         if (myComponent) {
             let code = myComponent.combinationCode
             setCombCode(code)
         }
+        setSelectedComponents((prevState) => {
+            return {
+                ...prevState,
+                [event.target.name]: myComponent
+            }
+        })
     }
 
     function handlePowerAdapterValue(event: any) {

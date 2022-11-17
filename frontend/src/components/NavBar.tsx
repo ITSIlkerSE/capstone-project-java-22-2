@@ -56,8 +56,9 @@ export default function NavBar(props: NavBarProps) {
                         <p style={{color: "white"}}>Angemeldet als: {props.me?.username}</p>
 
                         <button onClick={() => {
-                            nav("/")
                             handleLogout()
+
+
 
                         }}>Logout
                         </button>
