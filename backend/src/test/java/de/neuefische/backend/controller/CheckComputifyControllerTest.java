@@ -86,7 +86,7 @@ class CheckComputifyControllerTest {
 
         when(idService.generateId()).thenReturn("1");
 
-        repo.save(new Component("1", "RTX 3080Ti", "Graphics cards", "High", 1000.00f, "2222-2222-2222", 879));
+        repo.save(new Component("1", "RTX 3080Ti", "Graphics cards", "High", 1000.00f, "2222-2222-2222", 879f));
 
 
         String requestBody = """
@@ -130,7 +130,7 @@ class CheckComputifyControllerTest {
 
         when(idService.generateId()).thenReturn("1");
 
-        repo.save(new Component("1", "RTX 3080Ti", "Graphics cards", "High", 1000.00f, "2222-2222-2222", 879));
+        repo.save(new Component("1", "RTX 3080Ti", "Graphics cards", "High", 1000.00f, "2222-2222-2222", 879f));
 
         mockMvc.perform(MockMvcRequestBuilders
                         .get("/api/component/{id}", "1")
@@ -143,8 +143,8 @@ class CheckComputifyControllerTest {
     @Test
     void getAllComponents() throws Exception {
         //GIVEN
-        repo.save(new Component("1", "RTX 3080Ti", "Graphics cards", "High", 1000.00f, "2222-2222-2222", 879));
-        repo.save(new Component("2", "RTX 3080", "Graphics cards", "High", 1000.00f, "2222-2222-2222", 879));
+        repo.save(new Component("1", "RTX 3080Ti", "Graphics cards", "High", 1000.00f, "2222-2222-2222", 879f));
+        repo.save(new Component("2", "RTX 3080", "Graphics cards", "High", 1000.00f, "2222-2222-2222", 879f));
 
 
         //WHEN & THEN
@@ -183,7 +183,7 @@ class CheckComputifyControllerTest {
 
         when(idService.generateId()).thenReturn("1");
 
-        repo.save(new Component("1", "RTX 3080Ti", "Graphics cards", "High", 1000.00f, "2222-2222-2222", 879));
+        repo.save(new Component("1", "RTX 3080Ti", "Graphics cards", "High", 1000.00f, "2222-2222-2222", 879f));
 
         mockMvc.perform(MockMvcRequestBuilders
                         .delete("/api/component/{id}", "1")

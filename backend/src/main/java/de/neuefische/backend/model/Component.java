@@ -28,6 +28,6 @@ public class Component {
 
     private String combinationCode;  // xxx, xxy, xyx, yxx
 
-    private Integer score;
+    private Float score;
 
 }
