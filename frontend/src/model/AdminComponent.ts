@@ -10,5 +10,4 @@ export type AdminComponent = {
     isAdmin?: boolean;
     isLoggedIn?: boolean;
 
-
 }
