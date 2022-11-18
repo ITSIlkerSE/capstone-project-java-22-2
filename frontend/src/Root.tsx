@@ -12,6 +12,7 @@ import CheckComponentsPage from "./pages/CheckComponentsPage";
 import ComputifyPcPage from "./pages/ComputifyPcPage";
 import SetupCheckerPage from "./pages/SetupCheckerPage";
 import GenerateSetupPage from "./pages/GenerateSetupPage";
+import AboutPage from "./pages/AboutPage";
 
 
 export default function Root() {
@@ -61,6 +62,7 @@ export default function Root() {
                            element={<SetupCheckerPage components={components}></SetupCheckerPage>}></Route>
                     <Route path={"user/GenerateSetupPage/*"}
                            element={<GenerateSetupPage></GenerateSetupPage>}></Route>
+                    <Route path={"user/AboutPage"} element={<AboutPage></AboutPage>}></Route>
 
                 </Routes>
             </main>
