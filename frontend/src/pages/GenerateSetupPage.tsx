@@ -45,7 +45,7 @@ export default function GenerateSetupPage() {
             {!showClear &&
 
                 <div className={"generate__buttons"}>
-                    <h2>What setup do u prefer?</h2>
+                    <h2>What setup do you prefer?</h2>
                     <button onClick={handleClick} name={"high"}>high-end</button>
                     <button onClick={handleClick} name={"mid"}>mid</button>
                     <button onClick={handleClick} name={"budget"}>budget</button>
@@ -181,7 +181,7 @@ export default function GenerateSetupPage() {
             {buttons[2] &&
 
                 <div className={"generate__card pop-in"}>
-                    <h3>Budget Setup recommended fou you!</h3>
+                    <h3>Budget Setup recommended for you!</h3>
                     <div className={"edit__card"}>
 
                         <div className="edit__card__row">
