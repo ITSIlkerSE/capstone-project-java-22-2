@@ -1,12 +1,12 @@
 import React, {useState} from "react";
 import {AdminComponent} from "../model/AdminComponent";
 
-type CheckComponentsPage = {
+type CheckComponentsPageProps = {
     components: AdminComponent[];
 }
 
 
-export default function CheckComponentsPage(props: CheckComponentsPage) {
+export default function CheckComponentsPage(props: CheckComponentsPageProps) {
 
 
     const [selectedComponent, setSelectedComponent] = useState("")
