@@ -42,7 +42,8 @@ export default function AdminEditComponentsPage(props: AdminEditComponentsPagePr
 
     }
     const selectProduct = props.components.filter((component) => id === component.id);
-    const displaySelectProduct = selectProduct.map((product) => <ComponentCard key={product.id} name={product.name} category={product.category}
+    const displaySelectProduct = selectProduct.map((product) => <ComponentCard key={product.id} name={product.name}
+                                                                               category={product.category}
                                                                                price={product.price}
                                                                                combinationCode={product.combinationCode}
                                                                                score={product.score}
@@ -57,25 +58,27 @@ export default function AdminEditComponentsPage(props: AdminEditComponentsPagePr
                 <select onChange={(event) => {
                     setId(event.target.value)
                 }}>
-                    {props.components.map((component) => <option key={component.id} value={component.id}>{component.name}</option>)}
+                    {props.components.map((component) => <option key={component.id}
+                                                                 value={component.id}>{component.name}</option>)}
                 </select>
 
                 <input value={name} placeholder="Name" onChange={(event) => setName(event.target.value)}/>
                 <input value={category} placeholder="Category" onChange={(event) => setCategory(event.target.value)}/>
-                <input value={combinationCode} placeholder="Combination code" onChange={(event) => setCombinationCode(event.target.value)}/>
+                <input value={combinationCode} placeholder="Combination code"
+                       onChange={(event) => setCombinationCode(event.target.value)}/>
                 <input value={score} placeholder="Score" onChange={(event) => setScore(event.target.value)}/>
                 <input value={price} placeholder="Price" onChange={(event) => setPrice(event.target.value)}/>
-                <input value={classification} placeholder="Classification" onChange={(event) => setClassification(event.target.value)}/>
-                <button onClick={() => {onUpdateComponent()
+                <input value={classification} placeholder="Classification"
+                       onChange={(event) => setClassification(event.target.value)}/>
+                <button onClick={() => {
+                    onUpdateComponent()
 
-                }}>Edit</button>
+                }}>Edit
+                </button>
             </form>
 
 
-
-                {displaySelectProduct}
-
-
+            {displaySelectProduct}
 
 
         </div>

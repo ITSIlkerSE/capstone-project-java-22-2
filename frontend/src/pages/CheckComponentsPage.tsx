@@ -1,22 +1,34 @@
 import React, {useState} from "react";
 import {AdminComponent} from "../model/AdminComponent";
 
-type CheckPcPageProps = {
+type CheckComponentsPageProps = {
     components: AdminComponent[];
 }
 
 
-export default function CheckPcPage(props: CheckPcPageProps) {
+export default function CheckComponentsPage(props: CheckComponentsPageProps) {
 
 
     const [selectedComponent, setSelectedComponent] = useState("")
+    const [allComponents] = useState(props.components);
+    const [filter, setFilter] = useState("");
+
+
+    function handleInput(event:any){
+
+        setFilter(event.target.value)
+        console.log(filter)
+    }
+
+    const filterSelect = allComponents.filter((component) =>component.name.toLowerCase().includes(filter.toLowerCase())
+
+    )
 
     return (
 
-        <div className="content">
-
-            <p>Components list</p>
-
+        <div className="content check">
+            <h2>Check components</h2>
+            <input placeholder={"search components..."} type={"text"} name={"filter"} onChange={handleInput}/>
             <select
                 onChange={(event) => {
 
@@ -28,7 +40,7 @@ export default function CheckPcPage(props: CheckPcPageProps) {
                     }
                 }}>
                 <option defaultValue="" disabled selected>Select your option</option>
-                {props.components.map((component) =>
+                {filterSelect.map((component) =>
                     <option key={component.id} value={component.id}>{component.name}</option>)}
 
             </select>

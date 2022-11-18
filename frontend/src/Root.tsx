@@ -1,4 +1,3 @@
-import './App.css';
 import NavBar from "./components/NavBar";
 import {Route, Routes} from "react-router-dom";
 import AdminCreationPage from "./pages/AdminCreationPage";
@@ -9,8 +8,10 @@ import React from "react";
 import RegisterPage from "./pages/RegisterPage";
 import useLogin from "./hooks/useLogin";
 import Homepage from "./pages/Homepage";
-import CheckPcPage from "./pages/CheckPcPage";
+import CheckComponentsPage from "./pages/CheckComponentsPage";
 import ComputifyPcPage from "./pages/ComputifyPcPage";
+import SetupCheckerPage from "./pages/SetupCheckerPage";
+import GenerateSetupPage from "./pages/GenerateSetupPage";
 
 
 export default function Root() {
@@ -52,10 +53,14 @@ export default function Root() {
                     <Route path={"user/RegisterPage"}
                            element={<RegisterPage handleRegister={handleRegister}/>}/>
 
-                    <Route path={"user/CheckPcPage"}
-                           element={<CheckPcPage components={components}></CheckPcPage>}></Route>
+                    <Route path={"user/CheckComponentsPage"}
+                           element={<CheckComponentsPage components={components}></CheckComponentsPage>}></Route>
                     <Route path={"user/ComputifyPcPage/*"}
                            element={<ComputifyPcPage components={components}></ComputifyPcPage>}></Route>
+                    <Route path={"user/SetupCheckerPage/*"}
+                           element={<SetupCheckerPage components={components}></SetupCheckerPage>}></Route>
+                    <Route path={"user/GenerateSetupPage/*"}
+                           element={<GenerateSetupPage></GenerateSetupPage>}></Route>
 
                 </Routes>
             </main>

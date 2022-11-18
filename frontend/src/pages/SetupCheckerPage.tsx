@@ -2,11 +2,11 @@ import React, {useState} from "react";
 import {AdminComponent} from "../model/AdminComponent";
 import ResultCalc from "../components/ResultCalc";
 
-type ComputifyPcPageProps = {
+type GeneratePcPageProps = {
     components: AdminComponent[];
 }
 
-export default function ComputifyPcPage(props: ComputifyPcPageProps) {
+export default function SetupCheckerPage(props: GeneratePcPageProps) {
 
     const initalComponents =
 
@@ -27,66 +27,30 @@ export default function ComputifyPcPage(props: ComputifyPcPageProps) {
 
     const [allComponents] = useState(props.components);
     const [result, setResult] = useState([]);
-    const [combCode, setCombCode] = useState("");
-    const [classificationValue, setClassificationValue] = useState("");
     const [isShowResult, setIsShowResult] = useState(false);
     const [counter, setCounter] = useState(0);
 
 
-    const filterOnCode = allComponents.filter((SynCpuMb) => SynCpuMb.combinationCode.includes(combCode))
 
-    const filterOnClassifcation = allComponents.filter((SynComp) => SynComp.classification.includes(classificationValue))
+    const mainboardFilter = props.components.filter((component) => (component.category === "Mainboard"))
 
-    const mainboardFilter = allComponents.filter((component) => (component.category === "Mainboard"))
+    const cpuFilter = props.components.filter((component) => (component.category === "CPU"))
 
-    const cpuFilter = filterOnCode.filter((component) => (component.category === "CPU"))
+    const cpuCoolerFilter = props.components.filter((component) => (component.category === "CPU cooler"))
 
-    const cpuCoolerFilter = filterOnClassifcation.filter((component) => (component.category === "CPU cooler"))
+    const graphicCardsFilter = props.components.filter((component) => (component.category === "Graphics card"))
 
-    const graphicCardsFilter = allComponents.filter((component) => (component.category === "Graphics card"))
+    const ramFilter = props.components.filter((component) => (component.category === "RAM"))
 
-    const ramFilter = filterOnCode.filter((component) => (component.category === "RAM"))
-
-    const hardDiskFilter = filterOnClassifcation.filter((component) => (component.category === "Hard disk"))
+    const hardDiskFilter = props.components.filter((component) => (component.category === "Hard disk"))
 
     const soundcardFilter = props.components.filter((component) => (component.category === "Sound card"))
 
-    const powerAdapterFilter = filterOnClassifcation.filter((component) => (component.category === "Power adapter"))
+    const powerAdapterFilter = props.components.filter((component) => (component.category === "Power adapter"))
 
-    const towerFilter = filterOnClassifcation.filter((component) => (component.category === "Tower"))
+    const towerFilter = props.components.filter((component) => (component.category === "Tower"))
 
-    function handleSocketValue(event: any) {
 
-        let myComponent = allComponents.find((component) => component.id === event.target.value);
-
-        if (myComponent) {
-            let code = myComponent.combinationCode
-            setCombCode(code)
-        }
-        setSelectedComponents((prevState) => {
-            return {
-                ...prevState,
-                [event.target.name]: myComponent
-            }
-        })
-    }
-
-    function handlePowerAdapterValue(event: any) {
-
-        let myComponent = allComponents.find((component) => component.id === event.target.value);
-
-        setSelectedComponents((prevState) => {
-            return {
-                ...prevState,
-                [event.target.name]: myComponent
-            }
-        })
-
-        if (myComponent) {
-            let classificationValue = myComponent.classification;
-            setClassificationValue(classificationValue);
-        }
-    }
 
     function handleChange(event: any) {
 
@@ -109,7 +73,7 @@ export default function ComputifyPcPage(props: ComputifyPcPageProps) {
                 <form onSubmit={(event) => event.preventDefault()}>
                     <div className={"admin__row"}>
                         <p>Choose your mainboard :</p>
-                        <select name="mainboard" onChange={handleSocketValue}>
+                        <select name="mainboard" onChange={handleChange}>
                             <option defaultValue="" disabled selected>Select your option</option>
                             {mainboardFilter.map((component) =>
 
@@ -160,7 +124,7 @@ export default function ComputifyPcPage(props: ComputifyPcPageProps) {
                         <div className={"admin__row"}>
 
                             <p>Graphics cards</p>
-                            <select name="graphic" onChange={handlePowerAdapterValue}>
+                            <select name="graphic" onChange={handleChange}>
                                 <option defaultValue="" disabled selected>Select your option</option>
                                 {graphicCardsFilter.map((component) => <option key={component.id}
                                                                                value={component.id}>{component.name}</option>)}
@@ -257,7 +221,7 @@ export default function ComputifyPcPage(props: ComputifyPcPageProps) {
                             document.documentElement.scrollTop = 0;
                             document.body.scrollTop = 0;
 
-                        }}>Computify
+                        }}>Check !
                         </button>
 
 

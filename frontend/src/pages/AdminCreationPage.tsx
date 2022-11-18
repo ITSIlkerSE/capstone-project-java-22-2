@@ -1,6 +1,5 @@
 import {AdminComponent} from "../model/AdminComponent";
 import React, {ChangeEvent, useState} from "react";
-import './AdminCreationPage.css';
 
 type AddComponentPageProps = {
     components: AdminComponent[];
