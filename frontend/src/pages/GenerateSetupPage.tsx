@@ -18,20 +18,20 @@ export default function GenerateSetupPage(props: GenerateSetupPageProps) {
 
         if (event.target.name === "high") {
             setButtons([true, false, false]);
-            let random = Math.floor(Math.random() * highSetups.length);
+            const random = Math.floor(Math.random() * highSetups.length);
             setRandomNumber(random);
             setShowClear(true)
         }
         if (event.target.name === "mid") {
             setButtons([false, true, false]);
-            let random = Math.floor(Math.random() * midSetups.length);
+            const random = Math.floor(Math.random() * midSetups.length);
             setRandomNumber(random);
             setShowClear(true)
         }
 
         if (event.target.name === "budget") {
             setButtons([false, false, true]);
-            let random = Math.floor(Math.random() * budgetSetups.length);
+            const random = Math.floor(Math.random() * budgetSetups.length);
             setRandomNumber(random);
             setShowClear(true)
         }
