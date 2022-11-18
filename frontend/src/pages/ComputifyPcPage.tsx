@@ -247,7 +247,7 @@ export default function ComputifyPcPage(props: ComputifyPcPageProps) {
 
                     {counter === 9 &&
 
-                        <button  onClick={() => {
+                        <button onClick={() => {
 
                             let myResult: any = []
                             myResult = Object.values(selectedComponents);
