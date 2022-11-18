@@ -219,7 +219,7 @@ export default function SetupCheckerPage(props: GeneratePcPageProps) {
                             document.documentElement.scrollTop = 0;
                             document.body.scrollTop = 0;
 
-                        }}>Check !
+                        }}>Check!
                         </button>
 
 

@@ -17,8 +17,8 @@ export default function LoginPage(props: LoginPageProps) {
     return (
 
 
-        <div className="content">
-            <h2>Welcome</h2>
+        <div className="content welcome">
+            <h2>Welcome!</h2>
 
             <form onSubmit={e => e.preventDefault()}>
                 <h3>Login</h3>
@@ -38,6 +38,9 @@ export default function LoginPage(props: LoginPageProps) {
 
 
             <NavLink to={"/user/RegisterPage"}>Create account</NavLink>
+
+            <NavLink className="about__nav" to={"/user/AboutPage"}>About</NavLink>
+
 
 
         </div>
