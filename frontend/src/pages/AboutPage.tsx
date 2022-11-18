@@ -1,13 +1,11 @@
 import {useNavigate} from "react-router-dom";
 
-export default function AboutPage(){
+export default function AboutPage() {
 
-const nav = useNavigate()
-
-
-    return(
+    const nav = useNavigate()
 
 
+    return (
 
 
         <div className={"about"}>
