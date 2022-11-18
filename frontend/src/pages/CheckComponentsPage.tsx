@@ -14,14 +14,13 @@ export default function CheckComponentsPage(props: CheckComponentsPageProps) {
     const [filter, setFilter] = useState("");
 
 
-    function handleInput(event:any){
+    function handleInput(event: any) {
 
         setFilter(event.target.value)
         console.log(filter)
     }
 
-    const filterSelect = allComponents.filter((component) =>component.name.toLowerCase().includes(filter.toLowerCase())
-
+    const filterSelect = allComponents.filter((component) => component.name.toLowerCase().includes(filter.toLowerCase())
     )
 
     return (

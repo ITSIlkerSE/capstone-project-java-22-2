@@ -31,7 +31,6 @@ export default function SetupCheckerPage(props: GeneratePcPageProps) {
     const [counter, setCounter] = useState(0);
 
 
-
     const mainboardFilter = props.components.filter((component) => (component.category === "Mainboard"))
 
     const cpuFilter = props.components.filter((component) => (component.category === "CPU"))
@@ -49,7 +48,6 @@ export default function SetupCheckerPage(props: GeneratePcPageProps) {
     const powerAdapterFilter = props.components.filter((component) => (component.category === "Power adapter"))
 
     const towerFilter = props.components.filter((component) => (component.category === "Tower"))
-
 
 
     function handleChange(event: any) {
@@ -211,7 +209,7 @@ export default function SetupCheckerPage(props: GeneratePcPageProps) {
 
                     {counter === 9 &&
 
-                        <button  onClick={() => {
+                        <button onClick={() => {
 
                             let myResult: any = []
                             myResult = Object.values(selectedComponents);

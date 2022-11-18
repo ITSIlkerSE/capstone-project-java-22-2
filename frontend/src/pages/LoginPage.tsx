@@ -20,21 +20,21 @@ export default function LoginPage(props: LoginPageProps) {
         <div className="content">
             <h2>Welcome</h2>
 
-                <form>
-                    <h3>Login</h3>
-                    <input placeholder={"username"} value={username}
-                           onChange={event => setUsername(event.target.value)}/>
-                    <input placeholder={"password"} type="password" value={password}
-                           onChange={event => setPassword(event.target.value)}/>
+            <form onSubmit={e => e.preventDefault()}>
+                <h3>Login</h3>
+                <input placeholder={"username"} value={username}
+                       onChange={event => setUsername(event.target.value)}/>
+                <input placeholder={"password"} type="password" value={password}
+                       onChange={event => setPassword(event.target.value)}/>
 
-                    <button onClick={() => {
+                <button onClick={() => {
 
-                        props.handleLogin(username, password)
+                    props.handleLogin(username, password)
 
-                    }}>Login
+                }}>Login
 
-                    </button>
-                </form>
+                </button>
+            </form>
 
 
             <NavLink to={"/user/RegisterPage"}>Create account</NavLink>

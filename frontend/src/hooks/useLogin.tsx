@@ -50,7 +50,7 @@ export default function useLogin() {
 
     function handleLogout() {
         axios.get("api/user/logout")
-            .then(()=> nav("/"))
+            // .then(()=> nav("/"))
             .then(() => window.location.reload())
             .finally(() => setMe(undefined))
 

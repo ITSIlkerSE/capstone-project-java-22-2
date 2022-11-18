@@ -6,10 +6,8 @@ import Root from "./Root";
 export default function App() {
 
 
-
     return (
         <div className="container">
-
 
 
             <HashRouter>
