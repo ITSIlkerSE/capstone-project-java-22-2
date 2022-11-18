@@ -60,7 +60,7 @@ export default function Root() {
                     <Route path={"user/SetupCheckerPage/*"}
                            element={<SetupCheckerPage components={components}></SetupCheckerPage>}></Route>
                     <Route path={"user/GenerateSetupPage/*"}
-                           element={<GenerateSetupPage components={components}></GenerateSetupPage>}></Route>
+                           element={<GenerateSetupPage></GenerateSetupPage>}></Route>
 
                 </Routes>
             </main>

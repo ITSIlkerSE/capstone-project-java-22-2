@@ -15,14 +15,14 @@ function ResultCalc(props: myResultProps) {
     let info = "";
 
     if (score >= 5045) {
-        display = "high-end"
-        info = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sit amet dolor ut lacus dapibus efficitur vitae ut quam. Pellentesque mollis volutpat orci vel egestas."
+        display = "High-End Setup!"
+        info = "After we've checked your chosen components we figured out that this one is a solid High-End PC! FullHD, WQHD, 4k all above 60 FPS! Go for it !"
     } else if (score >= 3500 && score < 5045) {
-        display = "mid-level"
-        info = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sit amet dolor ut lacus dapibus efficitur vitae ut quam. Pellentesque mollis volutpat orci vel egestas."
+        display = "Mid-Tier Setup!"
+        info = "Judging by the components, this makes a Mid-Tier PC setup! We recommend playing in FullHD to get above smooth 60 FPS. WQHD is rendered up to 60 FPS. "
     } else {
-        display = "low-end"
-        info = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sit amet dolor ut lacus dapibus efficitur vitae ut quam. Pellentesque mollis volutpat orci vel egestas."
+        display = "Budget-Setup!"
+        info = "We would list this PC as a Low-Tier Setup. You should be able to play games in FullHD, but the smooth 60 FPS are not guaranteed. WQHD and 4k will be hard to master for this one!"
     }
 
 

@@ -1,13 +1,8 @@
-import {AdminComponent} from "../model/AdminComponent";
 import React, {useState} from "react";
 import {highSetups, midSetups, budgetSetups} from "../model/Computers";
 
 
-type GenerateSetupPageProps = {
-    components: AdminComponent[];
-}
-
-export default function GenerateSetupPage(props: GenerateSetupPageProps) {
+export default function GenerateSetupPage() {
 
 
     const [buttons, setButtons] = useState([false, false, false])
@@ -36,12 +31,9 @@ export default function GenerateSetupPage(props: GenerateSetupPageProps) {
             setShowClear(true)
         }
 
-
     }
 
     function handleClear() {
-
-
         setButtons([false, false, false])
         setShowClear(false)
     }
@@ -50,30 +42,21 @@ export default function GenerateSetupPage(props: GenerateSetupPageProps) {
 
         <>
 
-
-
-
-            { !showClear &&
-
+            {!showClear &&
 
                 <div className={"generate__buttons"}>
                     <h2>What setup do u prefer?</h2>
                     <button onClick={handleClick} name={"high"}>high-end</button>
                     <button onClick={handleClick} name={"mid"}>mid</button>
                     <button onClick={handleClick} name={"budget"}>budget</button>
-
                 </div>
 
-
             }
-
-
-
 
             {buttons[0] &&
 
                 <div className={"generate__card pop-in"}>
-                    <h3>high-end</h3>
+                    <h3>High-End recommendation for you!</h3>
                     <div className={"edit__card"}>
 
                         <div className="edit__card__row">
@@ -87,32 +70,32 @@ export default function GenerateSetupPage(props: GenerateSetupPageProps) {
                         </div>
 
                         <div className="edit__card__row">
-                            <p>CPU Cooler</p>
+                            <p>CPU cooler</p>
                             <p>{highSetups[randomNumber].cooler}</p>
                         </div>
 
                         <div className="edit__card__row">
-                            <p>Grafikkarte</p>
+                            <p>Graphics card</p>
                             <p>{highSetups[randomNumber].grafikarte}</p>
                         </div>
 
                         <div className="edit__card__row">
-                            <p>Ram</p>
+                            <p>RAM</p>
                             <p>{highSetups[randomNumber].ram}</p>
                         </div>
 
                         <div className="edit__card__row">
-                            <p>Festplatte</p>
+                            <p>Hard disk</p>
                             <p>{highSetups[randomNumber].festplatte}</p>
                         </div>
 
                         <div className="edit__card__row">
-                            <p>Soundkarte</p>
+                            <p>Soundcard</p>
                             <p>{highSetups[randomNumber].soundkarte}</p>
                         </div>
 
                         <div className="edit__card__row">
-                            <p>Poweradapter</p>
+                            <p>Power adapter</p>
                             <p>{highSetups[randomNumber].powerAdapter}</p>
                         </div>
 
@@ -125,8 +108,8 @@ export default function GenerateSetupPage(props: GenerateSetupPageProps) {
                     </div>
 
 
-                    <div className="edit__card__row" >
-                        <p>Price: {highSetups[randomNumber].price}€</p>
+                    <div className="edit__card__row">
+                        <p>Estimated price: {highSetups[randomNumber].price}€ (Nov.2022)</p>
                     </div>
                 </div>
 
@@ -135,7 +118,7 @@ export default function GenerateSetupPage(props: GenerateSetupPageProps) {
 
             {buttons[1] &&
                 <div className={"generate__card pop-in"}>
-                    <h3>Mid</h3>
+                    <h3>Mid-Tier recommendation for you!</h3>
                     <div className={"edit__card"}>
 
 
@@ -155,27 +138,27 @@ export default function GenerateSetupPage(props: GenerateSetupPageProps) {
                         </div>
 
                         <div className="edit__card__row">
-                            <p>Grafikkarte</p>
+                            <p>Graphics card</p>
                             <p>{midSetups[randomNumber].grafikarte}</p>
                         </div>
 
                         <div className="edit__card__row">
-                            <p>Ram</p>
+                            <p>RAM</p>
                             <p>{midSetups[randomNumber].ram}</p>
                         </div>
 
                         <div className="edit__card__row">
-                            <p>Festplatte</p>
+                            <p>Hard disk</p>
                             <p>{midSetups[randomNumber].festplatte}</p>
                         </div>
 
                         <div className="edit__card__row">
-                            <p>Soundkarte</p>
+                            <p>Soundcard</p>
                             <p>{midSetups[randomNumber].soundkarte}</p>
                         </div>
 
                         <div className="edit__card__row">
-                            <p>Poweradapter</p>
+                            <p>Power adapter</p>
                             <p>{midSetups[randomNumber].powerAdapter}</p>
                         </div>
 
@@ -186,8 +169,8 @@ export default function GenerateSetupPage(props: GenerateSetupPageProps) {
 
 
                     </div>
-                    <div className="edit__card__row" >
-                        <p>Price: {midSetups[randomNumber].price}€</p>
+                    <div className="edit__card__row">
+                        <p>Estimated price: {midSetups[randomNumber].price}€ (Nov.2022)</p>
                     </div>
 
                 </div>
@@ -195,11 +178,10 @@ export default function GenerateSetupPage(props: GenerateSetupPageProps) {
 
             }
 
-
             {buttons[2] &&
 
                 <div className={"generate__card pop-in"}>
-                    <h3>budget</h3>
+                    <h3>Budget Setup recommended fou you!</h3>
                     <div className={"edit__card"}>
 
                         <div className="edit__card__row">
@@ -218,27 +200,27 @@ export default function GenerateSetupPage(props: GenerateSetupPageProps) {
                         </div>
 
                         <div className="edit__card__row">
-                            <p>Grafikkarte</p>
+                            <p>Graphics card</p>
                             <p>{budgetSetups[randomNumber].grafikarte}</p>
                         </div>
 
                         <div className="edit__card__row">
-                            <p>Ram</p>
+                            <p>RAM</p>
                             <p>{budgetSetups[randomNumber].ram}</p>
                         </div>
 
                         <div className="edit__card__row">
-                            <p>Festplatte</p>
+                            <p>Hard disk</p>
                             <p>{budgetSetups[randomNumber].festplatte}</p>
                         </div>
 
                         <div className="edit__card__row">
-                            <p>Soundkarte</p>
+                            <p>Soundcard</p>
                             <p>{budgetSetups[randomNumber].soundkarte}</p>
                         </div>
 
                         <div className="edit__card__row">
-                            <p>Poweradapter</p>
+                            <p>Power adapter</p>
                             <p>{budgetSetups[randomNumber].powerAdapter}</p>
                         </div>
 
@@ -248,10 +230,9 @@ export default function GenerateSetupPage(props: GenerateSetupPageProps) {
                         </div>
 
 
-
                     </div>
-                    <div className="edit__card__row" >
-                        <p>Price: {budgetSetups[randomNumber].price}€</p>
+                    <div className="edit__card__row">
+                        <p>Estimated price: {budgetSetups[randomNumber].price}€ (Nov.2022)</p>
                     </div>
                 </div>
 
