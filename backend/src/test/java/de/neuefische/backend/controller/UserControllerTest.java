@@ -2,7 +2,6 @@ package de.neuefische.backend.controller;
 
 import de.neuefische.backend.model.Component;
 import de.neuefische.backend.repo.CheckComputifyRepo;
-import de.neuefische.backend.security.model.CreateUserDTO;
 import de.neuefische.backend.security.repo.AppUserRepository;
 import de.neuefische.backend.security.service.UserService;
 import de.neuefische.backend.service.IdService;
@@ -16,10 +15,10 @@ import org.springframework.http.MediaType;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.test.context.support.WithMockUser;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -27,7 +26,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
+@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 @AutoConfigureMockMvc
+
 
 public class UserControllerTest {
 
@@ -74,35 +75,50 @@ public class UserControllerTest {
     }
 
     @Test
-    void Should_Test_HandleLogin_By_Login() {
+    void Should_Test_HandleLogin_By_Login() throws Exception {
+
+//
+//            List<String> roles = new ArrayList<>();
+//            roles.add("USER");
+//            AppUser user1 = new AppUser("user1", "xxx","dad", roles);
+//            when(userRepo.findById("user1")).thenReturn(Optional.of(user1));
+//
+//        when(service.getUserByUsername(any()))
+//                .thenReturn(
+//                new AppUserDTO(user1.getUsername(), roles)
+//        );
+//
+//            mockMvc.perform(get("/api/user/login"))
+//                    .andExpect(status().isOk())
+//                    .andExpect(content().string("user1"));
+        }
+
+
+    @Test
+    void logout() {
 
     }
 
     @Test
-    void logout() {
-    }
+    void register() throws Exception {
 
-//    @Test
-//    void register() throws Exception {
-//        CreateUserDTO createUserDTO = new CreateUserDTO();
-//
-//        when(service.register(any())).thenReturn(createUserDTO.getUsername());
-//
-//        String requestBody = """
-//                        {
-//                            "username" : "user1",
-//                            "password" : "user"
-//                            "emailAddress" : "dsadgfa@gds.de"
-//                        }
-//                """;
-//
-//        String expected = "user1";
-//
-//        mockMvc.perform(
-//                        post("/api/user/register")
-//                                .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
-//                                .content(requestBody))
-//                .andExpect(status().isOk())
-//                .andExpect(content().string(expected));
-//    }
+        String requestBody = """
+                        {
+                            "username" : "peter",
+                            "password" : "peter",
+                            "emailAddress" : "dsadgfa@gds.de"
+                        }
+                """;
+
+        String expected = "peter";
+
+        mockMvc.perform(
+                        post("/api/user/register")
+                                .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+                                .content(requestBody))
+                .andExpect(status().isOk())
+                .andExpect(content().string(expected));
+
+
+    }
 }
