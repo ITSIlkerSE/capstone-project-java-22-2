@@ -20,7 +20,7 @@ export default function LoginPage(props: LoginPageProps) {
         <div className="content">
             <h2>Welcome</h2>
 
-                <form>
+                <form onSubmit={e => e.preventDefault()}>
                     <h3>Login</h3>
                     <input placeholder={"username"} value={username}
                            onChange={event => setUsername(event.target.value)}/>
