@@ -1,6 +1,5 @@
 import {NavLink} from "react-router-dom";
 import React, {useState} from "react";
-import './NavBar.css';
 import useLogin from "../hooks/useLogin";
 import {UserInfo} from "../model/UserInfo";
 
@@ -36,16 +35,20 @@ export default function NavBar(props: NavBarProps) {
 
 
     return (
+
         <div className="navbar">
             <h3>Check & Computify</h3>
 
-            <div className="menu-bars" onClick={toggleNav}>
-                <div className={!isDropdown ? "menu-bar1" : "menu-bar1 change-menu-bar1"}></div>
-                <div className={!isDropdown ? "menu-bar2" : "menu-bar2 change-menu-bar2"}></div>
-                <div className={!isDropdown ? "menu-bar3" : "menu-bar3 change-menu-bar3"}></div>
+            { props.me &&
 
-            </div>
+                <div className="menu-bars" onClick={toggleNav}>
+                    <div className={!isDropdown ? "menu-bar1" : "menu-bar1 change-menu-bar1"}></div>
+                    <div className={!isDropdown ? "menu-bar2" : "menu-bar2 change-menu-bar2"}></div>
+                    <div className={!isDropdown ? "menu-bar3" : "menu-bar3 change-menu-bar3"}></div>
 
+                </div>
+
+            }
 
             <ul className={animate}>
 
@@ -58,10 +61,10 @@ export default function NavBar(props: NavBarProps) {
                 {props.me &&
                     <>
                         <NavLink onClick={toggleNav} to={"/"}>Homepage</NavLink>
-                        <NavLink onClick={toggleNav} to={"/"}>Placeholder</NavLink>
-                        <NavLink onClick={toggleNav} to={"/"}>Placeholder</NavLink>
-                        <NavLink onClick={toggleNav} to={"user/CheckPcPage"}>Check PC</NavLink>
-                        <NavLink onClick={toggleNav} to={"user/ComputifyPcPage"}>Computify PC</NavLink>
+                        <NavLink onClick={toggleNav} to={"user/GenerateSetupPage"}>Setup generator</NavLink>
+                        <NavLink onClick={toggleNav} to={"user/CheckComponentsPage"}>Check Components</NavLink>
+                        <NavLink onClick={toggleNav} to={"user/SetupCheckerPage"}>Setup checker</NavLink>
+                        <NavLink onClick={toggleNav} to={"user/ComputifyPcPage"}>Computify your PC</NavLink>
 
                         <p style={{color: "white"}}>Angemeldet als: {props.me?.username}</p>
 
@@ -69,7 +72,10 @@ export default function NavBar(props: NavBarProps) {
                             handleLogout()
 
 
-                        }}>Logout
+                        }}>Logout <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9" />
+                        </svg>
+
                         </button>
                     </>
                 }

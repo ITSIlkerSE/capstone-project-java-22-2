@@ -1,5 +1,4 @@
 import React, {useState} from "react";
-import './LoginPage.css';
 import {NavLink} from "react-router-dom";
 
 type LoginPageProps = {
