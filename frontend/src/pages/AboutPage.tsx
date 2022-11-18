@@ -9,7 +9,7 @@ export default function AboutPage() {
 
 
         <div className={"about"}>
-            <img src="https://avatars.githubusercontent.com/u/111722018?v=4" alt={"author image"}/>
+            <img src="https://avatars.githubusercontent.com/u/111722018?v=4" alt={"author"}/>
             <h2>Hi Visitor!</h2>
             <p>My name is Ilker Yildirim, I'm 31 years old and the founder of
                 Check & Computify.</p>
