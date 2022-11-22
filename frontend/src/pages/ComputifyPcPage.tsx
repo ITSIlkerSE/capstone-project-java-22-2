@@ -102,7 +102,6 @@ export default function ComputifyPcPage(props: ComputifyPcPageProps) {
 
     return (
 
-
         <div className="content">
             {!isShowResult &&
 
@@ -125,7 +124,6 @@ export default function ComputifyPcPage(props: ComputifyPcPageProps) {
                     </div>
 
                     {counter >= 1 &&
-
 
                         <div className={"admin__row"}>
 
