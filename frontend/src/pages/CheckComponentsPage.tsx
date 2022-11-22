@@ -35,7 +35,6 @@ export default function CheckComponentsPage(props: CheckComponentsPageProps) {
 
                     if (myObject) {
                         setSelectedComponent(myObject.name)
-
                     }
                 }}>
                 <option defaultValue="" disabled selected>Select your option</option>

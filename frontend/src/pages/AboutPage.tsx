@@ -4,9 +4,7 @@ export default function AboutPage() {
 
     const nav = useNavigate()
 
-
     return (
-
 
         <div className={"about"}>
             <img src="https://avatars.githubusercontent.com/u/111722018?v=4" alt={"author"}/>
@@ -17,7 +15,6 @@ export default function AboutPage() {
             <p>Have fun !</p>
             <button className="button__back" onClick={() => nav("/login")}>Back</button>
         </div>
-
 
     )
 
