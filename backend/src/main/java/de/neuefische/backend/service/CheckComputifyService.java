@@ -40,7 +40,6 @@ public class CheckComputifyService {
         component.setClassification(componentDTO.getClassification());
         return component;
     }
-
     public List<Component> getAllComponents() {
         return repo.findAll();
     }
